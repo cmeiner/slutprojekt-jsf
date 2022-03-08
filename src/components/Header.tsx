@@ -4,49 +4,53 @@ import { color, width } from "@mui/system";
 import { CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { link } from "fs";
+import SearchBar from "./Searchbar";
 
-
-function Header () {
- return (
+function Header() {
+  return (
     <div style={rootStyle}>
-        <div style={innerHeader}>
-            <Link style={headline} to="/"><h1 style={headline}>NFT Heaven</h1></Link>
-            
-            <div>🖼</div>
-            <Link style={headerCartLink} to="/cart">
-                <FontAwesomeIcon icon={faShoppingCart} />
-            </Link>
+      <div style={innerHeader}>
+        <div>
+          <Link style={headline} to="/">
+            <h1 style={headline}>NFT Heaven</h1>
+          </Link>
         </div>
+        <div>
+          <SearchBar />
+        </div>
+        <div>
+          <Link style={headerCartLink} to="/cart">
+            <FontAwesomeIcon icon={faShoppingCart} />
+          </Link>
+        </div>
+      </div>
     </div>
- )
+  );
 }
-
 
 const rootStyle: CSSProperties = {
-    background: "#374B4A", 
-    color: '#eee',
-}
+  background: "#374B4A",
+  color: "#eee",
+};
 
 const innerHeader: CSSProperties = {
-    width: "100%",
-    height: "10vh",
-    display: "flex",
-    margin: "0 auto",
-    justifyContent: "space-between",
-    alignItems: "center",
-    maxWidth: "1250px"
-}
+  width: "100%",
+  height: "10vh",
+  display: "flex",
+  margin: "0 auto",
+  justifyContent: "space-between",
+  alignItems: "center",
+  maxWidth: "1250px",
+};
 
 const headline: CSSProperties = {
-    marginLeft: "1rem",
-    textDecoration: "none",
-    color: "white",
-}
+  textDecoration: "none",
+  color: "white",
+};
 
 const headerCartLink: CSSProperties = {
-    color: "white",
-    fontSize: "2.5rem",
-    paddingRight: "1.5rem",
-}
+  color: "white",
+  fontSize: "2.5rem",
+};
 
 export default Header;

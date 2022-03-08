@@ -30,22 +30,29 @@ function StartPage() {
     <div style={rootStyle}>
       <div style={contentContainer}>
         <div style={startPageWelcomeText}>
-          <h2>Buy extreme NFTs and dont look back!</h2>
-          <p>
+          <h2 style={startPageHeadline}>
+            Buy extreme NFTs and dont look back!
+          </h2>
+          <p style={headlineSubText}>
             Are you looking for insane NFTs? Do you want to make money Quick?
+            You've come to the right place. NFT Heaven is the worlds latest and
+            smallest NFT-website.
           </p>
+          <div style={startPageLinkButtonContainer}>
+            <Link style={linkButtonStyle} to="/productpage">
+              <Button style={StyledButton} variant="contained" href="">
+                Buy
+              </Button>
+            </Link>
 
-          <Link style={linkButtonStyle} to="/productpage">
-            <Button style={StyledButton} variant="contained" href="">
-              Buy
-            </Button>
-          </Link>
-
-          <Link style={linkButtonStyle} to="/searchresult">
-            <Button style={StyledButton} variant="contained" href="">
-              Search for NFT
-            </Button>
-          </Link>
+            <Link style={linkButtonStyle} to="/searchresult">
+              <Button style={StyledButton} variant="contained" href="">
+                Search for NFT
+              </Button>
+            </Link>
+          </div>
+        </div>
+        <div style={flexProducts}>
           {collectionList.map((collection, index) => (
             <ProductCard key={index} card={collection} />
           ))}
@@ -59,17 +66,44 @@ export default StartPage;
 
 const rootStyle: CSSProperties = {
   display: "flex",
+  justifyContent: "center",
   alignItems: "center",
   margin: "0 auto",
   width: "100%",
   // border: "2px solid #88D9E6",
 };
 
+const startPageHeadline: CSSProperties = {
+  fontSize: "2rem",
+};
+
+const headlineSubText: CSSProperties = {
+  maxWidth: "30rem",
+};
+
+const flexProducts: CSSProperties = {
+  display: "flex",
+  flexWrap: "wrap",
+  gap: "2rem",
+  justifyContent: "space-around",
+  marginTop: "10rem",
+};
+
 const startPageWelcomeText: CSSProperties = {
-  marginLeft: "2rem",
+  maxWidth: "40rem",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
 };
 
 const contentContainer: CSSProperties = {
+  display: "flex",
+  justifyContent: "center",
+  flexDirection: "column",
+  alignItems: "center",
+};
+
+const startPageLinkButtonContainer: CSSProperties = {
   display: "flex",
   justifyContent: "center",
 };
