@@ -1,10 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { color, width } from "@mui/system";
-import { CSSProperties } from "react";
+import { CSSProperties, useRef } from "react";
 import { Link } from "react-router-dom";
 import { link } from "fs";
-import SearchBar from "./Searchbar";
+import { SearchBar } from "./TestSearch";
+// import SearchBar from "./Searchbar";
 
 function Header() {
   return (

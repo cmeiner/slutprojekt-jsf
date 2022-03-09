@@ -2,11 +2,21 @@ import { Button, Card } from "@mui/material";
 import { CSSProperties, useState } from "react";
 import { Link } from "react-router-dom";
 import ProductCard from "../components/card";
+import SearchButton from "../components/SearchButton";
 import { collectionData } from "../data/collections/collection";
 
 function StartPage() {
   const [collectionList, setCollectionList] = useState(collectionData);
   const [featuredList, setFeaturedList] = useState([{}]);
+
+  let newList = collectionList;
+  while (newList.length < 3) {
+    newList.filter(function (el) {
+      return el.floorPrice < 10;
+    });
+  }
+
+  console.log(newList);
 
   function getFeatured() {
     //     CollectionList får vi ut alla kollektioner
@@ -50,11 +60,13 @@ function StartPage() {
                 Search for NFT
               </Button>
             </Link>
+
+            <SearchButton />
           </div>
         </div>
         <div style={flexProducts}>
           {collectionList.map((collection, index) => (
-            <ProductCard key={index} card={collection} />
+            <ProductCard collection={false} key={index} card={collection} />
           ))}
         </div>
       </div>
@@ -108,11 +120,12 @@ const startPageLinkButtonContainer: CSSProperties = {
   justifyContent: "center",
 };
 
-const StyledButton: CSSProperties = {
-  backgroundColor: "#8B8BAE",
-  margin: "1rem",
-};
-
 const linkButtonStyle: CSSProperties = {
   textDecoration: "none",
+};
+
+const StyledButton: CSSProperties = {
+  background: "rgb(32, 129, 226)",
+  margin: "1rem",
+  fontSize: "2rem",
 };

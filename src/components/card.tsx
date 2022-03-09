@@ -7,6 +7,7 @@ import {
   collectionDataItem,
 } from "../data/collections/collection";
 import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 interface cardInfo {
   card: {
@@ -15,6 +16,7 @@ interface cardInfo {
     volumeTraded: number;
     productImage: string;
   };
+  collection: boolean;
 }
 
 function ProductCard(props: cardInfo) {
@@ -24,17 +26,30 @@ function ProductCard(props: cardInfo) {
   const productImageURL = props.card.productImage;
 
   return (
-    <div style={cardContainer}>
-      <h1> {name}</h1>
-      <div style={cardPicture}>
-        <img style={productImage} srcSet={productImageURL} alt="test" />
-      </div>
-      <h1 style={priceStyle}>
-        FROM: <FontAwesomeIcon icon={faCoins} /> {floorPrice}
-      </h1>
-      <Button style={buttonStyle} variant="contained" href="">
-        VIEW COLLECTION
-      </Button>
+    <div>
+      {!props.collection && (
+        <div>
+          <div style={cardContainer}>
+            <h1> {name}</h1>
+            <div style={cardPicture}>
+              <img style={productImage} srcSet={productImageURL} alt="test" />
+            </div>
+            <h1 style={priceStyle}>
+              FROM: <FontAwesomeIcon icon={faCoins} /> {floorPrice}
+            </h1>
+            <Link to="/CollectionPage">
+              <Button style={buttonStyle} variant="contained" href="">
+                VIEW COLLECTION
+              </Button>
+            </Link>
+          </div>
+        </div>
+      )}
+      {props.collection && (
+        <div>
+          <div style={cardContainer}></div>
+        </div>
+      )}
     </div>
   );
 }
