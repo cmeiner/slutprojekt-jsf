@@ -5,18 +5,20 @@ import ProductCard from "../components/card";
 import SearchButton from "../components/SearchButton";
 import { collectionData } from "../data/collections/collection";
 
-function StartPage() {
+interface startPageProps {
+  focusHeader?: any;
+}
+
+function StartPage(startPageProps: any) {
   const [collectionList, setCollectionList] = useState(collectionData);
   const [featuredList, setFeaturedList] = useState([{}]);
 
   let newList = collectionList;
   while (newList.length < 3) {
-    newList.filter(function (el) {
-      return el.floorPrice < 10;
-    });
+    newList.filter(function (el) {});
   }
 
-  console.log(newList);
+  //console.log(newList);
 
   function getFeatured() {
     //     CollectionList får vi ut alla kollektioner
@@ -34,7 +36,7 @@ function StartPage() {
     //     }
   }
 
-  console.log(getFeatured());
+  //console.log(getFeatured());
 
   return (
     <div style={rootStyle}>
@@ -54,14 +56,7 @@ function StartPage() {
                 Buy
               </Button>
             </Link>
-
-            <Link style={linkButtonStyle} to="/searchresult">
-              <Button style={StyledButton} variant="contained" href="">
-                Search for NFT
-              </Button>
-            </Link>
-
-            <SearchButton />
+            <SearchButton handleClick={startPageProps.focusHeader} />
           </div>
         </div>
         <div style={flexProducts}>

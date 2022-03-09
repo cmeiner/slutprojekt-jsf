@@ -1,27 +1,28 @@
 // @ts-nocheck
 
+// FOLLOW ME CONNER
+//OKAY
+
+// SO HERE IS OUR SEARCH BUTTON, WE WANT IT TO LINK UP WITH THE HEADER.TSX INPUT FIELD. THX
 import { Button } from "@mui/material";
-import { useRef, CSSProperties } from "react";
+import { CSSProperties } from "react";
 
-function SearchButton() {
-  const input1 = useRef(null);
-
-  const handleClick = () => {
-    input1.current.focus();
-  };
-
+function SearchButton(searchButtonProps: any) {
   return (
     <div>
-      <Button style={StyledButton} variant="contained" onClick={handleClick}>
-        Search for NFT
+      <Button
+        style={StyledButton}
+        variant="contained"
+        onClick={searchButtonProps.handleClick}
+      >
+        Search
       </Button>
-      <input ref={input1} type="text" name="one" id="one" placeholder="one" />
     </div>
   );
 }
 const StyledButton: CSSProperties = {
   background: "rgb(32, 129, 226)",
   margin: "1rem",
-  fontSize: "2rem",
+  fontSize: ".9rem",
 };
 export default SearchButton;
