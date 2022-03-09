@@ -2,11 +2,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { CSSProperties, useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
-import { link } from "fs";
-// import { SearchBar } from "./TestSearch";
-import SearchBar from "./Searchbar";
-=======
 import SearchBar from "./Searchbar";
 
 interface headerProps {
@@ -20,7 +15,6 @@ function Header(headerProps: any) {
   useEffect(() => {
     setSearchFocused(headerProps.searchBarFocused);
   }, [headerProps.searchBarFocused]);
->>>>>>> bd4385c1e7b59c2efe88cbf1bbdbd909317786f1
 
   return (
     <div style={rootStyle}>

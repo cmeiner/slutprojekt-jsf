@@ -1,9 +1,3 @@
-// @ts-nocheck
-
-// FOLLOW ME CONNER
-//OKAY
-
-// SO HERE IS OUR SEARCH BUTTON, WE WANT IT TO LINK UP WITH THE HEADER.TSX INPUT FIELD. THX
 import { Button } from "@mui/material";
 import { CSSProperties } from "react";
 
