@@ -2,9 +2,12 @@ import { CSSProperties, useState } from "react";
 import ProductCard from "../components/card";
 import { collectionData } from "../data/collections/collection";
 
+
+
 function CollectionPage() {
 
   const [collectionList, setCollectionList] = useState(collectionData);
+  
   return (
     <div style={flexProducts}>
           {collectionList.map((collection, index) => (

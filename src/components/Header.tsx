@@ -19,18 +19,18 @@ function Header(headerProps: any) {
   return (
     <div style={rootStyle}>
       <div style={innerHeader}>
-        <div>
+        <div style={headerDiv1}>
           <Link style={headline} to="/">
             <h1 style={headline}>NFT Heaven</h1>
           </Link>
         </div>
-        <div>
+        <div style={headerDiv2}> 
           <SearchBar
             isFocused={searchFocused}
             focusOut={headerProps.searchBarFocusOut}
           />
         </div>
-        <div>
+        <div style={headerDiv3}>
           <Link style={headerCartLink} to="/cart">
             <FontAwesomeIcon icon={faShoppingCart} />
           </Link>
@@ -64,5 +64,19 @@ const headerCartLink: CSSProperties = {
   color: "white",
   fontSize: "2.5rem",
 };
+
+const headerDiv1: CSSProperties = {
+  width: '33%',
+}
+const headerDiv2: CSSProperties = {
+  width: '33%',
+  display: 'flex',
+  justifyContent: 'center'
+}
+const headerDiv3: CSSProperties = {
+  width: '33%',
+  display: 'flex',
+  justifyContent: 'flex-end'
+}
 
 export default Header;
