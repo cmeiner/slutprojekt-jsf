@@ -60,8 +60,8 @@ function StartPage(startPageProps: any) {
           </div>
         </div>
         <div style={flexProducts}>
-          {collectionList.map((name, index) => (
-            <ProductCard collection={false} key={index} card={name} />
+          {collectionList.map((collection, index) => (
+            <ProductCard collection={false} key={index} card={collection} />
           ))}
         </div>
       </div>
