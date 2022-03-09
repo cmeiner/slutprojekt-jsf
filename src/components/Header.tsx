@@ -4,8 +4,8 @@ import { color, width } from "@mui/system";
 import { CSSProperties, useRef } from "react";
 import { Link } from "react-router-dom";
 import { link } from "fs";
-import { SearchBar } from "./TestSearch";
-// import SearchBar from "./Searchbar";
+// import { SearchBar } from "./TestSearch";
+import SearchBar from "./Searchbar";
 
 function Header() {
   return (

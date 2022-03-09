@@ -47,7 +47,29 @@ function ProductCard(props: cardInfo) {
       )}
       {props.collection && (
         <div>
-          <div style={cardContainer}></div>
+          <div style={cardContainer}>
+            <div style={cardHeader}>
+              <img
+                style={collectionImage}
+                srcSet={productImageURL}
+                alt="test"
+              />
+              <div style={headerText}>
+                <div style={nameStyle}>{name}</div>
+                <div style={priceStyle}><FontAwesomeIcon icon={faCoins} />{floorPrice}</div>
+              </div>
+            </div>
+            <div style={cardContent}>
+            <img
+                style={productImage}
+                srcSet={productImageURL}
+                alt="test"
+              />
+              <Button style={buttonStyle} variant="contained" href="">
+               BUY NOW
+              </Button>
+            </div>
+          </div>
         </div>
       )}
     </div>
@@ -82,4 +104,39 @@ const priceStyle: CSSProperties = {
 const buttonStyle: CSSProperties = {
   fontWeight: "bold",
   background: "#2081e2",
+};
+
+const cardHeader: CSSProperties = {
+  width: '100%',
+  display: "flex",
+  flexDirection: "row",
+  alignItems: 'center',
+  justifyContent: 'space-around',
+  margin: '1rem'
+};
+
+const headerText: CSSProperties = {
+  textAlign: 'center',
+  fontSize: '1.5rem'
+};
+
+const collectionImage: CSSProperties = {
+  width: "4rem",
+  display: 'flex',
+  alignItems: 'center'
+};
+
+const nameStyle: CSSProperties = {
+  // width: "4rem",
+  // display: 'flex',
+  // alignItems: 'center'
+};
+
+const cardContent: CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  gap: '1rem',
+  padding: '.5rem'
+
 };
