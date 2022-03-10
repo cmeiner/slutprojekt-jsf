@@ -3,7 +3,8 @@ import { CSSProperties, useState } from "react";
 import { Link } from "react-router-dom";
 import ProductCard from "../components/card";
 import SearchButton from "../components/SearchButton";
-import { collectionData } from "../data/collections/collection";
+import { collectionData, collectionDataItem } from "../data/collections/collection";
+import getFeatured from "../functions/getFeatured";
 
 interface startPageProps {
   focusHeader?: any;
@@ -11,17 +12,20 @@ interface startPageProps {
 
 function StartPage(startPageProps: any) {
   const [collectionList, setCollectionList] = useState(collectionData);
-  const [featuredList, setFeaturedList] = useState([{}]);
+  const [featuredList, setFeaturedList] = useState(getFeatured());
 
-  let newList = collectionList;
-  while (newList.length < 3) {
-    newList.filter(function (el) {});
-  }
 
+  
+  
   //console.log(newList);
 
-  function getFeatured() {
+    // }
+
+
     //     CollectionList får vi ut alla kollektioner
+    // console.log(collectionList.sort(function(a, b){return a.floorPrice-b.floorPrice}))
+    // console.log(featuredList)
+    // setFeaturedList([{}])
     //     Filtrera så dem mest med FLOOR PRICE & BEST VOLUME TRADED
     //     TOP 3 AV DEM SÄTTS IN I NYA FEATUREDLIST
     //     let list = collectionList
@@ -34,7 +38,6 @@ function StartPage(startPageProps: any) {
     //         list.filter(item => min != item.floorPrice)
     //         return list
     //     }
-  }
 
   //console.log(getFeatured());
 
@@ -51,7 +54,7 @@ function StartPage(startPageProps: any) {
             smallest NFT-website.
           </p>
           <div style={startPageLinkButtonContainer}>
-            <Link style={linkButtonStyle} to="/productpage">
+            <Link style={linkButtonStyle} to="/">
               <Button style={StyledButton} variant="contained" href="">
                 Buy
               </Button>
@@ -60,7 +63,7 @@ function StartPage(startPageProps: any) {
           </div>
         </div>
         <div style={flexProducts}>
-          {collectionList.map((collection, index) => (
+          {featuredList.map((collection, index) => (
             <ProductCard collection={false} key={index} card={collection} />
           ))}
         </div>
@@ -92,8 +95,10 @@ const flexProducts: CSSProperties = {
   display: "flex",
   flexWrap: "wrap",
   gap: "2rem",
+  flexDirection: "row-reverse",
   justifyContent: "space-around",
-  marginTop: "10rem",
+  marginTop: "5rem",
+  marginBottom: "10rem",
 };
 
 const startPageWelcomeText: CSSProperties = {
