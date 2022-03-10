@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 
 interface cardInfo {
   card: {
+    id: number;
     name: string;
     floorPrice: number;
     volumeTraded: number;
@@ -20,6 +21,7 @@ interface cardInfo {
 }
 
 function ProductCard(props: cardInfo) {
+  let id = props.card.id;
   const name = props.card.name;
   const floorPrice = props.card.floorPrice;
   const volumeTraded = props.card.volumeTraded;
@@ -37,7 +39,7 @@ function ProductCard(props: cardInfo) {
             <h1 style={priceStyle}>
               FROM: <FontAwesomeIcon icon={faCoins} /> {floorPrice}
             </h1>
-            <Link to="/CollectionPage">
+            <Link to={`/CollectionPage/${id}`}>
               <Button style={buttonStyle} variant="contained" href="">
                 VIEW COLLECTION
               </Button>
