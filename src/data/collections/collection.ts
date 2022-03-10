@@ -1,3 +1,11 @@
+export interface NftItem {
+  NFTid: number;
+  image: string;
+  price: string;
+  timeLeft: string;
+  description: string;
+}
+
 export interface collectionDataItem {
   id: number;
   name: string;
@@ -6,7 +14,7 @@ export interface collectionDataItem {
   floorPrice: number;
   header: string;
   productImage: string;
-  NFTS: [{}];
+  NFTS: NftItem[];
 }
 
 export const collectionData: collectionDataItem[] = [
@@ -18,7 +26,13 @@ export const collectionData: collectionDataItem[] = [
     floorPrice: 0.003,
     header: "./assets/images/Products/rareEmilNFT.jpg",
     productImage: "./assets/images/Products/rareEmilNFT.jpg",
-    NFTS: [{id:1, image: "test"}],
+    NFTS: [
+      { NFTid: 1, image: "testImage", price: 'testPrice', timeLeft: 'testTime', description:'testDesc' },
+      { NFTid: 2, image: "testImage", price: 'testPrice', timeLeft: 'testTime', description:'testDesc' },
+      { NFTid: 3, image: "testImage", price: 'testPrice', timeLeft: 'testTime', description:'testDesc' },
+      { NFTid: 4, image: "testImage", price: 'testPrice', timeLeft: 'testTime', description:'testDesc' },
+      { NFTid: 5, image: "testImage", price: 'testPrice', timeLeft: 'testTime', description:'testDesc' },
+    ],
   },
   {
     id: 2,
@@ -28,8 +42,9 @@ export const collectionData: collectionDataItem[] = [
     floorPrice: 50,
     header: "./assets/images/Products/rareEmilNFT.jpg",
     productImage: "./assets/images/Products/rareEmilNFT.jpg",
-    NFTS: [{id:1, image: "test"}],
-  },
+    NFTS: [
+      { NFTid: 1, image: "testImage", price: 'testPrice', timeLeft: 'testTime', description:'testDesc' },
+    ],  },
   {
     id: 3,
     name: "PappaNFT2",
@@ -38,8 +53,9 @@ export const collectionData: collectionDataItem[] = [
     floorPrice: 73,
     header: "./assets/images/Products/rareEmilNFT.jpg",
     productImage: "./assets/images/Products/rareEmilNFT.jpg",
-    NFTS: [{id:1, image: "test"}],
-  },
+    NFTS: [
+      { NFTid: 1, image: "testImage", price: 'testPrice', timeLeft: 'testTime', description:'testDesc' },
+    ],  },
   {
     id: 4,
     name: "PappaNFT3",
@@ -48,8 +64,9 @@ export const collectionData: collectionDataItem[] = [
     floorPrice: 69,
     header: "./assets/images/Products/rareEmilNFT.jpg",
     productImage: "./assets/images/Products/rareEmilNFT.jpg",
-    NFTS: [{id:1, image: "test"}],
-  },
+    NFTS: [
+      { NFTid: 1, image: "testImage", price: 'testPrice', timeLeft: 'testTime', description:'testDesc' },
+    ],  },
   {
     id: 5,
     name: "PappaNFT4",
@@ -58,8 +75,9 @@ export const collectionData: collectionDataItem[] = [
     floorPrice: 20,
     header: "./assets/images/Products/rareEmilNFT.jpg",
     productImage: "./assets/images/Products/rareEmilNFT.jpg",
-    NFTS: [{id:1, image: "test"}],
-  },
+    NFTS: [
+      { NFTid: 1, image: "testImage", price: 'testPrice', timeLeft: 'testTime', description:'testDesc' },
+    ],  },
   {
     id: 6,
     name: "PappaNFT5",
@@ -68,6 +86,7 @@ export const collectionData: collectionDataItem[] = [
     floorPrice: 420,
     header: "./assets/images/Products/rareEmilNFT.jpg",
     productImage: "./assets/images/Products/rareEmilNFT.jpg",
-    NFTS: [{id:1, image: "test"}],
-  },
+    NFTS: [
+      { NFTid: 1, image: "testImage", price: 'testPrice', timeLeft: 'testTime', description:'testDesc' },
+    ],  },
 ];

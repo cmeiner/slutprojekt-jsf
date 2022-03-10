@@ -1,35 +1,59 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
-import { style } from "@mui/system";
 import { CSSProperties } from "react";
 import {
   collectionData,
   collectionDataItem,
+  NftItem,
 } from "../data/collections/collection";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
-interface cardInfo {
+interface collectionInfo {
   card: {
     id: number;
     name: string;
-    floorPrice: number;
+    description: string;
     volumeTraded: number;
+    floorPrice: number;
+    header: string;
     productImage: string;
+    NFTS: NftItem[];
   };
   collection: boolean;
+  
 }
 
-function ProductCard(props: cardInfo) {
-  let id = props.card.id;
+interface nftInfo {
+  card: {
+    id: number;
+    image: string;
+    price: string;
+    timeLeft: string;
+    description: string;
+  };
+  collection: boolean;
+  shoppingCart: NftItem[];
+}
+
+
+interface isCollection {
+  checkState : boolean
+}
+
+// function ProductCard(props: collectionInfo | nftInfo) {
+function ProductCard(setState : isCollection , collection? : collectionInfo, nft? : nftInfo) {
+  let id = 1
   const name = props.card.name;
   const floorPrice = props.card.floorPrice;
   const volumeTraded = props.card.volumeTraded;
   const productImageURL = props.card.productImage;
+  const name = collection?.card.name || nft?.card.id
+ 
 
   return (
     <div>
-      {!props.collection && (
+      {!setState.checkState && (
         <div>
           <div style={cardContainer}>
             <h1> {name}</h1>
@@ -47,14 +71,14 @@ function ProductCard(props: cardInfo) {
           </div>
         </div>
       )}
-      {props.collection && (
+      {setState.checkState && (
         <div>
           <div style={cardContainer}>
             <div style={cardHeader}>
               <img
                 style={collectionImage}
                 srcSet={productImageURL}
-                alt="test"
+                alt="headerImg"
               />
               <div style={headerText}>
                 <div style={nameStyle}>{name}</div>
@@ -65,7 +89,7 @@ function ProductCard(props: cardInfo) {
             <img
                 style={productImage}
                 srcSet={productImageURL}
-                alt="test"
+                alt="mainImg"
               />
               <Button style={buttonStyle} variant="contained" href="">
                BUY NOW
@@ -129,9 +153,6 @@ const collectionImage: CSSProperties = {
 };
 
 const nameStyle: CSSProperties = {
-  // width: "4rem",
-  // display: 'flex',
-  // alignItems: 'center'
 };
 
 const cardContent: CSSProperties = {
