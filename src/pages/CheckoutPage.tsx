@@ -7,7 +7,7 @@ function CheckoutPage() {
   return (
     <div style={rootStyle}>
       <div style={checkoutContainer}>
-        <h2>Checkout</h2>
+        <h2 style={headlineStyle}>Checkout</h2>
         <h2>Your purchase: </h2>
         <div style={purchasedItems}>
           <div style={purchasedItemTestCard}>NFT 1</div>
@@ -16,6 +16,8 @@ function CheckoutPage() {
           <div style={purchasedItemTestCard}>NFT 4</div>
           <div style={purchasedItemTestCard}>NFT 5</div>
         </div>
+
+        <h3>Total price: 420 ETH</h3>
 
         <Link style={nextButton} to="/CheckoutDetails">
           <Button style={buttonStyle} variant="contained" href="">
@@ -36,6 +38,10 @@ const rootStyle: CSSProperties = {
   margin: "0 auto",
   width: "100%",
   // border: "2px solid #88D9E6",
+};
+
+const headlineStyle: CSSProperties = {
+  fontSize: "2rem",
 };
 
 const checkoutContainer: CSSProperties = {

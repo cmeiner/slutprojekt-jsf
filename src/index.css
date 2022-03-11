@@ -44,3 +44,7 @@ code {
 .css-ghsjzk-MuiInputBase-root-MuiInput-root:after {
   border-bottom: 2px solid grey !important;
 }
+
+.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
+  color: white !important;
+}
