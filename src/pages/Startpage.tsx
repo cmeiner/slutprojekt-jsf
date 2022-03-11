@@ -122,7 +122,7 @@ const flexItems: CSSProperties = {
   gap: "2rem",
   justifyContent: "space-around",
   margin: "5rem 0",
-  marginBottom: "10rem",
+  marginBottom: "5rem",
 };
 
 const startPageWelcomeText: CSSProperties = {
