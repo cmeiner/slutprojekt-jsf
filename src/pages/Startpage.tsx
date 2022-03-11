@@ -46,22 +46,39 @@ function StartPage(startPageProps: any) {
       <div style={contentContainer}>
         <div style={startPageWelcomeText}>
           <h2 style={startPageHeadline}>
-            Buy extreme NFTs and dont look back!
+            Buy extreme NFTs and don't look back!
           </h2>
           <p style={headlineSubText}>
-            Are you looking for insane NFTs? Do you want to make money Quick?
+            Are you looking for insane NFTs? Do you want to make money quick?
             You've come to the right place. NFT Heaven is the worlds latest and
             smallest NFT-website.
           </p>
           <div style={startPageLinkButtonContainer}>
+            <Link style={linkButtonStyle} to="/CollectionPage">
             <Link style={linkButtonStyle} to="/">
               <Button style={StyledButton} variant="contained" href="">
-                Buy
+                EXPLORE
               </Button>
             </Link>
-            <SearchButton handleClick={startPageProps.focusHeader} />
           </div>
         </div>
+        <div style={hottestStyle}>
+          <div style={hottestTitle}>
+            <h1>HOTTEST COLLECTIONS RIGHT NOW</h1>
+          </div>
+          <div style={flexProducts}>
+            {collectionList.map((collection, index) => (
+              <ProductCard collection={false} key={index} card={collection} />
+            ))}
+          </div>
+        </div>
+        <div style={hottestItems}>
+          <h1>HOTTEST ITEMS RIGHT NOW</h1>
+          <div style={flexItems}>
+            {collectionList.map((collection, index) => (
+              <ProductCard collection={true} key={index} card={collection} />
+            ))}
+          </div>
         <div style={flexProducts}>
           {featuredList.map((collection, index) => (
             <ProductCard collection={false} key={index} card={collection} />
@@ -98,6 +115,14 @@ const flexProducts: CSSProperties = {
   flexDirection: "row-reverse",
   justifyContent: "space-around",
   marginTop: "5rem",
+};
+
+const flexItems: CSSProperties = {
+  display: "flex",
+  flexWrap: "wrap",
+  gap: "2rem",
+  justifyContent: "space-around",
+  margin: "5rem 0",
   marginBottom: "10rem",
 };
 
@@ -128,4 +153,19 @@ const StyledButton: CSSProperties = {
   background: "rgb(32, 129, 226)",
   margin: "1rem",
   fontSize: "2rem",
+};
+
+const hottestStyle: CSSProperties = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+};
+
+const hottestTitle: CSSProperties = {};
+
+const hottestItems: CSSProperties = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  marginTop: '5rem'
 };
