@@ -3,7 +3,10 @@ import { CSSProperties, useState } from "react";
 import { Link } from "react-router-dom";
 import ProductCard from "../components/card";
 import SearchButton from "../components/SearchButton";
-import { collectionData, collectionDataItem } from "../data/collections/collection";
+import {
+  collectionData,
+  collectionDataItem,
+} from "../data/collections/collection";
 import getFeatured from "../functions/getFeatured";
 
 interface startPageProps {
@@ -14,30 +17,26 @@ function StartPage(startPageProps: any) {
   const [collectionList, setCollectionList] = useState(collectionData);
   const [featuredList, setFeaturedList] = useState(getFeatured());
 
-
-  
-  
   //console.log(newList);
 
-    // }
+  // }
 
-
-    //     CollectionList får vi ut alla kollektioner
-    // console.log(collectionList.sort(function(a, b){return a.floorPrice-b.floorPrice}))
-    // console.log(featuredList)
-    // setFeaturedList([{}])
-    //     Filtrera så dem mest med FLOOR PRICE & BEST VOLUME TRADED
-    //     TOP 3 AV DEM SÄTTS IN I NYA FEATUREDLIST
-    //     let list = collectionList
-    //     list.sort(function compareFn(firstEl, secondEl)
-    //     let min = Math.max(...collectionData.map(item => item.floorPrice))
-    //     values.sort((one, two) => (one > two ? -1 : 1));
-    //     while(list.length <= 3) {
-    //         let min = Math.min(...collectionData.map(item => item.floorPrice))
-    //         let result = collectionData.filter(item => item.floorPrice === min)
-    //         list.filter(item => min != item.floorPrice)
-    //         return list
-    //     }
+  //     CollectionList får vi ut alla kollektioner
+  // console.log(collectionList.sort(function(a, b){return a.floorPrice-b.floorPrice}))
+  // console.log(featuredList)
+  // setFeaturedList([{}])
+  //     Filtrera så dem mest med FLOOR PRICE & BEST VOLUME TRADED
+  //     TOP 3 AV DEM SÄTTS IN I NYA FEATUREDLIST
+  //     let list = collectionList
+  //     list.sort(function compareFn(firstEl, secondEl)
+  //     let min = Math.max(...collectionData.map(item => item.floorPrice))
+  //     values.sort((one, two) => (one > two ? -1 : 1));
+  //     while(list.length <= 3) {
+  //         let min = Math.min(...collectionData.map(item => item.floorPrice))
+  //         let result = collectionData.filter(item => item.floorPrice === min)
+  //         list.filter(item => min != item.floorPrice)
+  //         return list
+  //     }
 
   //console.log(getFeatured());
 
@@ -55,7 +54,6 @@ function StartPage(startPageProps: any) {
           </p>
           <div style={startPageLinkButtonContainer}>
             <Link style={linkButtonStyle} to="/CollectionPage">
-            <Link style={linkButtonStyle} to="/">
               <Button style={StyledButton} variant="contained" href="">
                 EXPLORE
               </Button>
@@ -79,6 +77,7 @@ function StartPage(startPageProps: any) {
               <ProductCard collection={true} key={index} card={collection} />
             ))}
           </div>
+        </div>
         <div style={flexProducts}>
           {featuredList.map((collection, index) => (
             <ProductCard collection={false} key={index} card={collection} />
@@ -167,5 +166,5 @@ const hottestItems: CSSProperties = {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  marginTop: '5rem'
+  marginTop: "5rem",
 };
