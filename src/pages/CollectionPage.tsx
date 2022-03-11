@@ -12,7 +12,7 @@ function CollectionPage() {
   return (
     <div style={flexProducts}>
       {collectionList.map((collection, index) => (
-        <ProductCard checkState={false} key={index} card={collection} />
+        <ProductCard collection={false} key={index} card={collection} />
       ))}
     </div>
   );

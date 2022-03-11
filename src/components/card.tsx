@@ -41,19 +41,18 @@ interface isCollection {
   checkState : boolean
 }
 
-// function ProductCard(props: collectionInfo | nftInfo) {
-function ProductCard(setState : isCollection , collection? : collectionInfo, nft? : nftInfo) {
+function ProductCard(props: collectionInfo) {
+// function ProductCard(setState : isCollection , collection? : collectionInfo, nft? : nftInfo) {
   let id = 1
   const name = props.card.name;
   const floorPrice = props.card.floorPrice;
   const volumeTraded = props.card.volumeTraded;
   const productImageURL = props.card.productImage;
-  const name = collection?.card.name || nft?.card.id
  
 
   return (
     <div>
-      {!setState.checkState && (
+      {!props.collection && (
         <div>
           <div style={cardContainer}>
             <h1> {name}</h1>
@@ -71,7 +70,7 @@ function ProductCard(setState : isCollection , collection? : collectionInfo, nft
           </div>
         </div>
       )}
-      {setState.checkState && (
+      {props.collection && (
         <div>
           <div style={cardContainer}>
             <div style={cardHeader}>
