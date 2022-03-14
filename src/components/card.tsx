@@ -1,10 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
 import { CSSProperties } from "react";
-import {
-  collectionData,
-  collectionDataItem, NftItem
-} from "../data/collections/collection";
+import { NftItem } from "../data/collections/collection";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
@@ -14,7 +11,7 @@ interface cardInfo {
     image: string;
     price: number;
     description: string;
-  }
+  };
   collectionCard?: {
     id: number;
     name: string;
@@ -24,7 +21,7 @@ interface cardInfo {
     header: string;
     productImage: string;
     NFTS: NftItem[];
-  }
+  };
 }
 
 function ItemCard(props: cardInfo) {
@@ -33,19 +30,18 @@ function ItemCard(props: cardInfo) {
   // const productImageURL = props.nftCard?.image;
 
   const nftInfo = {
-    id : props.nftCard?.NFTid,
-    buyPrice : props.nftCard?.price,
-    image : props.nftCard?.image,
-  }
+    id: props.nftCard?.NFTid,
+    buyPrice: props.nftCard?.price,
+    image: props.nftCard?.image,
+  };
 
   const collectionInfo = {
-    id : props.collectionCard?.id,
-    name : props.collectionCard?.name,
-    floorPrice : props.collectionCard?.floorPrice,
-    volumeTraded : props.collectionCard?.volumeTraded,
-    productImageURL : props.collectionCard?.productImage,
-    
-  }
+    id: props.collectionCard?.id,
+    name: props.collectionCard?.name,
+    floorPrice: props.collectionCard?.floorPrice,
+    volumeTraded: props.collectionCard?.volumeTraded,
+    productImageURL: props.collectionCard?.productImage,
+  };
 
   return (
     <div>
@@ -54,10 +50,15 @@ function ItemCard(props: cardInfo) {
           <div style={cardContainer}>
             <h1> {collectionInfo.name}</h1>
             <div style={cardPicture}>
-              <img style={productImage} srcSet={collectionInfo.productImageURL} alt="test" />
+              <img
+                style={productImage}
+                srcSet={collectionInfo.productImageURL}
+                alt="test"
+              />
             </div>
             <h1 style={priceStyle}>
-              FROM: <FontAwesomeIcon icon={faCoins} /> {collectionInfo.floorPrice}
+              FROM: <FontAwesomeIcon icon={faCoins} />{" "}
+              {collectionInfo.floorPrice}
             </h1>
             <Link to={`/Collections/${collectionInfo.id}`}>
               <Button style={buttonStyle} variant="contained" href="">
@@ -78,17 +79,16 @@ function ItemCard(props: cardInfo) {
               />
               <div style={headerText}>
                 <div style={nameStyle}>{nftInfo.id}</div>
-                <div style={priceStyle}><FontAwesomeIcon icon={faCoins} />{nftInfo.buyPrice}</div>
+                <div style={priceStyle}>
+                  <FontAwesomeIcon icon={faCoins} />
+                  {nftInfo.buyPrice}
+                </div>
               </div>
             </div>
             <div style={cardContent}>
-            <img
-                style={productImage}
-                srcSet={nftInfo.image}
-                alt="mainImg"
-              />
+              <img style={productImage} srcSet={nftInfo.image} alt="mainImg" />
               <Button style={buttonStyle} variant="contained" href="">
-               BUY NOW
+                BUY NOW
               </Button>
             </div>
           </div>

@@ -86,6 +86,6 @@ export const collectionData: collectionDataItem[] = [
     header: "./assets/images/Products/rareEmilNFT.jpg",
     productImage: "./assets/images/Products/rareEmilNFT.jpg",
     NFTS: [
-      { NFTid: 1, image: "./assets/images/Products/rareEmilNFT.jpg", price: 12, description:'testDesc' },
-    ],  },
+      { NFTid: 1, image: "./assets/images/Products/rareEmilNFT.jpg", price: 12, description:'testDesc' },],  
+    },
 ];
