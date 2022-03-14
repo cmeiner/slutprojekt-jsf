@@ -1,7 +1,8 @@
 import { Button, TextField } from "@mui/material";
-import { useFormik } from "formik";
+import { Field, useFormik } from "formik";
 import { CSSProperties } from "react";
 import * as yup from "yup";
+import CheckboxesGroup from "./deliveryOptions";
 
 interface Values {
   firstName: string;
@@ -26,6 +27,7 @@ const validationSchema = yup.object({
   zipCode: yup.number().required("Please enter zipcode").min(4),
   city: yup.string().required("Please enter your city").min(2),
   country: yup.string().required("Please enter your country").min(2),
+  deliveryOptions: yup.array().required("Please choose delivery method"),
 });
 
 const CheckoutPageDetails = () => {
@@ -49,9 +51,9 @@ const CheckoutPageDetails = () => {
     <div style={rootStyle}>
       <div style={checkoutContainer}>
         <h2 style={headlineStyle}>Checkout</h2>
-        <h2> Details </h2>
 
         <div style={detailFormContainer}>
+          <h2>Shipment details</h2>
           <div style={formStyle}>
             <form onSubmit={formik.handleSubmit}>
               <TextField
@@ -146,6 +148,29 @@ const CheckoutPageDetails = () => {
                 error={formik.touched.country && Boolean(formik.errors.country)}
                 helperText={formik.touched.country && formik.errors.country}
               />
+
+              <h2>Delivery details</h2>
+              <CheckboxesGroup />
+              {/* <div style={deliveryMethods}>
+                <div>
+                  <p>Postnord Ombud</p>
+                  <div style={deliveryOption}>
+                    <label>postnord</label>
+                    <div style={deliveryOptionInfo}>
+                      <img
+                        style={deliveryOptionThumbnail}
+                        src="./assets/images/Icons/postNord.png"
+                        alt="Postnord"
+                      />
+                      <p>
+                        Leveransen skickas till ombud. Du aviseras via SMS när
+                        den finns hämta att hos ditt ombud.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div> */}
+
               <Button
                 color="primary"
                 variant="contained"
@@ -211,4 +236,20 @@ const formStyle: CSSProperties = {
   display: "flex",
   flexDirection: "column",
   background: "grey",
+};
+
+const deliveryMethods: CSSProperties = {};
+
+const deliveryOption: CSSProperties = {
+  display: "flex",
+};
+
+const deliveryOptionThumbnail: CSSProperties = {
+  width: "4rem",
+  margin: ".5rem",
+};
+
+const deliveryOptionInfo: CSSProperties = {
+  display: "flex",
+  fontSize: "0.8rem",
 };
