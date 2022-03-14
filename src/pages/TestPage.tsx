@@ -1,5 +1,4 @@
 import { useState } from "react";
-import ProductCard from "../components/card";
 import { collectionData } from "../data/collections/collection";
 
 function TestPage() {
@@ -11,7 +10,7 @@ function TestPage() {
         onChange={(event) => setQuery(event.target.value)}
       />
 
-      {collectionData
+      {/* {collectionData
         .filter((collection) => {
           if (query === "") {
             return collection;
@@ -23,7 +22,7 @@ function TestPage() {
         })
         .map((collection, index) => (
           <ProductCard collection={false} key={index} card={collection} />
-        ))}
+        ))} */}
     </div>
   );
 }

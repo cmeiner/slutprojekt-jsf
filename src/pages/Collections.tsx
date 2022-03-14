@@ -5,7 +5,7 @@ import { collectionData } from "../data/collections/collection";
 
 
 
-function CollectionPage() {
+function Collections() {
  // Använder ID från routern (:id) lägger det i en variabel
   const {id} = useParams()
 
@@ -41,4 +41,4 @@ const flexProducts: CSSProperties = {
   margin: "5rem 0",
 };
 
-export default CollectionPage;
+export default Collections;
