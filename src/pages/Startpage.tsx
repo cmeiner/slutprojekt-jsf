@@ -1,13 +1,12 @@
 import { Button, Card } from "@mui/material";
 import { CSSProperties, useState } from "react";
 import { Link } from "react-router-dom";
-import ProductCard from "../components/card";
 import SearchButton from "../components/SearchButton";
 import {
   collectionData,
-  collectionDataItem,
 } from "../data/collections/collection";
 import getFeatured from "../functions/getFeatured";
+import ItemCard from "../components/Card";
 
 interface startPageProps {
   focusHeader?: any;
@@ -66,7 +65,7 @@ function StartPage(startPageProps: any) {
           </div>
           <div style={flexProducts}>
             {collectionList.map((collection, index) => (
-              <ProductCard collection={false} key={index} card={collection} />
+              <ItemCard key={index} collectionCard={collection} />
             ))}
           </div>
         </div>
@@ -74,13 +73,13 @@ function StartPage(startPageProps: any) {
           <h1>HOTTEST ITEMS RIGHT NOW</h1>
           <div style={flexItems}>
             {collectionList.map((collection, index) => (
-              <ProductCard collection={true} key={index} card={collection} />
+              <ItemCard key={index} nftCard={collectionList[0].NFTS[0]} />
             ))}
           </div>
         </div>
         <div style={flexProducts}>
           {featuredList.map((collection, index) => (
-            <ProductCard collection={false} key={index} card={collection} />
+            <ItemCard key={index} nftCard={collectionList[0].NFTS[0]} />
           ))}
         </div>
       </div>
@@ -122,7 +121,6 @@ const flexItems: CSSProperties = {
   gap: "2rem",
   justifyContent: "space-around",
   margin: "5rem 0",
-  marginBottom: "5rem",
 };
 
 const startPageWelcomeText: CSSProperties = {
