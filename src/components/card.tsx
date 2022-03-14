@@ -8,7 +8,6 @@ import {
 } from "../data/collections/collection";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
-
 interface collectionInfo {
   card: {
     id: number;
@@ -43,7 +42,7 @@ interface isCollection {
 
 function ProductCard(props: collectionInfo) {
 // function ProductCard(setState : isCollection , collection? : collectionInfo, nft? : nftInfo) {
-  let id = 1
+  let id = props.card.id
   const name = props.card.name;
   const floorPrice = props.card.floorPrice;
   const volumeTraded = props.card.volumeTraded;

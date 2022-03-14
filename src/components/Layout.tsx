@@ -18,7 +18,7 @@ function Layout() {
         <div style={rootStyle}>
           <Routes>
             <Route path="/" element={<StartPage />} />
-            <Route path="/CollectionPage" element={< CollectionPage/>}/>
+            <Route path="/CollectionPage/:id" element={< CollectionPage />}/>
             <Route
               path="/"
               element={<StartPage focusHeader={() => setSearchFocused(true)} />}
