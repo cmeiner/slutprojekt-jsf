@@ -31,6 +31,7 @@ export const collectionData: collectionDataItem[] = [
       { NFTid: 3, image: "testImage", price: 12, description:'testDesc' },
       { NFTid: 4, image: "testImage", price: 12, description:'testDesc' },
       { NFTid: 5, image: "testImage", price: 12, description:'testDesc' },
+      { NFTid: 6, image: "testImage", price: 12, description:'testDesc' },
     ],
   },
   {
