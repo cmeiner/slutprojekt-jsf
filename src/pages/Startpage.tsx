@@ -1,12 +1,9 @@
 import { Button, Card } from "@mui/material";
 import { CSSProperties, useState } from "react";
 import { Link } from "react-router-dom";
-import SearchButton from "../components/SearchButton";
-import {
-  collectionData,
-} from "../data/collections/collection";
+import { collectionData } from "../data/collections/collection";
 import getFeatured from "../functions/getFeatured";
-import ItemCard from "../components/Card";
+import ItemCard from "../components/card";
 
 interface startPageProps {
   focusHeader?: any;

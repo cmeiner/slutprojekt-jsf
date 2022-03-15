@@ -1,19 +1,15 @@
 import { CSSProperties, useState, useEffect } from "react";
-import ItemCard from "../components/Card";
+import ItemCard from "../components/card";
 import { collectionData } from "../data/collections/collection";
 
-
-
-
 function CollectionPage() {
-  const [collectionList1, setCollectionList1] = useState(collectionData)
-
+  const [collectionList1, setCollectionList1] = useState(collectionData);
 
   useEffect(() => {
-    setCollectionList1(collectionData)
-  }, [])
+    setCollectionList1(collectionData);
+  }, []);
 
-  console.log(collectionList1.length)
+  console.log(collectionList1.length);
 
   return (
     <div style={flexProducts}>
@@ -21,7 +17,7 @@ function CollectionPage() {
         <ItemCard key={index} collectionCard={collection} />
       ))}
     </div>
-  )
+  );
 }
 
 const flexProducts: CSSProperties = {
