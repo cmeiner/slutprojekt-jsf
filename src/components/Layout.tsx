@@ -1,5 +1,7 @@
 import { CSSProperties, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CheckoutPage from "../pages/CheckoutPage";
+import CheckoutPageDetails from "../pages/CheckoutPageDetails";
 import CollectionPage from "../pages/CollectionPage";
 import Collections from "../pages/Collections";
 import StartPage from "../pages/Startpage";
@@ -26,6 +28,8 @@ function Layout() {
               element={<StartPage focusHeader={() => setSearchFocused(true)} />}
             />
             <Route path="TestPage" element={<TestPage />} />
+            <Route path="/Checkout" element={<CheckoutPage />} />
+            <Route path="/CheckoutDetails" element={<CheckoutPageDetails />} />
           </Routes>
         </div>
       </BrowserRouter>
