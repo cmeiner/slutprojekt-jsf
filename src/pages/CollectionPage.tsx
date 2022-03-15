@@ -1,21 +1,27 @@
-import { CSSProperties, useState } from "react";
-import ProductCard from "../components/card";
+import { CSSProperties, useState, useEffect } from "react";
+import ItemCard from "../components/Card";
 import { collectionData } from "../data/collections/collection";
 
+
+
+
 function CollectionPage() {
-  const [collectionList, setCollectionList] = useState(collectionData);
+  const [collectionList1, setCollectionList1] = useState(collectionData)
 
 
-  // collectionData.find(collection.id === 1)
-  // findCollection.nft.map()
+  useEffect(() => {
+    setCollectionList1(collectionData)
+  }, [])
+
+  console.log(collectionList1.length)
 
   return (
     <div style={flexProducts}>
-      {collectionList.map((collection, index) => (
-        <ProductCard collection={false} key={index} card={collection} />
+      {collectionList1.map((collection, index) => (
+        <ItemCard key={index} collectionCard={collection} />
       ))}
     </div>
-  );
+  )
 }
 
 const flexProducts: CSSProperties = {
