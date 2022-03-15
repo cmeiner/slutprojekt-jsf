@@ -1,13 +1,23 @@
-import { Button, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from "@mui/material";
 import { Field, useFormik } from "formik";
-import { CSSProperties } from "react";
+import { CSSProperties, useState } from "react";
 import * as yup from "yup";
-import CheckboxesGroup from "./deliveryOptions";
+
+import DeliveryBox from "../components/deliveryCard";
 
 interface Values {
   firstName: string;
   lastName: string;
   email: string;
+  deliveryMethod: string;
   number: number;
   address: string;
   zipCode: number;
@@ -23,20 +33,25 @@ const validationSchema = yup.object({
     .email("Please enter a valid email")
     .required("Email is required"),
   number: yup.number().required("Please enter number").min(8),
-  adress: yup.string().required("Please enter your addy").min(8),
   zipCode: yup.number().required("Please enter zipcode").min(4),
   city: yup.string().required("Please enter your city").min(2),
+  address: yup.string().required("Please enter your adress").min(8),
   country: yup.string().required("Please enter your country").min(2),
-  deliveryOptions: yup.array().required("Please choose delivery method"),
 });
 
-const CheckoutPageDetails = () => {
+function CheckoutPageDetails() {
+  const [deliveryOption, setDeliveryOption] = useState("");
+  const handleChange = (event: any) => {
+    setDeliveryOption(event.target.value);
+  };
+
   const formik = useFormik({
     initialValues: {
       firstName: "",
       lastName: "",
       email: "",
       number: 0,
+      deliveryMethod: "",
       address: "",
       zipCode: 0,
       city: "",
@@ -44,6 +59,7 @@ const CheckoutPageDetails = () => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
+      values.deliveryMethod = deliveryOption;
       console.log(JSON.stringify(values, null, 2));
     },
   });
@@ -150,28 +166,33 @@ const CheckoutPageDetails = () => {
               />
 
               <h2>Delivery details</h2>
-              <CheckboxesGroup />
-              {/* <div style={deliveryMethods}>
-                <div>
-                  <p>Postnord Ombud</p>
-                  <div style={deliveryOption}>
-                    <label>postnord</label>
-                    <div style={deliveryOptionInfo}>
-                      <img
-                        style={deliveryOptionThumbnail}
-                        src="./assets/images/Icons/postNord.png"
-                        alt="Postnord"
-                      />
-                      <p>
-                        Leveransen skickas till ombud. Du aviseras via SMS när
-                        den finns hämta att hos ditt ombud.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
+              <Box style={{ minWidth: 120 }}>
+                <FormControl fullWidth>
+                  <InputLabel id="deliveryOption">Delivery Option</InputLabel>
+                  <Select
+                    labelId="deliveryOptionLabel"
+                    id="deliveryOption"
+                    value={deliveryOption}
+                    label="Delivery Option"
+                    onChange={handleChange}
+                  >
+                    <MenuItem value={"PostNordOmbud"}>
+                      Postnord ombud - Fri frakt!
+                    </MenuItem>
+                    <MenuItem value={"DHLOmbud"}>DHL Ombud - 29kr </MenuItem>
+                    <MenuItem value={"PostNordHem"}>
+                      Postnord - Hemleverans dag/kväll - 49kr
+                    </MenuItem>
+                    <MenuItem value={"DHLExpress"}>
+                      DHL express - hemleverans inom 24h - 100kr
+                    </MenuItem>
+                  </Select>
+                </FormControl>
+                <DeliveryBox DeliveryOption={deliveryOption} />
+              </Box>
 
               <Button
+                style={{ marginTop: "1rem" }}
                 color="primary"
                 variant="contained"
                 fullWidth
@@ -179,19 +200,17 @@ const CheckoutPageDetails = () => {
               >
                 Submit
               </Button>
+
+              {/* <DateTest /> */}
             </form>
           </div>
         </div>
       </div>
     </div>
   );
-};
-
-function detailsForm() {
-  return <CheckoutPageDetails />;
 }
 
-export default detailsForm;
+export default CheckoutPageDetails;
 
 const rootStyle: CSSProperties = {
   display: "flex",
@@ -213,43 +232,22 @@ const checkoutContainer: CSSProperties = {
   width: "80%",
   background: "#202225",
   boxShadow: "2px 5px 12px black",
+  marginBottom: "2rem",
 };
 
 const detailFormContainer: CSSProperties = {
   color: "white",
   width: "45%",
   minWidth: "15rem",
+  marginBottom: "2rem",
 };
 
 const textFieldStyle: CSSProperties = {
   marginBottom: "1rem",
 };
 
-const buttonStyle: CSSProperties = {
-  fontWeight: "bold",
-  background: "#2081e2",
-  fontSize: "1.5rem",
-  marginTop: "1rem",
-};
-
 const formStyle: CSSProperties = {
   display: "flex",
   flexDirection: "column",
   background: "grey",
-};
-
-const deliveryMethods: CSSProperties = {};
-
-const deliveryOption: CSSProperties = {
-  display: "flex",
-};
-
-const deliveryOptionThumbnail: CSSProperties = {
-  width: "4rem",
-  margin: ".5rem",
-};
-
-const deliveryOptionInfo: CSSProperties = {
-  display: "flex",
-  fontSize: "0.8rem",
 };
