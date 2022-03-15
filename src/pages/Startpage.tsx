@@ -3,7 +3,7 @@ import { CSSProperties, useState } from "react";
 import { Link } from "react-router-dom";
 import { collectionData } from "../data/collections/collection";
 import getFeatured from "../functions/getFeatured";
-import ItemCard from "../components/card";
+import ItemCard from "../components/ItemCard";
 
 interface startPageProps {
   focusHeader?: any;

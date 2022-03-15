@@ -1,5 +1,6 @@
 import { CSSProperties, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { NftItem } from "../data/collections/collection";
 import CheckoutPage from "../pages/CheckoutPage";
 import CheckoutPageDetails from "../pages/CheckoutPageDetails";
 import CollectionPage from "../pages/CollectionPage";
@@ -10,7 +11,6 @@ import Header from "./Header";
 
 function Layout() {
   const [searchFocused, setSearchFocused] = useState(false);
-
   return (
     <div>
       <BrowserRouter>
@@ -21,8 +21,8 @@ function Layout() {
         <div style={rootStyle}>
           <Routes>
             <Route path="/" element={<StartPage />} />
-            <Route path="/CollectionPage" element={< CollectionPage />}/>
-            <Route path="/Collections/:id" element={< Collections />}/>
+            <Route path="/CollectionPage" element={<CollectionPage />} />
+            <Route path="/Collections/:id" element={<Collections />} />
             <Route
               path="/"
               element={<StartPage focusHeader={() => setSearchFocused(true)} />}

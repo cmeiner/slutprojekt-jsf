@@ -1,7 +1,7 @@
 import { CSSProperties, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import ItemCard from "../components/card";
-import { collectionData } from "../data/collections/collection";
+import ItemCard from "../components/ItemCard";
+import { collectionData, NftItem } from "../data/collections/collection";
 
 function Collections() {
   // Använder ID från routern (:id) lägger det i en variabel
