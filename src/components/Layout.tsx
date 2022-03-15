@@ -1,6 +1,7 @@
 import { CSSProperties, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CollectionPage from "../pages/CollectionPage";
+import Collections from "../pages/Collections";
 import StartPage from "../pages/Startpage";
 import TestPage from "../pages/TestPage";
 import Header from "./Header";
@@ -18,7 +19,8 @@ function Layout() {
         <div style={rootStyle}>
           <Routes>
             <Route path="/" element={<StartPage />} />
-            <Route path="/CollectionPage/:id" element={< CollectionPage />}/>
+            <Route path="/CollectionPage" element={< CollectionPage />}/>
+            <Route path="/Collections/:id" element={< Collections />}/>
             <Route
               path="/"
               element={<StartPage focusHeader={() => setSearchFocused(true)} />}
