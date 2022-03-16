@@ -26,10 +26,7 @@ interface cardInfo {
 }
 
 function ItemCard(props: cardInfo) {
-  // let id = props.nftCard?.NFTid;
-  // const buyPrice = props.nftCard?.price;
-  // const productImageURL = props.nftCard?.image;
-
+ 
   const nftInfo = {
     id: props.nftCard?.NFTid,
     buyPrice: props.nftCard?.price,

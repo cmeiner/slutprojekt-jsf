@@ -7,17 +7,22 @@ import CollectionPage from "../pages/CollectionPage";
 import Collections from "../pages/Collections";
 import StartPage from "../pages/Startpage";
 import TestPage from "../pages/TestPage";
+import CartModal from "./CartModal";
 import Header from "./Header";
 
 function Layout() {
+  const [modalState, setModalState] = useState(false);
   const [searchFocused, setSearchFocused] = useState(false);
   return (
     <div>
       <BrowserRouter>
         <Header
+          modalState={modalState}
+          setModalState={setModalState}
           searchBarFocused={searchFocused}
           searchBarFocusOut={() => setSearchFocused(false)}
         />
+        <CartModal modalState={modalState} setModalState={setModalState} />
         <div style={rootStyle}>
           <Routes>
             <Route path="/" element={<StartPage />} />

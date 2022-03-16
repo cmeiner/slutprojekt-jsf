@@ -3,14 +3,19 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { CSSProperties, useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "./Searchbar";
+import { Button } from "@mui/material";
 
 interface headerProps {
   searchBarFocused?: any;
   searchBarFocusOut?: any;
+  modalState : boolean
+  setModalState : any
 }
 
 function Header(headerProps: any) {
   const [searchFocused, setSearchFocused] = useState(false);
+
+  const openModal = () => headerProps.setModalState(true)
 
   useEffect(() => {
     setSearchFocused(headerProps.searchBarFocused);
@@ -31,9 +36,9 @@ function Header(headerProps: any) {
           />
         </div>
         <div style={headerDiv3}>
-          <Link style={headerCartLink} to="/cart">
+          <Button style={headerCartLink} onClick={openModal}>
             <FontAwesomeIcon icon={faShoppingCart} />
-          </Link>
+          </Button>
         </div>
       </div>
     </div>

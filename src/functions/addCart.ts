@@ -7,7 +7,6 @@ export function addCart(item?: {}) {
   } else {
     let CartList = JSON.parse(localStorage.getItem("cart")!);
     CartList.push(item);
-    console.log(CartList);
     localStorage.setItem("cart", JSON.stringify(CartList));
   }
 }
