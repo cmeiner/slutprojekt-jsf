@@ -33,7 +33,7 @@ export function getDelivery(selectedOption: string) {
       };
     }
     default: {
-      return { image: "test", description: "test", time: "test" };
+      return { image: "", description: "", time: "" };
     }
   }
 }

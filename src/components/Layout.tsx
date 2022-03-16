@@ -8,6 +8,7 @@ import Collections from "../pages/Collections";
 import StartPage from "../pages/Startpage";
 import TestPage from "../pages/TestPage";
 import Header from "./Header";
+import PaymentPage from "../pages/PaymentPage";
 
 function Layout() {
   const [searchFocused, setSearchFocused] = useState(false);
@@ -30,6 +31,7 @@ function Layout() {
             <Route path="TestPage" element={<TestPage />} />
             <Route path="/Checkout" element={<CheckoutPage />} />
             <Route path="/CheckoutDetails" element={<CheckoutPageDetails />} />
+            <Route path="/PaymentPage" element={<PaymentPage />} />
           </Routes>
         </div>
       </BrowserRouter>

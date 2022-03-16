@@ -7,11 +7,12 @@ import {
   Select,
   TextField,
 } from "@mui/material";
-import { Field, useFormik } from "formik";
+import { useFormik } from "formik";
 import { CSSProperties, useState } from "react";
 import * as yup from "yup";
+import { useNavigate } from "react-router-dom";
 
-import DeliveryBox from "../components/deliveryCard";
+import DeliveryBox from "../components/deliveryBox";
 
 interface Values {
   firstName: string;
@@ -45,6 +46,8 @@ function CheckoutPageDetails() {
     setDeliveryOption(event.target.value);
   };
 
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -61,6 +64,7 @@ function CheckoutPageDetails() {
     onSubmit: (values) => {
       values.deliveryMethod = deliveryOption;
       console.log(JSON.stringify(values, null, 2));
+      navigate("/PaymentPage");
     },
   });
   return (
@@ -200,8 +204,6 @@ function CheckoutPageDetails() {
               >
                 Submit
               </Button>
-
-              {/* <DateTest /> */}
             </form>
           </div>
         </div>
