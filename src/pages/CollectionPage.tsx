@@ -1,5 +1,5 @@
 import { CSSProperties, useState, useEffect } from "react";
-import ItemCard from "../components/card";
+import ItemCard from "../components/ItemCard";
 import { collectionData } from "../data/collections/collection";
 
 function CollectionPage() {
