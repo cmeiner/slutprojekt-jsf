@@ -71,14 +71,9 @@ function StartPage(startPageProps: any) {
           <h1>HOTTEST ITEMS RIGHT NOW</h1>
           <div style={flexItems}>
             {collectionList.map((collection, index) => (
-              <ItemCard key={index} nftCard={collectionList[0].NFTS[0]} />
+              <ItemCard key={index} nftCard={collection.NFTS[0]} nftHeader={collection?.header} collectionName={collection?.name}/>
             ))}
           </div>
-        </div>
-        <div style={flexProducts}>
-          {featuredList.map((collection, index) => (
-            <ItemCard key={index} nftCard={collectionList[0].NFTS[0]} />
-          ))}
         </div>
       </div>
     </div>
@@ -118,7 +113,8 @@ const flexItems: CSSProperties = {
   flexWrap: "wrap",
   gap: "2rem",
   justifyContent: "space-around",
-  margin: "5rem 0",
+padding: '2rem'
+
 };
 
 const startPageWelcomeText: CSSProperties = {
@@ -145,9 +141,10 @@ const linkButtonStyle: CSSProperties = {
 };
 
 const StyledButton: CSSProperties = {
-  background: "rgb(32, 129, 226)",
+  background: "#002f6b",
   margin: "1rem",
   fontSize: "2rem",
+  fontWeight: 'bold'
 };
 
 const hottestStyle: CSSProperties = {

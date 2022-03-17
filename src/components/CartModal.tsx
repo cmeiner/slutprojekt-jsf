@@ -1,6 +1,10 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { Box, Button, Modal, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import { collectionData } from "../data/collections/collection";
+
+
 
 interface CartProps {
   modalState : boolean
@@ -40,9 +44,16 @@ function CartModal(props: CartProps) {
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Din kundvagn
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }} component="div">
             {localList?.map((item : any, index : number) => (
-                <div key={index}>{item.description}</div>
+                <div style={nftContainer} key={index}>
+                  <div><img style={nftIcon} srcSet={item.image} alt="test" /></div> {/* VÄNSTER DIV */}
+                  <div style={nftMid}> {/* MITTEN DIV */}
+                    <div>{item.NFTid}</div>
+                    <div></div>
+                  </div> {/* MITTEN DIV */}
+                  <div></div> {/* HÖGER DIV */}
+                </div>
             ))}
             <button onClick={clearCart}>TÖM KUNDVAGN</button>
           </Typography>
@@ -50,6 +61,23 @@ function CartModal(props: CartProps) {
       </Modal>
     </div>
   );
+}
+
+
+export const nftContainer : CSSProperties = {
+  display: "flex",
+}
+
+
+export const nftMid : CSSProperties = {
+  width: "50%",
+  display: "flex",
+  flexDirection: "column",
+  fontSize: 'xx-small'
+}
+
+export const nftIcon : CSSProperties = {
+  width: "40px",
 }
 
 export default CartModal;

@@ -46,7 +46,7 @@ function Header(headerProps: any) {
 }
 
 const rootStyle: CSSProperties = {
-  background: "#374B4A",
+  background: "#002f6b",
   color: "#eee",
 };
 
