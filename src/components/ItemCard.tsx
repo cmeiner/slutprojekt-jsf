@@ -23,17 +23,19 @@ interface cardInfo {
     productImage: string;
     NFTS: NftItem[];
   };
+  nftHeader? : string;
+  collectionName? : string;
 }
 
 function ItemCard(props: cardInfo) {
-  // let id = props.nftCard?.NFTid;
-  // const buyPrice = props.nftCard?.price;
-  // const productImageURL = props.nftCard?.image;
-
+ 
   const nftInfo = {
     id: props.nftCard?.NFTid,
     buyPrice: props.nftCard?.price,
     image: props.nftCard?.image,
+    headerImage: props.nftHeader,
+    collectionName: props.collectionName, 
+    description: props.nftCard?.description,
   };
 
   const collectionInfo = {
@@ -58,7 +60,7 @@ function ItemCard(props: cardInfo) {
               />
             </div>
             <h1 style={priceStyle}>
-              FROM: <FontAwesomeIcon icon={faCoins} />{" "}
+              FROM: <FontAwesomeIcon icon={faCoins} style={{paddingLeft: '4rem', paddingRight: '.3rem'}}/>
               {collectionInfo.floorPrice}
             </h1>
             <Link to={`/Collections/${collectionInfo.id}`}>
@@ -75,19 +77,23 @@ function ItemCard(props: cardInfo) {
             <div style={cardHeader}>
               <img
                 style={collectionImage}
-                srcSet={nftInfo.image}
+                srcSet={nftInfo.headerImage}
                 alt="headerImg"
               />
               <div style={headerText}>
-                <div style={nameStyle}>{nftInfo.id}</div>
+                <div style={nameStyle}>{nftInfo.collectionName} #{nftInfo.id}</div>
                 <div style={priceStyle}>
-                  <FontAwesomeIcon icon={faCoins} />
+                  Price: 
+                  <FontAwesomeIcon icon={faCoins} style={{paddingLeft: '4rem', paddingRight: '.3rem'}}/>
                   {nftInfo.buyPrice}
                 </div>
               </div>
             </div>
             <div style={cardContent}>
               <img style={productImage} srcSet={nftInfo.image} alt="mainImg" />
+                <div style={descStyle}>
+                  {nftInfo.description}
+                </div>
               <Button
                 style={buttonStyle}
                 variant="contained"
@@ -113,8 +119,8 @@ const cardContainer: CSSProperties = {
   flexDirection: "column",
   alignItems: "center",
   paddingBottom: "1rem",
-  background: "#202225",
-  boxShadow: "2px 5px 12px black",
+  background: "#002f6b",
+  boxShadow: "2px 4px 12px #0049A9",
 };
 const cardPicture: CSSProperties = {
   width: "18rem",
@@ -126,11 +132,14 @@ const productImage: CSSProperties = {
 
 const priceStyle: CSSProperties = {
   fontSize: "1rem",
+  display: 'flex',
+  justifyContent: 'space-around'
 };
 
 const buttonStyle: CSSProperties = {
   fontWeight: "bold",
-  background: "#2081e2",
+  background: "#00214c",
+  color: 'white'
 };
 
 const cardHeader: CSSProperties = {
@@ -154,6 +163,14 @@ const collectionImage: CSSProperties = {
 };
 
 const nameStyle: CSSProperties = {};
+
+const descStyle: CSSProperties = {
+  fontSize: '.8rem',
+  display: 'flex', 
+  justifyContent: 'center',
+  textTransform: 'uppercase',
+  fontWeight: 'bold'
+};
 
 const cardContent: CSSProperties = {
   display: "flex",
