@@ -1,6 +1,5 @@
 import { CSSProperties, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { NftItem } from "../data/collections/collection";
 import CheckoutPage from "../pages/CheckoutPage";
 import CheckoutPageDetails from "../pages/CheckoutPageDetails";
 import CollectionPage from "../pages/CollectionPage";
@@ -9,9 +8,11 @@ import StartPage from "../pages/Startpage";
 import TestPage from "../pages/TestPage";
 import Header from "./Header";
 import PaymentPage from "../pages/PaymentPage";
+import { DeliveryDataInfoObject } from "../data/collections/deliveryData";
 
 function Layout() {
   const [searchFocused, setSearchFocused] = useState(false);
+  const [deliveryInfo, setDeliveryInfo] = useState(DeliveryDataInfoObject);
   return (
     <div>
       <BrowserRouter>
@@ -30,8 +31,19 @@ function Layout() {
             />
             <Route path="TestPage" element={<TestPage />} />
             <Route path="/Checkout" element={<CheckoutPage />} />
-            <Route path="/CheckoutDetails" element={<CheckoutPageDetails />} />
-            <Route path="/PaymentPage" element={<PaymentPage />} />
+            <Route
+              path="/CheckoutDetails"
+              element={
+                <CheckoutPageDetails
+                  deliveryInfo={deliveryInfo}
+                  setDeliveryInfo={setDeliveryInfo}
+                />
+              }
+            />
+            <Route
+              path="/PaymentPage"
+              element={<PaymentPage deliveryInfo={deliveryInfo} />}
+            />
           </Routes>
         </div>
       </BrowserRouter>

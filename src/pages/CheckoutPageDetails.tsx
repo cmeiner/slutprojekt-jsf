@@ -11,8 +11,13 @@ import { useFormik } from "formik";
 import { CSSProperties, useState } from "react";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
-
 import DeliveryBox from "../components/deliveryBox";
+import { DeliveryDataInfo } from "../data/collections/deliveryData";
+
+interface Props {
+  deliveryInfo: DeliveryDataInfo;
+  setDeliveryInfo: any;
+}
 
 interface Values {
   firstName: string;
@@ -40,7 +45,7 @@ const validationSchema = yup.object({
   country: yup.string().required("Please enter your country").min(2),
 });
 
-function CheckoutPageDetails() {
+function CheckoutPageDetails(props: Props) {
   const [deliveryOption, setDeliveryOption] = useState("");
   const handleChange = (event: any) => {
     setDeliveryOption(event.target.value);
@@ -63,7 +68,8 @@ function CheckoutPageDetails() {
     validationSchema: validationSchema,
     onSubmit: (values) => {
       values.deliveryMethod = deliveryOption;
-      console.log(JSON.stringify(values, null, 2));
+      props.setDeliveryInfo(values);
+      console.log(props.deliveryInfo);
       navigate("/PaymentPage");
     },
   });

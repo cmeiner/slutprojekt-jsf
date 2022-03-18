@@ -25,7 +25,7 @@ function DeliveryBox(props: deliveryItem) {
         </div>
       )}
       <div style={deliveryDateText}>
-        <p>Beräknat leveransdatum: {getDelivery(props.DeliveryOption).time}</p>
+        <p>{getDelivery(props.DeliveryOption).time}</p>
       </div>
     </div>
   );

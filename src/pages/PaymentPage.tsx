@@ -7,14 +7,58 @@ import {
   MenuItem,
   Button,
 } from "@mui/material";
-import { CSSProperties } from "react";
+import { useFormik } from "formik";
+import { CSSProperties, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import DeliveryBox from "../components/deliveryBox";
+import PaymentBox from "../components/paymentBox";
+import { DeliveryDataInfo } from "../data/collections/deliveryData";
 
-function PaymentPage() {
+interface Props {
+  deliveryInfo: DeliveryDataInfo;
+}
+
+// const navigate = useNavigate();
+
+function PaymentPage(props: Props) {
+  const handleChange = (event: any) => {
+    setPaymentOption(event.target.value);
+  };
+  const formik = useFormik({
+    initialValues: {
+      paymentOption: "",
+    },
+    onSubmit: (values) => {
+      // navigate("/PaymentPage");
+    },
+  });
+  const [paymentOption, setPaymentOption] = useState("");
   return (
     <div style={rootStyle}>
       <div style={checkoutContainer}>
         <h1>Payment Details</h1>
+        <form onSubmit={formik.handleSubmit}>
+          <Box style={{ minWidth: 360 }}>
+            <FormControl fullWidth>
+              <InputLabel id="deliveryOption">Payment option</InputLabel>
+              <Select
+                labelId="paymentOption"
+                id="paymentOption"
+                value={paymentOption}
+                label="Payment Option"
+                onChange={handleChange}
+              >
+                <MenuItem value={"swish"}>Swish </MenuItem>
+                <MenuItem value={"kort"}>Card</MenuItem>
+                <MenuItem value={"faktura"}>Invoice</MenuItem>
+              </Select>
+            </FormControl>
+            <PaymentBox
+              paymentOption={paymentOption}
+              deliveryInfo={DeliveryDataInfo}
+            />
+          </Box>
+        </form>
       </div>
     </div>
   );
@@ -31,10 +75,6 @@ const rootStyle: CSSProperties = {
   // border: "2px solid #88D9E6",
 };
 
-const headlineStyle: CSSProperties = {
-  fontSize: "2rem",
-};
-
 const checkoutContainer: CSSProperties = {
   display: "flex",
   flexDirection: "column",
@@ -43,21 +83,4 @@ const checkoutContainer: CSSProperties = {
   background: "#202225",
   boxShadow: "2px 5px 12px black",
   marginBottom: "2rem",
-};
-
-const detailFormContainer: CSSProperties = {
-  color: "white",
-  width: "45%",
-  minWidth: "15rem",
-  marginBottom: "2rem",
-};
-
-const textFieldStyle: CSSProperties = {
-  marginBottom: "1rem",
-};
-
-const formStyle: CSSProperties = {
-  display: "flex",
-  flexDirection: "column",
-  background: "grey",
 };
