@@ -55,7 +55,7 @@ function PaymentPage(props: Props) {
             </FormControl>
             <PaymentBox
               paymentOption={paymentOption}
-              deliveryInfo={DeliveryDataInfo}
+              deliveryInfo={props.deliveryInfo}
             />
           </Box>
         </form>

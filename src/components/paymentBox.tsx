@@ -11,7 +11,7 @@ function PaymentBox(props: paymentOption) {
     <div>
       {props.paymentOption === "swish" && (
         <div>
-          <Swish />
+          <Swish deliveryInfo={props.deliveryInfo} />
         </div>
       )}
     </div>

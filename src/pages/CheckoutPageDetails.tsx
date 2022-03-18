@@ -38,7 +38,7 @@ const validationSchema = yup.object({
     .string()
     .email("Please enter a valid email")
     .required("Email is required"),
-  number: yup.number().required("Please enter number").min(8),
+  number: yup.number().required("Please enter number").min(10),
   zipCode: yup.number().required("Please enter zipcode").min(4),
   city: yup.string().required("Please enter your city").min(2),
   address: yup.string().required("Please enter your adress").min(8),
