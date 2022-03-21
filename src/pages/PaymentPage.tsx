@@ -49,16 +49,16 @@ function PaymentPage(props: Props) {
                 onChange={handleChange}
               >
                 <MenuItem value={"swish"}>Swish </MenuItem>
-                <MenuItem value={"kort"}>Card</MenuItem>
-                <MenuItem value={"faktura"}>Invoice</MenuItem>
+                <MenuItem value={"card"}>Card</MenuItem>
+                <MenuItem value={"invoice"}>Invoice</MenuItem>
               </Select>
             </FormControl>
-            <PaymentBox
-              paymentOption={paymentOption}
-              deliveryInfo={props.deliveryInfo}
-            />
           </Box>
         </form>
+        <PaymentBox
+          paymentOption={paymentOption}
+          deliveryInfo={props.deliveryInfo}
+        />
       </div>
     </div>
   );

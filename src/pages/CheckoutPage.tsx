@@ -1,20 +1,28 @@
 import { Button } from "@mui/material";
 import { flexbox, width } from "@mui/system";
-import { CSSProperties } from "react";
+import { CSSProperties, useState } from "react";
 import { Link } from "react-router-dom";
 
 function CheckoutPage() {
+  const [localList, setLocalList] = useState(
+    JSON.parse(localStorage.getItem("cart")!)
+  );
   return (
     <div style={rootStyle}>
       <div style={checkoutContainer}>
         <h2 style={headlineStyle}>Checkout</h2>
         <h2>Your purchase: </h2>
         <div style={purchasedItems}>
-          <div style={purchasedItemTestCard}>NFT 1</div>
+          {localList.map((item: any, index: number) => (
+            <div style={purchasedItemTestCard} key={index}>
+              <img alt="test" srcSet={item.image} />
+            </div>
+          ))}
+          {/* <div style={purchasedItemTestCard}>NFT 1</div>
           <div style={purchasedItemTestCard}>NFT 2</div>
           <div style={purchasedItemTestCard}>NFT 3</div>
           <div style={purchasedItemTestCard}>NFT 4</div>
-          <div style={purchasedItemTestCard}>NFT 5</div>
+          <div style={purchasedItemTestCard}>NFT 5</div> */}
         </div>
 
         <h3>Total price: 420 ETH</h3>
