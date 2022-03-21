@@ -1,9 +1,13 @@
-import Swish from "./paymentOptions/swish";
-import { faCreditCardAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCreditCardAlt,
+  faFileInvoice,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { DeliveryDataInfo } from "../data/collections/deliveryData";
 import { CSSProperties } from "react";
 import CreditCard from "./paymentOptions/creditCard";
+import Swish from "./paymentOptions/swish";
+import Invoice from "./paymentOptions/invoice";
 
 interface paymentOption {
   paymentOption: string;
@@ -27,10 +31,18 @@ function PaymentBox(props: paymentOption) {
       )}
       {props.paymentOption === "card" && (
         <div style={Box}>
-          <div style={paymentIconCard}>
+          <div style={paymentIcon}>
             <FontAwesomeIcon style={CardImg} icon={faCreditCardAlt} />
           </div>
-          <CreditCard />
+          <CreditCard deliveryInfo={props.deliveryInfo} />
+        </div>
+      )}
+      {props.paymentOption === "invoice" && (
+        <div style={Box}>
+          <div style={paymentIcon}>
+            <FontAwesomeIcon style={CardImg} icon={faFileInvoice} />
+          </div>
+          <Invoice deliveryInfo={props.deliveryInfo} />
         </div>
       )}
     </div>
@@ -53,11 +65,13 @@ const paymentIconSwish: CSSProperties = {
   marginBottom: "2rem",
 };
 
-const paymentIconCard: CSSProperties = {
+const paymentIcon: CSSProperties = {
   width: "12rem",
   borderRadius: "2rem",
   color: "white",
   marginBottom: "2rem",
+  display: "flex",
+  justifyContent: "center",
 };
 
 const Box: CSSProperties = {

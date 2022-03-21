@@ -1,7 +1,12 @@
 import { TextField, Button } from "@mui/material";
 import { useFormik } from "formik";
 import { CSSProperties } from "react";
+import { DeliveryDataInfo } from "../../data/collections/deliveryData";
 import * as yup from "yup";
+
+interface deliveryInfo {
+  deliveryInfo: DeliveryDataInfo;
+}
 
 interface Values {
   CardNumber: number;
@@ -33,7 +38,7 @@ const validationSchema = yup.object({
     .required("Expiration date is required"),
 });
 
-function CreditCard() {
+function CreditCard(props: deliveryInfo) {
   const formik = useFormik({
     initialValues: {
       CardNumber: "",
