@@ -7,11 +7,17 @@ import {
   Select,
   TextField,
 } from "@mui/material";
-import { Field, useFormik } from "formik";
+import { useFormik } from "formik";
 import { CSSProperties, useState } from "react";
 import * as yup from "yup";
+import { useNavigate } from "react-router-dom";
+import DeliveryBox from "../components/deliveryBox";
+import { DeliveryDataInfo } from "../data/collections/deliveryData";
 
-import DeliveryBox from "../components/deliveryCard";
+interface Props {
+  deliveryInfo: DeliveryDataInfo;
+  setDeliveryInfo: any;
+}
 
 interface Values {
   firstName: string;
@@ -32,18 +38,20 @@ const validationSchema = yup.object({
     .string()
     .email("Please enter a valid email")
     .required("Email is required"),
-  number: yup.number().required("Please enter number").min(8),
+  number: yup.number().required("Please enter number").min(10),
   zipCode: yup.number().required("Please enter zipcode").min(4),
   city: yup.string().required("Please enter your city").min(2),
   address: yup.string().required("Please enter your adress").min(8),
   country: yup.string().required("Please enter your country").min(2),
 });
 
-function CheckoutPageDetails() {
+function CheckoutPageDetails(props: Props) {
   const [deliveryOption, setDeliveryOption] = useState("");
   const handleChange = (event: any) => {
     setDeliveryOption(event.target.value);
   };
+
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -60,7 +68,9 @@ function CheckoutPageDetails() {
     validationSchema: validationSchema,
     onSubmit: (values) => {
       values.deliveryMethod = deliveryOption;
-      console.log(JSON.stringify(values, null, 2));
+      props.setDeliveryInfo(values);
+      console.log(props.deliveryInfo);
+      navigate("/PaymentPage");
     },
   });
   return (
@@ -200,8 +210,6 @@ function CheckoutPageDetails() {
               >
                 Submit
               </Button>
-
-              {/* <DateTest /> */}
             </form>
           </div>
         </div>
