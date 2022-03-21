@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faMinus, faCoins } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faMinus, faCoins, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { Box, Button, Modal, Typography } from "@mui/material";
 import { CSSProperties, useEffect, useState } from "react";
 import { collectionData } from "../data/collections/collection";
@@ -42,11 +42,11 @@ function CartModal(props: CartProps) {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Din kundvagn
+            Your cart
             <div style={cartHeader}>
               <div style={nftIcon}></div>
               <div style={headerDesc}>
-                <div>Description</div>
+                <div>Product</div>
                 <div>Quantity</div>
               </div>
               <div>Price</div>
@@ -67,7 +67,7 @@ function CartModal(props: CartProps) {
                   {/* MITTEN DIV */}
                   <div>
                     <div style={nftName}>
-                      {collectionList.find((col) => col.id === item.collectionID)?.name}#{item.NFTid}
+                      {collectionList.find((col) => col.id === item.collectionID)?.name} #{item.NFTid}
                     </div>
                     <div style={cartItemDesc}>{item.description}</div>
                   </div>
@@ -80,12 +80,11 @@ function CartModal(props: CartProps) {
                 {/* MITTEN DIV */}
                 <div style={cartItemPrice}>
                 <FontAwesomeIcon icon={faCoins} style={coinStyle}/>
-                  {/* HÖGER DIV */}
                   {item.price}
                 </div>
               </div>
             ))}
-            <button onClick={clearCart}>TÖM KUNDVAGN</button>
+            <button onClick={clearCart}>EMPTY YOUR CART</button>
           </Typography>
         </Box>
       </Modal>
@@ -95,6 +94,7 @@ function CartModal(props: CartProps) {
 
 const nftContainer: CSSProperties = {
   display: "flex",
+  gap: '1rem'
 };
 
 const nftMid: CSSProperties = {
@@ -104,7 +104,6 @@ const nftMid: CSSProperties = {
   justifyContent: 'space-between',
   alignItems: 'center',
   fontSize: "2rem",
-  paddingLeft: "2rem",
 };
 
 const nftIcon: CSSProperties = {
@@ -127,11 +126,11 @@ const nftName: CSSProperties = {
 const cartHeader: CSSProperties = {
   display: "flex",
   flexDirection: "row",
+  gap: '1rem'
 };
 
 const iconStyle: CSSProperties = {
   fontSize: 'x-small',
-  padding: '1rem'
 };
 
 const coinStyle: CSSProperties = {
@@ -141,9 +140,7 @@ const coinStyle: CSSProperties = {
 
 const nftMidRight: CSSProperties = {
   display: "flex",
-  paddingBottom: "1.5rem",
   width: '25%',
-  paddingRight: '3rem'
 };
 
 const headerDesc: CSSProperties = {
@@ -151,7 +148,6 @@ const headerDesc: CSSProperties = {
   flexDirection: "row",
   justifyContent: "space-around",
   width: "60%",
-  paddingLeft: "2rem",
 };
 
 export default CartModal;
