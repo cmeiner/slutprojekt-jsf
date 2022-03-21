@@ -4,6 +4,7 @@ export interface NftItem {
   price: number;
   description: string;
   count: number;
+  collectionID: number
 }
 
 export interface collectionDataItem {
@@ -34,6 +35,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "Meiner in the gym",
         count: 1,
+        collectionID: 1,
       },
       {
         NFTid: 2,
@@ -41,6 +43,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "Meiner eating a popsicle",
         count: 1,
+        collectionID: 1,
       },
       {
         NFTid: 3,
@@ -48,6 +51,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "Meiner not looking at you",
         count: 1,
+        collectionID: 1,
       },
       {
         NFTid: 4,
@@ -55,6 +59,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "Meiner looking at something else",
         count: 1,
+        collectionID: 1,
       },
       {
         NFTid: 5,
@@ -62,6 +67,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "Meiner staring into your soul",
         count: 1,
+        collectionID: 1,
       },
       {
         NFTid: 6,
@@ -69,6 +75,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "Meiner eating a bell pepper",
         count: 1,
+        collectionID: 1,
       },
     ],
   },
@@ -88,6 +95,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "Bakkum with a black eye",
         count: 1,
+        collectionID: 2,
       },
       {
         NFTid: 8,
@@ -96,6 +104,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "Bakkum with a black eye in the car",
         count: 1,
+        collectionID: 2,
       },
       {
         NFTid: 9,
@@ -103,6 +112,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "The legendary Elvis",
         count: 1,
+        collectionID: 2,
       },
       {
         NFTid: 10,
@@ -110,6 +120,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "Bakkum throwing a peace sign",
         count: 1,
+        collectionID: 2,
       },
       {
         NFTid: 11,
@@ -117,6 +128,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "Bakkum drinking Staro",
         count: 1,
+        collectionID: 2,
       },
       {
         NFTid: 12,
@@ -124,6 +136,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "Bakkum sticking out his tongue",
         count: 1,
+        collectionID: 2,
       },
     ],
   },
@@ -143,6 +156,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "Pappa surrounded by smoke",
         count: 1,
+        collectionID: 3,
       },
       {
         NFTid: 14,
@@ -150,6 +164,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "Pappa very happy",
         count: 1,
+        collectionID: 3,
       },
       {
         NFTid: 15,
@@ -157,6 +172,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "Pappa very relaxed",
         count: 1,
+        collectionID: 3,
       },
       {
         NFTid: 16,
@@ -164,6 +180,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "Pappa very sleepy",
         count: 1,
+        collectionID: 3,
       },
       {
         NFTid: 17,
@@ -172,6 +189,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "Pappa staring into your soul",
         count: 1,
+        collectionID: 3,
       },
       {
         NFTid: 18,
@@ -179,6 +197,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "Pappa very fresh",
         count: 1,
+        collectionID: 3,
       },
     ],
   },
@@ -198,6 +217,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "testDesc",
         count: 1,
+        collectionID: 4,
       },
       {
         NFTid: 20,
@@ -205,6 +225,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "testDesc",
         count: 1,
+        collectionID: 4,
       },
       {
         NFTid: 21,
@@ -212,6 +233,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "testDesc",
         count: 1,
+        collectionID: 4,
       },
       {
         NFTid: 22,
@@ -219,6 +241,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "testDesc",
         count: 1,
+        collectionID: 4,
       },
       {
         NFTid: 23,
@@ -227,6 +250,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "testDesc",
         count: 1,
+        collectionID: 4,
       },
       {
         NFTid: 24,
@@ -234,6 +258,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "testDesc",
         count: 1,
+        collectionID: 4,
       },
     ],
   },
@@ -252,6 +277,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "testDesc",
         count: 1,
+        collectionID: 5,
       },
       {
         NFTid: 26,
@@ -259,6 +285,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "testDesc",
         count: 1,
+        collectionID: 5,
       },
       {
         NFTid: 27,
@@ -266,6 +293,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "testDesc",
         count: 1,
+        collectionID: 5,
       },
       {
         NFTid: 28,
@@ -273,6 +301,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "testDesc",
         count: 1,
+        collectionID: 5,
       },
       {
         NFTid: 29,
@@ -281,6 +310,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "testDesc",
         count: 1,
+        collectionID: 5,
       },
       {
         NFTid: 30,
@@ -288,6 +318,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "testDesc",
         count: 1,
+        collectionID: 5,
       },
     ],
   },
@@ -306,6 +337,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "testDesc",
         count: 1,
+        collectionID: 6,
       },
       {
         NFTid: 32,
@@ -313,6 +345,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "testDesc",
         count: 1,
+        collectionID: 6,
       },
       {
         NFTid: 33,
@@ -320,6 +353,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "testDesc",
         count: 1,
+        collectionID: 6,
       },
       {
         NFTid: 34,
@@ -327,6 +361,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "testDesc",
         count: 1,
+        collectionID: 6,
       },
       {
         NFTid: 35,
@@ -335,6 +370,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "testDesc",
         count: 1,
+        collectionID: 6,
       },
       {
         NFTid: 36,
@@ -342,6 +378,7 @@ export const collectionData: collectionDataItem[] = [
         price: 12,
         description: "testDesc",
         count: 1,
+        collectionID: 6,
       },
     ],
   }
