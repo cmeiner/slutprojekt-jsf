@@ -3,18 +3,23 @@ import {
   faFileInvoice,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { DeliveryDataInfo } from "../data/collections/deliveryData";
+import {
+  DeliveryDataInfo,
+  InvoiceDataInfo,
+} from "../data/collections/deliveryData";
 import { CSSProperties } from "react";
 import CreditCard from "./paymentOptions/creditCard";
 import Swish from "./paymentOptions/swish";
 import Invoice from "./paymentOptions/invoice";
 
-interface paymentOption {
+interface Props {
   paymentOption: string;
   deliveryInfo: DeliveryDataInfo;
+  invoiceDetails: InvoiceDataInfo;
+  setInvoiceDetails: any;
 }
 
-function PaymentBox(props: paymentOption) {
+function PaymentBox(props: Props) {
   return (
     <div style={paymentBox}>
       {props.paymentOption === "swish" && (
@@ -42,7 +47,11 @@ function PaymentBox(props: paymentOption) {
           <div style={paymentIcon}>
             <FontAwesomeIcon style={CardImg} icon={faFileInvoice} />
           </div>
-          <Invoice deliveryInfo={props.deliveryInfo} />
+          <Invoice
+            deliveryInfo={props.deliveryInfo}
+            invoiceDetails={props.invoiceDetails}
+            setInvoiceDetails={props.setInvoiceDetails}
+          />
         </div>
       )}
     </div>

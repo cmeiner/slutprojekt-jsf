@@ -127,10 +127,9 @@ function CreditCard(props: deliveryInfo) {
         </div>
 
         <Button
-          style={{ marginTop: "1rem" }}
+          style={{ marginTop: "1rem", width: "60%" }}
           color="primary"
           variant="contained"
-          fullWidth
           type="submit"
         >
           Submit
