@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   DeliveryDataInfo,
   InvoiceDataInfo,
-} from "../data/collections/deliveryData";
+} from "../../../data/collections/deliveryData";
 import { CSSProperties } from "react";
 import CreditCard from "./paymentOptions/creditCard";
 import Swish from "./paymentOptions/swish";

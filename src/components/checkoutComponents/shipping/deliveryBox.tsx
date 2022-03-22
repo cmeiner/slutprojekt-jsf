@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getDelivery } from "../functions/deliverySwitch";
+import { getDelivery } from "./deliverySwitch";
 import { CSSProperties } from "react";
 
 interface deliveryItem {

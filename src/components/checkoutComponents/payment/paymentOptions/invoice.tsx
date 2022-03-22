@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import {
   DeliveryDataInfo,
   InvoiceDataInfo,
-} from "../../data/collections/deliveryData";
+} from "../../../../data/collections/deliveryData";
 import * as yup from "yup";
 
 interface deliveryInfo {

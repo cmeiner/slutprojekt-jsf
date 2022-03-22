@@ -1,11 +1,11 @@
 import { Box, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import { useFormik } from "formik";
 import { CSSProperties, useState } from "react";
-import PaymentBox from "../components/paymentBox";
+import PaymentBox from "./paymentBox";
 import {
   DeliveryDataInfo,
   InvoiceDataInfo,
-} from "../data/collections/deliveryData";
+} from "../../../data/collections/deliveryData";
 
 interface Props {
   deliveryInfo: DeliveryDataInfo;

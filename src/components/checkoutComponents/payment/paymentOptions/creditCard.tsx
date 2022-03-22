@@ -1,7 +1,7 @@
 import { TextField, Button } from "@mui/material";
 import { useFormik } from "formik";
 import { CSSProperties } from "react";
-import { DeliveryDataInfo } from "../../data/collections/deliveryData";
+import { DeliveryDataInfo } from "../../../../data/collections/deliveryData";
 import * as yup from "yup";
 
 interface deliveryInfo {

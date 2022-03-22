@@ -8,7 +8,7 @@ import StartPage from "../pages/Startpage";
 import TestPage from "../pages/TestPage";
 import CartModal from "./CartModal";
 import Header from "./Header";
-import PaymentPage from "../pages/PaymentPage";
+import PaymentPage from "./checkoutComponents/payment/PaymentPage";
 import {
   DeliveryDataInfoObject,
   InvoiceDataInfoObject,
@@ -47,6 +47,8 @@ function Layout() {
                 <CheckoutPageDetails
                   deliveryInfo={deliveryInfo}
                   setDeliveryInfo={setDeliveryInfo}
+                  invoiceDetails={InvoiceDetails}
+                  setInvoiceDetails={setInvoiceDetails}
                 />
               }
             />
