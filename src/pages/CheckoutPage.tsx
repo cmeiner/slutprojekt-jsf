@@ -1,18 +1,19 @@
 import { Button } from "@mui/material";
 import { CSSProperties, useState } from "react";
 import { Link } from "react-router-dom";
+import { useCart } from "../components/context/CartContext";
 
 function CheckoutPage() {
-  const [localList, setLocalList] = useState(
-    JSON.parse(localStorage.getItem("cart")!)
-  );
+
+  const { cart } = useCart()
+
   return (
     <div style={rootStyle}>
       <div style={checkoutContainer}>
         <h2 style={headlineStyle}>Checkout</h2>
         <h2>You are about to purchase the following items:</h2>
         <div style={purchasedItems}>
-          {localList.map((item: any, index: number) => (
+          {cart.map((item: any, index: number) => (
             <div style={purchasedItemTestCard} key={index}>
               <img alt="test" style={checkoutPic} srcSet={item.image} />
             </div>

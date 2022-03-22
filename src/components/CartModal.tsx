@@ -37,9 +37,8 @@ const style = {
 };
 
 function CartModal(props: CartProps) {
-  const { cart, decQty, incQty } = useCart()
+  const { cart, decQty, incQty, clearCart } = useCart()
   const handleClose = () => props.setModalState(false);
-  const clearCart = () => localStorage.clear();
   const [collectionList, setCollectionList] = useState(collectionData);
 
   return (
@@ -88,7 +87,7 @@ function CartModal(props: CartProps) {
             ))}
             <div style={cartButton}>
             <Button style={buttonStyle} variant="contained" onClick={clearCart}>Empty your cart</Button>
-            <Link to={'/Checkout'}>
+            <Link onClick={handleClose} to={'/Checkout'}>
             <Button style={buttonStyle} variant="contained">Proceed to checkout</Button>
             </Link>
             </div>
