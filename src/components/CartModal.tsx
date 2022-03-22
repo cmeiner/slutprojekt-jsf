@@ -5,11 +5,12 @@ import {
   faCoins,
 } from "@fortawesome/free-solid-svg-icons";
 import { Box, Button, Modal, Typography } from "@mui/material";
-import { CSSProperties, useState } from "react";
+import { CSSProperties, useContext, useState } from "react";
 import { collectionData } from "../data/collections/collection";
 import ItemCard from "./ItemCard";
 import { NftItem } from "../data/collections/collection";
 import { Link } from "react-router-dom";
+import { CartContext, useCart } from "./context/CartContext";
 
 interface testNft {
   NFTid: number;
@@ -21,8 +22,6 @@ interface testNft {
 interface CartProps {
   modalState: boolean;
   setModalState: any;
-  cartState : any
-  setCart : any
 }
 
 const style = {
@@ -38,41 +37,7 @@ const style = {
 };
 
 function CartModal(props: CartProps) {
-
-  // const incQty = (itemId: number) => {
-  //   let item = localList.find((item : any) => item.NFTid === itemId)
-  //   item.count += 1
-  //   localStorage.setItem('cart', JSON.stringify(localList))
-  //   console.log(item)
-  // };
-
-  const incQty = (itemId: number) => {
-    let updatedList = props.cartState.map((item : any) => {
-      if (item.NFTid === itemId) {
-        item.count +=1;
-      }
-      return item;
-    });
-    props.setCart(updatedList)
-    localStorage.setItem('cart', JSON.stringify(updatedList))
-};
-
-  const decQty = (itemId: number) => {
-    let updatedList = props.cartState.filter((item : any) => {
-      if (item.NFTid === itemId) {
-        if (item.count > 1) {
-          item.count -= 1;
-          return item;
-        }
-      } else {
-        return item;
-      }      
-    })!;
-
-    props.setCart(updatedList)
-    localStorage.setItem('cart', JSON.stringify(updatedList))
-  };
-  
+  const { cart, decQty, incQty } = useCart()
   const handleClose = () => props.setModalState(false);
   const clearCart = () => localStorage.clear();
   const [collectionList, setCollectionList] = useState(collectionData);
@@ -99,7 +64,7 @@ function CartModal(props: CartProps) {
             sx={{ mt: 2}}
             component="div"
           >
-            {props.cartState.map((item: any, index: number) => (
+            {cart.map((item: any, index: number) => (
               <div style={nftContainer} key={index}>
                 <div style={iconCol}>
                   <img style={iconStyle} srcSet={item.image} alt="test" />

@@ -1,13 +1,11 @@
 // @ts-ignore
 
-
 interface testNft {
   NFTid: number;
   image: string;
   price: number;
   description: string;
 }
-
 
 export function addCart(setCart : any, cart: any, item: testNft | undefined) {
     let CartList = cart || [];
