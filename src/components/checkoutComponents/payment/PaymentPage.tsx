@@ -31,7 +31,7 @@ function PaymentPage(props: Props) {
   return (
     <div style={rootStyle}>
       <div style={checkoutContainer}>
-        <h1>Payment Details</h1>
+        <h2>Payment Details</h2>
         <form onSubmit={formik.handleSubmit}>
           <Box style={{ minWidth: 360 }}>
             <FormControl fullWidth>

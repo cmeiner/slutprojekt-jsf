@@ -80,13 +80,11 @@ function CheckoutForm(props: Props) {
   });
   return (
     <div style={rootStyle}>
-      <div style={checkoutContainer}>
-        <h2 style={headlineStyle}>Checkout</h2>
-
-        <div style={detailFormContainer}>
-          <h2>Shipment details</h2>
-          <div style={formStyle}>
-            <form onSubmit={formik.handleSubmit}>
+      <div style={detailFormContainer}>
+        <h2>Shipment details</h2>
+        <div>
+          <form style={formStyle} onSubmit={formik.handleSubmit}>
+            <div style={textFieldsContainer}>
               <TextField
                 style={textFieldStyle}
                 fullWidth
@@ -179,46 +177,48 @@ function CheckoutForm(props: Props) {
                 error={formik.touched.country && Boolean(formik.errors.country)}
                 helperText={formik.touched.country && formik.errors.country}
               />
+            </div>
 
+            <Box style={deliveryBox}>
               <h2>Delivery details</h2>
-              <Box style={{ minWidth: 120 }}>
-                <FormControl fullWidth>
-                  <InputLabel id="deliveryOption">Delivery Option</InputLabel>
-                  <Select
-                    labelId="deliveryOptionLabel"
-                    id="deliveryOption"
-                    value={deliveryOption}
-                    label="Delivery Option"
-                    onChange={handleChange}
-                  >
-                    <MenuItem value={"PostNordOmbud"}>
-                      Postnord - Postal agent - Free!
-                    </MenuItem>
-                    <MenuItem value={"DHLOmbud"}>
-                      DHL - Postal agent - 29kr{" "}
-                    </MenuItem>
-                    <MenuItem value={"PostNordHem"}>
-                      Postnord - Home delivery day/evening - 49kr
-                    </MenuItem>
-                    <MenuItem value={"DHLExpress"}>
-                      DHL express - Home delivery within 24h - 100kr
-                    </MenuItem>
-                  </Select>
-                </FormControl>
+              <FormControl fullWidth>
+                <InputLabel id="deliveryOption">Delivery Option</InputLabel>
+                <Select
+                  labelId="deliveryOptionLabel"
+                  id="deliveryOption"
+                  value={deliveryOption}
+                  label="Delivery Option"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={"PostNordOmbud"}>
+                    Postnord - Postal agent - Free!
+                  </MenuItem>
+                  <MenuItem value={"DHLOmbud"}>
+                    DHL - Postal agent - 29kr{" "}
+                  </MenuItem>
+                  <MenuItem value={"PostNordHem"}>
+                    Postnord - Home delivery day/evening - 49kr
+                  </MenuItem>
+                  <MenuItem value={"DHLExpress"}>
+                    DHL express - Home delivery within 24h - 100kr
+                  </MenuItem>
+                </Select>
+              </FormControl>
+              <div style={deliveryBox}>
                 <DeliveryBox DeliveryOption={deliveryOption} />
-              </Box>
+              </div>
+            </Box>
 
-              <Button
-                style={{ marginTop: "1rem" }}
-                color="primary"
-                variant="contained"
-                fullWidth
-                type="submit"
-              >
-                Submit
-              </Button>
-            </form>
-          </div>
+            <Button
+              style={{ marginTop: "1rem", width: "40%" }}
+              color="primary"
+              variant="contained"
+              fullWidth
+              type="submit"
+            >
+              Next
+            </Button>
+          </form>
         </div>
       </div>
     </div>
@@ -236,33 +236,38 @@ const rootStyle: CSSProperties = {
   // border: "2px solid #88D9E6",
 };
 
-const headlineStyle: CSSProperties = {
-  fontSize: "2rem",
-};
-
-const checkoutContainer: CSSProperties = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  width: "80%",
-  background: "#202225",
-  boxShadow: "2px 5px 12px black",
-  marginBottom: "2rem",
-};
-
 const detailFormContainer: CSSProperties = {
   color: "white",
-  width: "45%",
   minWidth: "15rem",
   marginBottom: "2rem",
+  display: "flex",
+  alignItems: "center",
+  flexDirection: "column",
 };
 
 const textFieldStyle: CSSProperties = {
   marginBottom: "1rem",
+  width: "40%",
+  margin: ".5rem",
 };
 
 const formStyle: CSSProperties = {
   display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  flexWrap: "wrap",
   flexDirection: "column",
-  background: "grey",
+};
+
+const deliveryBox: CSSProperties = {
+  display: "flex",
+  flexDirection: "column",
+  width: "25rem",
+  textAlign: "center",
+};
+
+const textFieldsContainer: CSSProperties = {
+  display: "flex",
+  justifyContent: "center",
+  flexWrap: "wrap",
 };
