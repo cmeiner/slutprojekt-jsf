@@ -6,6 +6,7 @@ import {
   DeliveryDataInfo,
   InvoiceDataInfo,
 } from "../../../data/collections/deliveryData";
+import DeliveryInfoTable from "../DeliveryInfoTable";
 
 interface Props {
   deliveryInfo: DeliveryDataInfo;
@@ -31,8 +32,13 @@ function PaymentPage(props: Props) {
   return (
     <div style={rootStyle}>
       <div style={checkoutContainer}>
-        <h2>Payment Details</h2>
+        <h2 style={headlineStyle}>Checkout</h2>
+        <div>
+          <DeliveryInfoTable deliveryInfo={props.deliveryInfo} />
+        </div>
+
         <form onSubmit={formik.handleSubmit}>
+          <h2 style={{ textAlign: "center" }}>Payment details</h2>
           <Box style={{ minWidth: 360 }}>
             <FormControl fullWidth>
               <InputLabel id="deliveryOption">Payment option</InputLabel>
@@ -80,4 +86,8 @@ const checkoutContainer: CSSProperties = {
   background: "#202225",
   boxShadow: "2px 5px 12px black",
   marginBottom: "2rem",
+};
+
+const headlineStyle: CSSProperties = {
+  fontSize: "2rem",
 };

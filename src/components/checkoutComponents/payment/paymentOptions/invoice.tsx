@@ -58,8 +58,7 @@ function Invoice(props: deliveryInfo) {
 
   return (
     <div>
-      <div>
-        <h2>Invoice</h2>
+      <div style={invoiceChoices}>
         <Button
           style={{ marginTop: "1rem" }}
           color="primary"
@@ -67,7 +66,7 @@ function Invoice(props: deliveryInfo) {
           fullWidth
           onClick={UseSameDetails}
         >
-          Use same as delivery information.
+          Use delivery information. And complete purchase
         </Button>
         <h2>Or</h2>
         <Button
@@ -77,7 +76,7 @@ function Invoice(props: deliveryInfo) {
           fullWidth
           onClick={NewInvoiceDetails}
         >
-          Enter new information
+          Enter new billing information
         </Button>
       </div>
       <div>
@@ -207,29 +206,6 @@ function Invoice(props: deliveryInfo) {
 
 export default Invoice;
 
-const rootStyle: CSSProperties = {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  margin: "0 auto",
-  width: "100%",
-  // border: "2px solid #88D9E6",
-};
-
-const headlineStyle: CSSProperties = {
-  fontSize: "2rem",
-};
-
-const checkoutContainer: CSSProperties = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  width: "80%",
-  background: "#202225",
-  boxShadow: "2px 5px 12px black",
-  marginBottom: "2rem",
-};
-
 const detailFormContainer: CSSProperties = {
   color: "white",
   width: "45%",
@@ -245,4 +221,8 @@ const formStyle: CSSProperties = {
   display: "flex",
   flexDirection: "column",
   background: "grey",
+};
+
+const invoiceChoices: CSSProperties = {
+  display: "flex",
 };

@@ -70,7 +70,6 @@ const paymentBox: CSSProperties = {
 const paymentIconSwish: CSSProperties = {
   width: "12rem",
   borderRadius: "20rem",
-  backgroundColor: "white",
   marginBottom: "2rem",
 };
 
@@ -97,4 +96,5 @@ const CardImg: CSSProperties = {
 
 const paymentIconImg: CSSProperties = {
   width: "12rem",
+  borderRadius: "20rem",
 };

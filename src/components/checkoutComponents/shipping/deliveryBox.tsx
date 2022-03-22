@@ -7,9 +7,6 @@ interface deliveryItem {
 }
 
 function DeliveryBox(props: deliveryItem) {
-  //   let date = new Date();
-  //   //console.log(date.getDate() + 2);
-  //   console.log(`2022-${date.getMonth() + 1}-${date.getDate() + 2}`);
   return (
     <div>
       {props.DeliveryOption && (
