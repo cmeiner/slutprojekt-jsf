@@ -12,6 +12,7 @@ import PaymentPage from "../pages/PaymentPage";
 import { DeliveryDataInfoObject } from "../data/collections/deliveryData";
 import { CartProvider } from "./context/CartContext";
 import { ProductProvider, useProducts } from "./context/ProductContext";
+import AdminPage from "../pages/AdminPage";
 
 interface NftItem {
   NFTid: number;
@@ -42,6 +43,7 @@ function Layout() {
         <div style={rootStyle}>
           <Routes>
             <Route path="/" element={<StartPage />} />
+            <Route path="/admin" element={<AdminPage />} />
             <Route path="/CollectionPage" element={<CollectionPage />} />
             <Route path="/Collections/:id" element={<Collections />} />
             <Route
