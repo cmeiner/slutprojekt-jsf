@@ -14,7 +14,13 @@ interface Values {
 }
 
 const validationSchema = yup.object({
-  number: yup.number().required("Please enter number").min(10),
+  // number: yup.number().required("Please enter number").min(10),
+  number: yup
+    .string()
+    .typeError("Not a valid phone number. Example: 0738986845")
+    .max(10, "Not a valid phone number. Example: 0738986845")
+    .matches(/([0-9]{10})/, "Not a valid phone number. Example: 0738986845")
+    .required("Phone number date is required"),
 });
 
 function Swish(props: deliveryInfo) {
@@ -42,8 +48,8 @@ function Swish(props: deliveryInfo) {
           label="Phone Number"
           value={formik.values.number}
           onChange={formik.handleChange}
-          // error={formik.touched.number && Boolean(formik.errors.number)}
-          // helperText={formik.touched.number && formik.errors.number}
+          error={formik.touched.number && Boolean(formik.errors.number)}
+          helperText={formik.touched.number && formik.errors.number}
         />
         <Button
           style={{ marginTop: "1rem" }}
