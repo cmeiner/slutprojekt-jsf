@@ -2,9 +2,9 @@ import { Button, Card } from "@mui/material";
 import { CSSProperties, useState } from "react";
 import { Link } from "react-router-dom";
 import { collectionData } from "../data/collections/collection";
-import getFeatured from "../functions/getFeatured";
 import ItemCard from "../components/ItemCard";
 import CartModal from "../components/CartModal";
+import { useProducts } from "../components/context/ProductContext";
 
 interface startPageProps {
   focusHeader?: any;
@@ -13,31 +13,9 @@ interface startPageProps {
 }
 
 function StartPage(startPageProps: any) {
-  const [collectionList, setCollectionList] = useState(collectionData);
-  const [featuredList, setFeaturedList] = useState(getFeatured());
 
-  //console.log(newList);
+  const { collections } = useProducts()
 
-  // }
-
-  //     CollectionList får vi ut alla kollektioner
-  // console.log(collectionList.sort(function(a, b){return a.floorPrice-b.floorPrice}))
-  // console.log(featuredList)
-  // setFeaturedList([{}])
-  //     Filtrera så dem mest med FLOOR PRICE & BEST VOLUME TRADED
-  //     TOP 3 AV DEM SÄTTS IN I NYA FEATUREDLIST
-  //     let list = collectionList
-  //     list.sort(function compareFn(firstEl, secondEl)
-  //     let min = Math.max(...collectionData.map(item => item.floorPrice))
-  //     values.sort((one, two) => (one > two ? -1 : 1));
-  //     while(list.length <= 3) {
-  //         let min = Math.min(...collectionData.map(item => item.floorPrice))
-  //         let result = collectionData.filter(item => item.floorPrice === min)
-  //         list.filter(item => min != item.floorPrice)
-  //         return list
-  //     }
-
-  //console.log(getFeatured());
 
   return (
     <div style={rootStyle}>
@@ -69,16 +47,16 @@ function StartPage(startPageProps: any) {
             <h1>HOTTEST COLLECTIONS RIGHT NOW</h1>
           </div>
           <div style={flexProducts}>
-            {collectionList.map((collection, index) => (
-              <ItemCard key={index} collectionCard={collection} setCart={startPageProps.setCart} cartState={startPageProps.cartState}/>
+            {collections.map((collection, index) => (
+              <ItemCard key={index} collectionCard={collection}/>
             ))}
           </div>
         </div>
         <div style={hottestItems}>
           <h1>HOTTEST ITEMS RIGHT NOW</h1>
           <div style={flexItems}>
-            {collectionList.map((collection, index) => (
-              <ItemCard key={index} nftCard={collection.NFTS[0]} nftHeader={collection?.header} collectionName={collection?.name} setCart={startPageProps.setCart} cartState={startPageProps.cartState}/>
+            {collections.map((collection, index) => (
+              <ItemCard key={index} nftCard={collection.NFTS[0]} nftHeader={collection?.header} collectionName={collection?.name}/>
             ))}
           </div>
         </div>
