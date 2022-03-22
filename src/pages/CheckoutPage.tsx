@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import { flexbox, width } from "@mui/system";
+import { wrap } from "module";
 import { CSSProperties, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -11,18 +11,13 @@ function CheckoutPage() {
     <div style={rootStyle}>
       <div style={checkoutContainer}>
         <h2 style={headlineStyle}>Checkout</h2>
-        <h2>Your purchase: </h2>
+        <h2>You are about to purchase the following items:</h2>
         <div style={purchasedItems}>
           {localList.map((item: any, index: number) => (
             <div style={purchasedItemTestCard} key={index}>
-              <img alt="test" srcSet={item.image} />
+              <img alt="test" style={checkoutPic} srcSet={item.image} />
             </div>
           ))}
-          {/* <div style={purchasedItemTestCard}>NFT 1</div>
-          <div style={purchasedItemTestCard}>NFT 2</div>
-          <div style={purchasedItemTestCard}>NFT 3</div>
-          <div style={purchasedItemTestCard}>NFT 4</div>
-          <div style={purchasedItemTestCard}>NFT 5</div> */}
         </div>
 
         <h3>Total price: 420 ETH</h3>
@@ -71,9 +66,8 @@ const purchasedItems: CSSProperties = {
 };
 
 const purchasedItemTestCard: CSSProperties = {
-  height: "15rem",
   width: "20%",
-  background: "green",
+  flexWrap: 'wrap'
 };
 
 const buttonStyle: CSSProperties = {
@@ -85,4 +79,8 @@ const buttonStyle: CSSProperties = {
 const nextButton: CSSProperties = {
   textDecoration: "none",
   margin: "2rem",
+};
+
+const checkoutPic: CSSProperties = {
+  width: '100%'
 };

@@ -8,6 +8,8 @@ import CartModal from "../components/CartModal";
 
 interface startPageProps {
   focusHeader?: any;
+  cartState : any
+  setCart : any
 }
 
 function StartPage(startPageProps: any) {
@@ -68,7 +70,7 @@ function StartPage(startPageProps: any) {
           </div>
           <div style={flexProducts}>
             {collectionList.map((collection, index) => (
-              <ItemCard key={index} collectionCard={collection} />
+              <ItemCard key={index} collectionCard={collection} setCart={startPageProps.setCart} cartState={startPageProps.cartState}/>
             ))}
           </div>
         </div>
@@ -76,7 +78,7 @@ function StartPage(startPageProps: any) {
           <h1>HOTTEST ITEMS RIGHT NOW</h1>
           <div style={flexItems}>
             {collectionList.map((collection, index) => (
-              <ItemCard key={index} nftCard={collection.NFTS[0]} nftHeader={collection?.header} collectionName={collection?.name}/>
+              <ItemCard key={index} nftCard={collection.NFTS[0]} nftHeader={collection?.header} collectionName={collection?.name} setCart={startPageProps.setCart} cartState={startPageProps.cartState}/>
             ))}
           </div>
         </div>

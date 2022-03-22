@@ -11,10 +11,19 @@ import Header from "./Header";
 import PaymentPage from "../pages/PaymentPage";
 import { DeliveryDataInfoObject } from "../data/collections/deliveryData";
 
+interface NftItem {
+  NFTid: number;
+  image: string;
+  price: number;
+  description: string;
+}
+
+
 function Layout() {
   const [modalState, setModalState] = useState(false);
   const [searchFocused, setSearchFocused] = useState(false);
   const [deliveryInfo, setDeliveryInfo] = useState(DeliveryDataInfoObject);
+  const [cart, setCart] = useState([])
   return (
     <div>
       <BrowserRouter>
@@ -24,7 +33,7 @@ function Layout() {
           searchBarFocused={searchFocused}
           searchBarFocusOut={() => setSearchFocused(false)}
         />
-        <CartModal modalState={modalState} setModalState={setModalState} />
+        <CartModal modalState={modalState} setModalState={setModalState} cartState={cart} setCart={setCart}/>
         <div style={rootStyle}>
           <Routes>
             <Route path="/" element={<StartPage />} />
@@ -32,7 +41,7 @@ function Layout() {
             <Route path="/Collections/:id" element={<Collections />} />
             <Route
               path="/"
-              element={<StartPage focusHeader={() => setSearchFocused(true)} />}
+              element={<StartPage focusHeader={() => setSearchFocused(true)}  cartState={cart} setCart={setCart} />}
             />
             <Route path="TestPage" element={<TestPage />} />
             <Route path="/Checkout" element={<CheckoutPage />} />

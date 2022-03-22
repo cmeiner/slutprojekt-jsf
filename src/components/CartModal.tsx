@@ -4,15 +4,25 @@ import {
   faMinus,
   faCoins,
 } from "@fortawesome/free-solid-svg-icons";
-import { Box, Modal, Typography } from "@mui/material";
+import { Box, Button, Modal, Typography } from "@mui/material";
 import { CSSProperties, useState } from "react";
 import { collectionData } from "../data/collections/collection";
 import ItemCard from "./ItemCard";
 import { NftItem } from "../data/collections/collection";
+import { Link } from "react-router-dom";
+
+interface testNft {
+  NFTid: number;
+  image: string;
+  price: number;
+  description: string;
+}
 
 interface CartProps {
   modalState: boolean;
   setModalState: any;
+  cartState : any
+  setCart : any
 }
 
 const style = {
@@ -28,25 +38,39 @@ const style = {
 };
 
 function CartModal(props: CartProps) {
-  const [localList, setLocalList] = useState(
-    JSON.parse(localStorage.getItem("cart")!)
-  );
+
+  // const incQty = (itemId: number) => {
+  //   let item = localList.find((item : any) => item.NFTid === itemId)
+  //   item.count += 1
+  //   localStorage.setItem('cart', JSON.stringify(localList))
+  //   console.log(item)
+  // };
 
   const incQty = (itemId: number) => {
-    let item = localList.find((item : any) => item.NFTid === itemId)
-    item.count += 1
-    localStorage.setItem('cart', JSON.stringify(localList))
-    console.log(item)
-  };
+    let updatedList = props.cartState.map((item : any) => {
+      if (item.NFTid === itemId) {
+        item.count +=1;
+      }
+      return item;
+    });
+    props.setCart(updatedList)
+    localStorage.setItem('cart', JSON.stringify(updatedList))
+};
 
   const decQty = (itemId: number) => {
-    let item = localList.find((item : any) => item.NFTid === itemId)
-    if (item.count < 1){
-      localList.filter((item: any) => item.NFTid !== itemId)
-      localStorage.setItem('cart', JSON.stringify(localList))
-    } else
-       item.count -= 1
-       localStorage.setItem('cart', JSON.stringify(localList))
+    let updatedList = props.cartState.filter((item : any) => {
+      if (item.NFTid === itemId) {
+        if (item.count > 1) {
+          item.count -= 1;
+          return item;
+        }
+      } else {
+        return item;
+      }      
+    })!;
+
+    props.setCart(updatedList)
+    localStorage.setItem('cart', JSON.stringify(updatedList))
   };
   
   const handleClose = () => props.setModalState(false);
@@ -54,13 +78,13 @@ function CartModal(props: CartProps) {
   const [collectionList, setCollectionList] = useState(collectionData);
 
   return (
-    <div>
+    <div> 
       <Modal
         open={props.modalState}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
-      >
+      > 
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h1">
             Your cart
@@ -75,7 +99,7 @@ function CartModal(props: CartProps) {
             sx={{ mt: 2}}
             component="div"
           >
-            {localList?.map((item: any, index: number) => (
+            {props.cartState.map((item: any, index: number) => (
               <div style={nftContainer} key={index}>
                 <div style={iconCol}>
                   <img style={iconStyle} srcSet={item.image} alt="test" />
@@ -97,7 +121,12 @@ function CartModal(props: CartProps) {
                 </div>
               </div>
             ))}
-            <button onClick={clearCart}>EMPTY YOUR CART</button>
+            <div style={cartButton}>
+            <Button style={buttonStyle} variant="contained" onClick={clearCart}>Empty your cart</Button>
+            <Link to={'/Checkout'}>
+            <Button style={buttonStyle} variant="contained">Proceed to checkout</Button>
+            </Link>
+            </div>
           </Typography>
         </Box>
       </Modal>
@@ -147,7 +176,13 @@ const priceCol: CSSProperties = {
 
 const priceStyle: CSSProperties = {
 
-}
+};
+
+const buttonStyle: CSSProperties = {
+  fontWeight: "bold",
+  background: "#00214c",
+  color: 'white'
+};
 
 const nftContainer: CSSProperties = {
   display: "flex",
@@ -155,6 +190,12 @@ const nftContainer: CSSProperties = {
   gap: "1rem",
   width: '100%',
   margin: '.5rem 0'
+};
+
+const cartButton: CSSProperties = {
+  display: "flex",
+  flexDirection: 'row',
+  gap: "1rem",
 };
 
 const iconStyle: CSSProperties = {

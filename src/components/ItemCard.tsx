@@ -25,6 +25,8 @@ interface cardInfo {
   };
   nftHeader? : string;
   collectionName? : string;
+  setCart : any
+  cartState : any
 }
 
 function ItemCard(props: cardInfo) {
@@ -97,7 +99,7 @@ function ItemCard(props: cardInfo) {
               <Button
                 style={buttonStyle}
                 variant="contained"
-                onClick={() => addCart(props.nftCard)}
+                onClick={() => addCart(props.setCart, props.cartState, props.nftCard)}
               >
                 BUY NOW
               </Button>

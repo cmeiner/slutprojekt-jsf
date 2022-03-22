@@ -9,22 +9,17 @@ interface testNft {
 }
 
 
-export function addCart(item?: testNft) {
-  if (!localStorage.getItem("cart")) {
-    let CartList = [item];
-    localStorage.setItem("cart", JSON.stringify(CartList));
-  } else {
-    let CartList = JSON.parse(localStorage.getItem("cart")!);
+export function addCart(setCart : any, cart: any, item: testNft | undefined) {
+    let CartList = cart || [];
     let foundItem = CartList.find((listedItem : any) => listedItem.NFTid === item?.NFTid)
     if(foundItem) {
       foundItem.count += 1
       console.log('Finns redan')
     }else {
-
       CartList.push(item);
     }
+    setCart(CartList)
     localStorage.setItem("cart", JSON.stringify(CartList));
-  }
 }
 
 export default addCart;
