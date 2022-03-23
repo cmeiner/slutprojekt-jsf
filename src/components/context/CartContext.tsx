@@ -9,6 +9,7 @@ interface CartContext {
   incQty: (itemID: number) => void;
   decQty: (itemID: number) => void;
   clearCart: () => void;
+  totalPrice: number;
 }
 
 export const CartContext = createContext<CartContext>({
@@ -17,11 +18,13 @@ export const CartContext = createContext<CartContext>({
   incQty: (itemID: number) => {},
   decQty: (itemID: number) => {},
   clearCart: () => {},
+  totalPrice: 1,
 });
 
 export const CartProvider: FC = (props) => {
   let localData = localStorage.getItem('cart')
   const [cart, setCart] = useState<NftItem[]>(localData ? JSON.parse(localData) : []);
+  const [totalPrice, setTotalPrice] = useState(cart.reduce((sum, nft) => sum + nft.price * nft.count, 0))
 
   const addProduct = (item?: NftItem) => {
     let NewProductList = cart;
@@ -43,6 +46,7 @@ export const CartProvider: FC = (props) => {
       );
     }
     setCart(NewProductList);
+    setTotalPrice(cart.reduce((sum, nft) => sum + nft.price * nft.count, 0))
     localStorage.setItem('cart', JSON.stringify(NewProductList))
   };
 
@@ -54,6 +58,7 @@ export const CartProvider: FC = (props) => {
         return item;
     });
     setCart(updatedList)
+    setTotalPrice(cart.reduce((sum, nft) => sum + nft.price * nft.count, 0))
     localStorage.setItem('cart', JSON.stringify(updatedList))
   };
   
@@ -69,16 +74,18 @@ export const CartProvider: FC = (props) => {
       }
     })!;
     setCart(updatedList)
+    setTotalPrice(cart.reduce((sum, nft) => sum + nft.price * nft.count, 0))
     localStorage.setItem('cart', JSON.stringify(updatedList))
   };
 
   const clearCart = () => {
     setCart([])
+    setTotalPrice(0)
     localStorage.setItem('cart', JSON.stringify([]))
-  }
+  };
 
   return (
-    <CartContext.Provider value={{ cart, addProduct, incQty, decQty, clearCart }}>
+    <CartContext.Provider value={{ cart, addProduct, incQty, decQty, clearCart, totalPrice }}>
       {props.children}
     </CartContext.Provider>
   );

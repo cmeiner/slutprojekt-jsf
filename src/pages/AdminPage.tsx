@@ -14,10 +14,10 @@ function AdminPage() {
     return (
         <div>
             {collections.map((collection, index) => (
-                <div key={index}>
+                <div key={index}> {/* DETTA ÄR COLLECTION DIVEN */}
                     <h1>{collection.name}</h1>
                     <p>Innehåller {collection.NFTS.length} nfter</p>
-                    {collection.NFTS.map((nft, index) => (
+                    {collection.NFTS.map((nft, index) => ( /* DETTA ÄR NFTERNA */
                         <div key={index}>{nft.description}<FontAwesomeIcon  icon={faRemove} onClick={() => removeNft(collection.id, nft.NFTid)} /></div>
                     ))}
                     <FontAwesomeIcon icon={faEdit}  />

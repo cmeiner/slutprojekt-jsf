@@ -76,18 +76,24 @@ export const ProductProvider: FC = (props) => {
         // collectionID: number DETTA BEHÖVS NOG EJ OM VI KOLLAR VILKEN KOLLEKTION MAN ÄR INNE OCH REDIGERAR
     }
     const removeNft = (collectionID : number, nftID : number) => {
-        let itemIndex = collections.findIndex((collection : any) => collection.id === collectionID)
+        let updatedList = collections.map((collection : collectionDataItem) => {
+            if (collection.id === collectionID) {
+                collection.NFTS = collection.NFTS.filter((nft : NftItem) => nft.NFTid !== nftID)
+            }
+            return collection
+        });
 
-        let updatedList = collections[itemIndex].NFTS.filter((nft : any) => nft.NFTid !== nftID)
+          setCollections(updatedList)
+        // let itemIndex = collections.findIndex((collection : any) => collection.id === collectionID)
+
+        // let updatedList = collections[itemIndex].NFTS.filter((nft : any) => nft.NFTid !== nftID)
+
+        // let newList = collections
+        // newList[itemIndex].NFTS = [...updatedList]
 
 
-        console.log(itemIndex)
+        // setCollections(newList) // hihihdsds
 
-        // PÅGUD JA VET INTE VA JAG SKA GÖRA WALLAL
-//e
-        // setCollections(updatedList)
-
-        // collectionID: number DETTA BEHÖVS NOG EJ OM VI KOLLAR VILKEN KOLLEKTION MAN ÄR INNE OCH REDIGERAR
     }
 
     return (

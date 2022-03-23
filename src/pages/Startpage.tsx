@@ -98,8 +98,7 @@ const flexItems: CSSProperties = {
   flexWrap: "wrap",
   gap: "2rem",
   justifyContent: "space-around",
-padding: '2rem'
-
+  padding: '2rem'
 };
 
 const startPageWelcomeText: CSSProperties = {
