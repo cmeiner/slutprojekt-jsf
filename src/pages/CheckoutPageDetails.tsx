@@ -58,10 +58,10 @@ function CheckoutPageDetails(props: Props) {
       firstName: "",
       lastName: "",
       email: "",
-      number: 0,
+      number: "",
       deliveryMethod: "",
       address: "",
-      zipCode: 0,
+      zipCode: "",
       city: "",
       country: "",
     },
@@ -187,14 +187,16 @@ function CheckoutPageDetails(props: Props) {
                     onChange={handleChange}
                   >
                     <MenuItem value={"PostNordOmbud"}>
-                      Postnord ombud - Fri frakt!
+                      Postnord - Postal agent - Free!
                     </MenuItem>
-                    <MenuItem value={"DHLOmbud"}>DHL Ombud - 29kr </MenuItem>
+                    <MenuItem value={"DHLOmbud"}>
+                      DHL - Postal agent - 29kr{" "}
+                    </MenuItem>
                     <MenuItem value={"PostNordHem"}>
-                      Postnord - Hemleverans dag/kväll - 49kr
+                      Postnord - Home delivery day/evening - 49kr
                     </MenuItem>
                     <MenuItem value={"DHLExpress"}>
-                      DHL express - hemleverans inom 24h - 100kr
+                      DHL express - Home delivery within 24h - 100kr
                     </MenuItem>
                   </Select>
                 </FormControl>

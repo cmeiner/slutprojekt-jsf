@@ -21,13 +21,10 @@ interface NftItem {
   description: string;
 }
 
-
 function Layout() {
   const [modalState, setModalState] = useState(false);
   const [searchFocused, setSearchFocused] = useState(false);
   const [deliveryInfo, setDeliveryInfo] = useState(DeliveryDataInfoObject);
-
-  
   return (
     <div>
       <CartProvider>
@@ -63,7 +60,23 @@ function Layout() {
             />
             <Route
               path="/PaymentPage"
-              element={<PaymentPage deliveryInfo={deliveryInfo} />}
+              element={
+                <PaymentPage
+                  deliveryInfo={deliveryInfo}
+                  invoiceDetails={InvoiceDetails}
+                  setInvoiceDetails={setInvoiceDetails}
+                />
+              }
+            />
+
+            <Route
+              path="/PurchaseComplete"
+              element={
+                <PurchaseComplete
+                  deliveryInfo={deliveryInfo}
+                  invoiceDetails={InvoiceDetails}
+                />
+              }
             />
           </Routes>
         </div>

@@ -5,8 +5,8 @@ export function getDelivery(selectedOption: string) {
       return {
         image: "/assets/images/Icons/DHL.png",
         description:
-          "Din beställning kommer att levereras till närmaste ombud baserat på din adress. Du kommer få en AVI på sms när paketet levererats.",
-        time: ` Beräknat leveransdatum: 2022-${date.getMonth() + 1}-${
+          "Your order will be delivered to the nearest postal agent based on your address. You will receive an AVI by text message when the package has been delivered.",
+        time: ` Estimated delivery date: 2022-${date.getMonth() + 1}-${
           date.getDate() + 2
         }`,
       };
@@ -14,8 +14,8 @@ export function getDelivery(selectedOption: string) {
     case "DHLExpress": {
       return {
         image: "/assets/images/Icons/DHL.png",
-        description: "Hemleverans inom 24 timmar",
-        time: `Beräknat leveransdatum: 2022-${date.getMonth() + 1}-${
+        description: "Home delivery within 24 hours",
+        time: `Estimated delivery date: 2022-${date.getMonth() + 1}-${
           date.getDate() + 1
         }`,
       };
@@ -23,9 +23,8 @@ export function getDelivery(selectedOption: string) {
     case "PostNordHem": {
       return {
         image: "/assets/images/Icons/postNord.png",
-        description:
-          "Hemleverans nästkommande dag. Levereras mellan kockan 10-21",
-        time: `Beräknat leveransdatum: 2022-${date.getMonth() + 1}-${
+        description: "Home delivery next day. Delivered between 10AM-9PM",
+        time: `Estimated delivery date: 2022-${date.getMonth() + 1}-${
           date.getDate() + 1
         }`,
       };
@@ -34,8 +33,8 @@ export function getDelivery(selectedOption: string) {
       return {
         image: "/assets/images/Icons/postNord.png",
         description:
-          "Din beställning kommer att levereras till närmaste postombud baserat på din adress. Du kommer få en AVI på sms när paketet levererats.",
-        time: `Beräknat leveransdatum: 2022-${date.getMonth() + 1}-${
+          "Your order will be delivered to the nearest postal agent based on your address. You will receive an AVI by text message when the package has been delivered.",
+        time: `Estimated delivery date: 2022-${date.getMonth() + 1}-${
           date.getDate() + 2
         }`,
       };

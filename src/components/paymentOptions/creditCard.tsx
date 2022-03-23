@@ -1,31 +1,50 @@
 import { TextField, Button } from "@mui/material";
 import { useFormik } from "formik";
 import { CSSProperties } from "react";
+import { DeliveryDataInfo } from "../../data/collections/deliveryData";
 import * as yup from "yup";
+
+interface deliveryInfo {
+  deliveryInfo: DeliveryDataInfo;
+}
 
 interface Values {
   CardNumber: number;
-  ExpMonth: number;
-  ExpYear: number;
+  ExpMonth: string;
+  ExpYear: string;
   Cvc: number;
   CardHolder: string;
 }
 
 const validationSchema = yup.object({
-  CardNumber: yup.number().required("Enter number credit card number").min(16),
-  ExpMonth: yup.number().required("Enter expiration month").min(2).max(2),
-  ExpYear: yup.number().required("Enter expiration year").min(2),
+  CardNumber: yup.number().required("Enter credit card number").min(16),
   Cvc: yup.number().required("Enter CVC number").min(3),
-  CardHolder: yup.string().required("Enter card holders name"),
+  CardHolder: yup
+    .string()
+    .typeError("Not a name")
+    .matches(/([a-ö\s]+$)/, "No numbers in a name unless you are Elons son")
+    .required("Enter card holders name"),
+  ExpMonth: yup
+    .string()
+    .typeError("Not a valid expiration date. Example: MM")
+    .max(2, "Not a valid expiration date. Example: MM")
+    .matches(/([0-9]{2})/, "Not a valid expiration date. Example: MM")
+    .required("Expiration date is required"),
+  ExpYear: yup
+    .string()
+    .typeError("Not a valid expiration date. Example: YY")
+    .max(4, "Not a valid expiration date. Example: YY")
+    .matches(/([0-9]{2})/, "Not a valid expiration date. Example: YY")
+    .required("Expiration date is required"),
 });
 
-function CreditCard() {
+function CreditCard(props: deliveryInfo) {
   const formik = useFormik({
     initialValues: {
-      CardNumber: undefined,
-      ExpMonth: undefined,
-      ExpYear: undefined,
-      Cvc: undefined,
+      CardNumber: "",
+      ExpMonth: "",
+      ExpYear: "",
+      Cvc: "",
       CardHolder: "",
     },
     validationSchema: validationSchema,
@@ -108,10 +127,9 @@ function CreditCard() {
         </div>
 
         <Button
-          style={{ marginTop: "1rem" }}
+          style={{ marginTop: "1rem", width: "60%" }}
           color="primary"
           variant="contained"
-          fullWidth
           type="submit"
         >
           Submit
