@@ -2,16 +2,12 @@ import { Box, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import { useFormik } from "formik";
 import { CSSProperties, useState } from "react";
 import PaymentBox from "./paymentBox";
-import {
-  DeliveryDataInfo,
-  InvoiceDataInfo,
-} from "../../../data/collections/deliveryData";
+import { DeliveryDataInfo } from "../../../data/collections/deliveryData";
 import DeliveryInfoTable from "../DeliveryInfoTable";
 
 interface Props {
   deliveryInfo: DeliveryDataInfo;
-  invoiceDetails: InvoiceDataInfo;
-  setInvoiceDetails: any;
+  setDeliveryInfo: any;
 }
 
 // const navigate = useNavigate();
@@ -59,8 +55,7 @@ function PaymentPage(props: Props) {
         <PaymentBox
           paymentOption={paymentOption}
           deliveryInfo={props.deliveryInfo}
-          invoiceDetails={props.invoiceDetails}
-          setInvoiceDetails={props.setInvoiceDetails}
+          setDeliveryInfo={props.setDeliveryInfo}
         />
       </div>
     </div>

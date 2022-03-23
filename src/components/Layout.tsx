@@ -9,17 +9,13 @@ import TestPage from "../pages/TestPage";
 import CartModal from "./CartModal";
 import Header from "./Header";
 import PaymentPage from "./checkoutComponents/payment/PaymentPage";
-import {
-  DeliveryDataInfoObject,
-  InvoiceDataInfoObject,
-} from "../data/collections/deliveryData";
+import { DeliveryDataInfoObject } from "../data/collections/deliveryData";
 import PurchaseComplete from "../pages/PurchaseComplete";
 
 function Layout() {
   const [modalState, setModalState] = useState(false);
   const [searchFocused, setSearchFocused] = useState(false);
   const [deliveryInfo, setDeliveryInfo] = useState(DeliveryDataInfoObject);
-  const [InvoiceDetails, setInvoiceDetails] = useState(InvoiceDataInfoObject);
   return (
     <div>
       <BrowserRouter>
@@ -47,8 +43,6 @@ function Layout() {
                 <CheckoutPageDetails
                   deliveryInfo={deliveryInfo}
                   setDeliveryInfo={setDeliveryInfo}
-                  invoiceDetails={InvoiceDetails}
-                  setInvoiceDetails={setInvoiceDetails}
                 />
               }
             />
@@ -57,20 +51,14 @@ function Layout() {
               element={
                 <PaymentPage
                   deliveryInfo={deliveryInfo}
-                  invoiceDetails={InvoiceDetails}
-                  setInvoiceDetails={setInvoiceDetails}
+                  setDeliveryInfo={setDeliveryInfo}
                 />
               }
             />
 
             <Route
               path="/PurchaseComplete"
-              element={
-                <PurchaseComplete
-                  deliveryInfo={deliveryInfo}
-                  invoiceDetails={InvoiceDetails}
-                />
-              }
+              element={<PurchaseComplete deliveryInfo={deliveryInfo} />}
             />
           </Routes>
         </div>

@@ -11,17 +11,12 @@ import { useFormik } from "formik";
 import { CSSProperties, useState } from "react";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
-import {
-  DeliveryDataInfo,
-  InvoiceDataInfo,
-} from "../../data/collections/deliveryData";
+import { DeliveryDataInfo } from "../../data/collections/deliveryData";
 import DeliveryBox from "./shipping/deliveryBox";
 
 interface Props {
   deliveryInfo: DeliveryDataInfo;
   setDeliveryInfo: any;
-  invoiceDetails: InvoiceDataInfo;
-  setInvoiceDetails: any;
 }
 
 interface Values {
@@ -34,6 +29,7 @@ interface Values {
   zipCode: number;
   city: string;
   country: string;
+  paymentMethod: string;
 }
 
 const validationSchema = yup.object({
@@ -69,6 +65,7 @@ function CheckoutForm(props: Props) {
       zipCode: "",
       city: "",
       country: "",
+      paymentMethod: "",
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {

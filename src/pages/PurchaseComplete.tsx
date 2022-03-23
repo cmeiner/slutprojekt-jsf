@@ -1,11 +1,7 @@
-import {
-  DeliveryDataInfo,
-  InvoiceDataInfo,
-} from "../data/collections/deliveryData";
+import { DeliveryDataInfo } from "../data/collections/deliveryData";
 
 interface Props {
   deliveryInfo: DeliveryDataInfo;
-  invoiceDetails: InvoiceDataInfo;
 }
 
 function PurchaseComplete(props: Props) {

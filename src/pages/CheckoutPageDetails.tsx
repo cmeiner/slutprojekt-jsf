@@ -1,16 +1,11 @@
 import { CSSProperties } from "react";
 import CheckoutForm from "../components/checkoutComponents/CheckoutForm";
 
-import {
-  DeliveryDataInfo,
-  InvoiceDataInfo,
-} from "../data/collections/deliveryData";
+import { DeliveryDataInfo } from "../data/collections/deliveryData";
 
 interface Props {
   deliveryInfo: DeliveryDataInfo;
   setDeliveryInfo: any;
-  invoiceDetails: InvoiceDataInfo;
-  setInvoiceDetails: any;
 }
 
 function CheckoutPageDetails(props: Props) {
@@ -21,8 +16,6 @@ function CheckoutPageDetails(props: Props) {
         <CheckoutForm
           deliveryInfo={props.deliveryInfo}
           setDeliveryInfo={props.setDeliveryInfo}
-          invoiceDetails={props.invoiceDetails}
-          setInvoiceDetails={props.setInvoiceDetails}
         />
       </div>
     </div>

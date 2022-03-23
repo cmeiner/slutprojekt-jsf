@@ -3,10 +3,7 @@ import {
   faFileInvoice,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  DeliveryDataInfo,
-  InvoiceDataInfo,
-} from "../../../data/collections/deliveryData";
+import { DeliveryDataInfo } from "../../../data/collections/deliveryData";
 import { CSSProperties } from "react";
 import CreditCard from "./paymentOptions/creditCard";
 import Swish from "./paymentOptions/swish";
@@ -15,8 +12,7 @@ import Invoice from "./paymentOptions/invoice";
 interface Props {
   paymentOption: string;
   deliveryInfo: DeliveryDataInfo;
-  invoiceDetails: InvoiceDataInfo;
-  setInvoiceDetails: any;
+  setDeliveryInfo: any;
 }
 
 function PaymentBox(props: Props) {
@@ -31,7 +27,10 @@ function PaymentBox(props: Props) {
               alt="swish"
             />
           </div>
-          <Swish deliveryInfo={props.deliveryInfo} />
+          <Swish
+            deliveryInfo={props.deliveryInfo}
+            setDeliveryInfo={props.setDeliveryInfo}
+          />
         </div>
       )}
       {props.paymentOption === "card" && (
@@ -39,7 +38,10 @@ function PaymentBox(props: Props) {
           <div style={paymentIcon}>
             <FontAwesomeIcon style={CardImg} icon={faCreditCardAlt} />
           </div>
-          <CreditCard deliveryInfo={props.deliveryInfo} />
+          <CreditCard
+            deliveryInfo={props.deliveryInfo}
+            setDeliveryInfo={props.setDeliveryInfo}
+          />
         </div>
       )}
       {props.paymentOption === "invoice" && (
@@ -49,8 +51,7 @@ function PaymentBox(props: Props) {
           </div>
           <Invoice
             deliveryInfo={props.deliveryInfo}
-            invoiceDetails={props.invoiceDetails}
-            setInvoiceDetails={props.setInvoiceDetails}
+            setDeliveryInfo={props.setDeliveryInfo}
           />
         </div>
       )}
