@@ -3,11 +3,13 @@ import { DeliveryDataInfo } from "../../../../data/collections/deliveryData";
 import * as yup from "yup";
 import { Button, TextField } from "@mui/material";
 import { CSSProperties } from "react";
-import PaymentPopUp from "../PaymentPopUp";
+import PaymentPopup from "../PaymentPopUp";
 
-interface deliveryInfo {
+interface Props {
   deliveryInfo: DeliveryDataInfo;
   setDeliveryInfo: any;
+  popupState: boolean;
+  setPopupState: any;
 }
 
 const validationSchema = yup.object({
@@ -20,7 +22,7 @@ const validationSchema = yup.object({
     .required("Phone number date is required"),
 });
 
-function Swish(props: deliveryInfo) {
+function Swish(props: Props) {
   // const [swishNumber, setSwishNumber] = useState("");
   // const handleChange = (event: any) => {
   //   setSwishNumber(event.target.value);
@@ -31,13 +33,14 @@ function Swish(props: deliveryInfo) {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values));
+      // alert(JSON.stringify(values));
 
       let newObject = props.deliveryInfo;
       newObject.paymentMethod = "Swish";
       props.setDeliveryInfo(newObject);
-
       console.log(props.deliveryInfo);
+      // props.popupState(true)
+
     },
   });
   return (
@@ -64,7 +67,6 @@ function Swish(props: deliveryInfo) {
           Complete purchase
         </Button>
       </form>
-      <PaymentPopUp />
     </div>
   );
 }

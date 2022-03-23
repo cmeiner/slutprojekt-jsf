@@ -1,16 +1,29 @@
-import { CSSProperties } from "react";
+import { CSSProperties, useState } from "react";
 
-function PaymentPopUp() {
+function PaymentPopup() {
+  const [popupState, setPopupState] = useState(false)
+  const [popClass, setPopClass] = useState( "popupClosed" )
+  
+  const handlePopUp = () => {
+    setPopupState(true)
+    setPopClass('popupOpen')
+
+    setTimeout(() => {
+      setPopupState(false)
+      setPopClass('popupClosed')
+    },3000)
+  }
   return (
     <div>
-      <div style={paymentPopUp}>
-        <h2>Taking your money, hang on...</h2>
-      </div>
+        <div className={popClass} style={paymentPopUp}>
+          <h2>Taking your money, hang on...</h2>
+        </div>
+      
     </div>
   );
 }
 
-export default PaymentPopUp;
+export default PaymentPopup;
 
 const paymentPopUp: CSSProperties = {
   position: "absolute",
