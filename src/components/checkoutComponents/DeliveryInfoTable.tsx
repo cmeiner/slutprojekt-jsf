@@ -52,6 +52,12 @@ function DeliveryInfoTable(props: Props) {
               {props.deliveryInfo.deliveryMethod}
             </td>
           </tr>
+          <tr>
+            <td>Payment method</td>
+            <td style={{ paddingLeft: "1rem" }}>
+              {props.deliveryInfo.paymentMethod}
+            </td>
+          </tr>
         </tbody>
       </table>
 
