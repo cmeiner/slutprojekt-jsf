@@ -1,16 +1,13 @@
 import { Box, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import { useFormik } from "formik";
 import { CSSProperties, useState } from "react";
-import PaymentBox from "../components/paymentBox";
-import {
-  DeliveryDataInfo,
-  InvoiceDataInfo,
-} from "../data/collections/deliveryData";
+import PaymentBox from "./paymentBox";
+import { DeliveryDataInfo } from "../../../data/collections/deliveryData";
+import DeliveryInfoTable from "../DeliveryInfoTable";
 
 interface Props {
   deliveryInfo: DeliveryDataInfo;
-  invoiceDetails: InvoiceDataInfo;
-  setInvoiceDetails: any;
+  setDeliveryInfo: any;
 }
 
 // const navigate = useNavigate();
@@ -31,8 +28,13 @@ function PaymentPage(props: Props) {
   return (
     <div style={rootStyle}>
       <div style={checkoutContainer}>
-        <h1>Payment Details</h1>
+        <h2 style={headlineStyle}>Checkout</h2>
+        <div>
+          <DeliveryInfoTable deliveryInfo={props.deliveryInfo} />
+        </div>
+
         <form onSubmit={formik.handleSubmit}>
+          <h2 style={{ textAlign: "center" }}>Payment details</h2>
           <Box style={{ minWidth: 360 }}>
             <FormControl fullWidth>
               <InputLabel id="deliveryOption">Payment option</InputLabel>
@@ -53,8 +55,7 @@ function PaymentPage(props: Props) {
         <PaymentBox
           paymentOption={paymentOption}
           deliveryInfo={props.deliveryInfo}
-          invoiceDetails={props.invoiceDetails}
-          setInvoiceDetails={props.setInvoiceDetails}
+          setDeliveryInfo={props.setDeliveryInfo}
         />
       </div>
     </div>
@@ -80,4 +81,8 @@ const checkoutContainer: CSSProperties = {
   background: "#202225",
   boxShadow: "2px 5px 12px black",
   marginBottom: "2rem",
+};
+
+const headlineStyle: CSSProperties = {
+  fontSize: "2rem",
 };

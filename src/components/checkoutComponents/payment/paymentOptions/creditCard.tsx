@@ -1,11 +1,12 @@
 import { TextField, Button } from "@mui/material";
 import { useFormik } from "formik";
 import { CSSProperties } from "react";
-import { DeliveryDataInfo } from "../../data/collections/deliveryData";
+import { DeliveryDataInfo } from "../../../../data/collections/deliveryData";
 import * as yup from "yup";
 
-interface deliveryInfo {
+interface Props {
   deliveryInfo: DeliveryDataInfo;
+  setDeliveryInfo: any;
 }
 
 interface Values {
@@ -38,7 +39,7 @@ const validationSchema = yup.object({
     .required("Expiration date is required"),
 });
 
-function CreditCard(props: deliveryInfo) {
+function CreditCard(props: Props) {
   const formik = useFormik({
     initialValues: {
       CardNumber: "",
@@ -49,7 +50,10 @@ function CreditCard(props: deliveryInfo) {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values));
+      let newObject = props.deliveryInfo;
+      newObject.paymentMethod = "Card";
+      props.setDeliveryInfo(newObject);
+      console.log(props.deliveryInfo);
     },
   });
   return (
@@ -127,12 +131,12 @@ function CreditCard(props: deliveryInfo) {
         </div>
 
         <Button
-          style={{ marginTop: "1rem", width: "60%" }}
+          style={{ marginTop: "1rem", marginBottom: "1rem", width: "60%" }}
           color="primary"
           variant="contained"
           type="submit"
         >
-          Submit
+          Complete Purchase
         </Button>
       </form>
     </div>

@@ -21,6 +21,7 @@ interface NftItem {
   description: string;
 }
 
+
 function Layout() {
   const [modalState, setModalState] = useState(false);
   const [searchFocused, setSearchFocused] = useState(false);
@@ -63,20 +64,14 @@ function Layout() {
               element={
                 <PaymentPage
                   deliveryInfo={deliveryInfo}
-                  invoiceDetails={InvoiceDetails}
-                  setInvoiceDetails={setInvoiceDetails}
+                  setDeliveryInfo={setDeliveryInfo}
                 />
               }
             />
 
             <Route
               path="/PurchaseComplete"
-              element={
-                <PurchaseComplete
-                  deliveryInfo={deliveryInfo}
-                  invoiceDetails={InvoiceDetails}
-                />
-              }
+              element={<PurchaseComplete deliveryInfo={deliveryInfo} />}
             />
           </Routes>
         </div>

@@ -1,16 +1,13 @@
 import { useFormik } from "formik";
-import { DeliveryDataInfo } from "../../data/collections/deliveryData";
+import { DeliveryDataInfo } from "../../../../data/collections/deliveryData";
 import * as yup from "yup";
 import { Button, TextField } from "@mui/material";
-import { CSSProperties, useState } from "react";
-import { icon } from "@fortawesome/fontawesome-svg-core";
+import { CSSProperties } from "react";
+import PaymentPopUp from "../PaymentPopUp";
 
 interface deliveryInfo {
   deliveryInfo: DeliveryDataInfo;
-}
-
-interface Values {
-  number: number;
+  setDeliveryInfo: any;
 }
 
 const validationSchema = yup.object({
@@ -35,10 +32,16 @@ function Swish(props: deliveryInfo) {
     validationSchema: validationSchema,
     onSubmit: (values) => {
       alert(JSON.stringify(values));
+
+      let newObject = props.deliveryInfo;
+      newObject.paymentMethod = "Swish";
+      props.setDeliveryInfo(newObject);
+
+      console.log(props.deliveryInfo);
     },
   });
   return (
-    <div>
+    <div style={swishForm}>
       <form onSubmit={formik.handleSubmit}>
         <TextField
           style={textFieldStyle}
@@ -52,20 +55,25 @@ function Swish(props: deliveryInfo) {
           helperText={formik.touched.number && formik.errors.number}
         />
         <Button
-          style={{ marginTop: "1rem" }}
+          style={{ marginTop: "1rem", marginBottom: "1rem" }}
           color="primary"
           variant="contained"
           fullWidth
           type="submit"
         >
-          Submit
+          Complete purchase
         </Button>
       </form>
+      <PaymentPopUp />
     </div>
   );
 }
 
 export default Swish;
+
+const swishForm: CSSProperties = {
+  width: "30%",
+};
 
 const textFieldStyle: CSSProperties = {
   marginBottom: "1rem",

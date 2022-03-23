@@ -1,7 +1,7 @@
 export function getDelivery(selectedOption: string) {
   let date = new Date();
   switch (selectedOption) {
-    case "DHLOmbud": {
+    case "DHL agent": {
       return {
         image: "/assets/images/Icons/DHL.png",
         description:
@@ -11,7 +11,7 @@ export function getDelivery(selectedOption: string) {
         }`,
       };
     }
-    case "DHLExpress": {
+    case "DHL express": {
       return {
         image: "/assets/images/Icons/DHL.png",
         description: "Home delivery within 24 hours",
@@ -20,7 +20,7 @@ export function getDelivery(selectedOption: string) {
         }`,
       };
     }
-    case "PostNordHem": {
+    case "Postnord home delivery": {
       return {
         image: "/assets/images/Icons/postNord.png",
         description: "Home delivery next day. Delivered between 10AM-9PM",
@@ -29,7 +29,7 @@ export function getDelivery(selectedOption: string) {
         }`,
       };
     }
-    case "PostNordOmbud": {
+    case "Postnord agent": {
       return {
         image: "/assets/images/Icons/postNord.png",
         description:
