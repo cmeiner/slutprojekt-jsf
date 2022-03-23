@@ -1,21 +1,19 @@
 import { CSSProperties, useState, useEffect } from "react";
+import { useProducts } from "../components/context/ProductContext";
 import ItemCard from "../components/ItemCard";
 import { collectionData } from "../data/collections/collection";
 
 function CollectionPage() {
-  const [collectionList1, setCollectionList1] = useState(collectionData);
-
-  useEffect(() => {
-    setCollectionList1(collectionData);
-  }, []);
-
-  console.log(collectionList1.length);
-
+  const { collections } = useProducts()
+  console.log(collections)
   return (
-    <div style={flexProducts}>
-      {collectionList1.map((collection, index) => (
-        <ItemCard key={index} collectionCard={collection} />
-      ))}
+    <div >
+      <h1 style={collectionsTitle}>Here are all the available collections:</h1>
+      <div style={flexProducts}>
+        {collections.map((collection, index) => (
+          <ItemCard key={index} collectionCard={collection} />
+        ))}
+    </div>
     </div>
   );
 }
@@ -27,5 +25,9 @@ const flexProducts: CSSProperties = {
   justifyContent: "space-around",
   margin: "5rem 0",
 };
+
+const collectionsTitle: CSSProperties = {
+  textAlign: 'center'
+}
 
 export default CollectionPage;

@@ -20,7 +20,6 @@ function Collections() {
   // Sedar passar vi in "nft" då i varje productCard som är NFTSEN :)
 
   useEffect(() => {
-    console.log(collection);
   }, []);
 
   return (
