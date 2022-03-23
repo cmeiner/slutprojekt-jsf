@@ -8,11 +8,12 @@ import StartPage from "../pages/Startpage";
 import TestPage from "../pages/TestPage";
 import CartModal from "./CartModal";
 import Header from "./Header";
-import PaymentPage from "../pages/PaymentPage";
 import { DeliveryDataInfoObject } from "../data/collections/deliveryData";
 import { CartProvider } from "./context/CartContext";
 import { ProductProvider, useProducts } from "./context/ProductContext";
 import AdminPage from "../pages/AdminPage";
+import PurchaseComplete from "../pages/PurchaseComplete";
+import PaymentPage from "./checkoutComponents/payment/PaymentPage";
 
 interface NftItem {
   NFTid: number;
