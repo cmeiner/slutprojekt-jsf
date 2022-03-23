@@ -8,9 +8,19 @@ import StartPage from "../pages/Startpage";
 import TestPage from "../pages/TestPage";
 import CartModal from "./CartModal";
 import Header from "./Header";
-import PaymentPage from "./checkoutComponents/payment/PaymentPage";
+import PaymentPage from "../pages/PaymentPage";
 import { DeliveryDataInfoObject } from "../data/collections/deliveryData";
-import PurchaseComplete from "../pages/PurchaseComplete";
+import { CartProvider } from "./context/CartContext";
+import { ProductProvider, useProducts } from "./context/ProductContext";
+import AdminPage from "../pages/AdminPage";
+
+interface NftItem {
+  NFTid: number;
+  image: string;
+  price: number;
+  description: string;
+}
+
 
 function Layout() {
   const [modalState, setModalState] = useState(false);
@@ -18,6 +28,8 @@ function Layout() {
   const [deliveryInfo, setDeliveryInfo] = useState(DeliveryDataInfoObject);
   return (
     <div>
+      <CartProvider>
+        <ProductProvider>
       <BrowserRouter>
         <Header
           modalState={modalState}
@@ -25,15 +37,16 @@ function Layout() {
           searchBarFocused={searchFocused}
           searchBarFocusOut={() => setSearchFocused(false)}
         />
-        <CartModal modalState={modalState} setModalState={setModalState} />
+        <CartModal modalState={modalState} setModalState={setModalState}/>
         <div style={rootStyle}>
           <Routes>
             <Route path="/" element={<StartPage />} />
+            <Route path="/admin" element={<AdminPage />} />
             <Route path="/CollectionPage" element={<CollectionPage />} />
             <Route path="/Collections/:id" element={<Collections />} />
             <Route
               path="/"
-              element={<StartPage focusHeader={() => setSearchFocused(true)} />}
+              element={<StartPage focusHeader={() => setSearchFocused(true)}/>}
             />
             <Route path="TestPage" element={<TestPage />} />
             <Route path="/Checkout" element={<CheckoutPage />} />
@@ -63,6 +76,8 @@ function Layout() {
           </Routes>
         </div>
       </BrowserRouter>
+      </ProductProvider>
+      </CartProvider>
     </div>
   );
 }

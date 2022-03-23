@@ -5,14 +5,10 @@ import { NftItem } from "../data/collections/collection";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import addCart from "../functions/addCart";
+import { useCart } from "./context/CartContext";
 
 interface cardInfo {
-  nftCard?: {
-    NFTid: number;
-    image: string;
-    price: number;
-    description: string;
-  };
+  nftCard?: NftItem
   collectionCard?: {
     id: number;
     name: string;
@@ -28,7 +24,9 @@ interface cardInfo {
 }
 
 function ItemCard(props: cardInfo) {
- 
+
+  const { addProduct } = useCart()
+  
   const nftInfo = {
     id: props.nftCard?.NFTid,
     buyPrice: props.nftCard?.price,
@@ -97,7 +95,7 @@ function ItemCard(props: cardInfo) {
               <Button
                 style={buttonStyle}
                 variant="contained"
-                onClick={() => addCart(props.nftCard)}
+                onClick={() => addProduct(props.nftCard)}
               >
                 BUY NOW
               </Button>
