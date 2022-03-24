@@ -15,6 +15,7 @@ import { ProductProvider, useProducts } from "./context/ProductContext";
 import AdminPage from "../pages/AdminPage";
 import PurchaseComplete from "../pages/PurchaseComplete";
 
+
 interface NftItem {
   NFTid: number;
   image: string;

@@ -1,5 +1,6 @@
 import { CSSProperties, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useProducts } from "../components/context/ProductContext";
 import ItemCard from "../components/ItemCard";
 import { collectionData, NftItem } from "../data/collections/collection";
 
@@ -8,11 +9,11 @@ function Collections() {
   const { id } = useParams();
 
   // Hämtar hem den orgienlla listan för sedan kunna leta igenom den
-  const [collectionList, setCollectionList] = useState(collectionData);
+  const { collections } = useProducts()
 
   // Letar i colllection listan efter id som matchar URL routerns ID och sedan sätter det objectet till "Collection"
   const [collection, setCollection] = useState(
-    collectionList.find((p) => p.id.toString() === id)
+    collections.find((p) => p.id.toString() === id)
   );
 
   const [nft, setNFT] = useState(collection?.NFTS);
