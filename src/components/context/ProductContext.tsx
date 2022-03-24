@@ -9,7 +9,7 @@ interface ProductContext {
     editCollection: (collection : collectionDataItem) => void
     addNft: (nft : NftItem, collectionID : number) => void,
     removeNft: (collectionID : number, nftID : number) => void,
-    editNft: (collection : collectionDataItem) => void
+    editNft: (nft : NftItem, collectionID? : number) => void
 }
 
 
@@ -22,7 +22,7 @@ const ProductsContext = createContext<ProductContext>({
     editCollection: (collection : collectionDataItem) => {},
     addNft: (nft : NftItem, collectionID : number) => {},
     removeNft: (collectionID : number, nftID : number) => {},
-    editNft: (collection : collectionDataItem) => {},
+    editNft: (nft : NftItem, collectionID? : number) => {},
 })
 
 
@@ -54,13 +54,21 @@ export const ProductProvider: FC = (props) => {
         // NFTS: NftItem[]; GÖTA EN EMPTY ARRAY I BÖRJAN
     }
 
-    const editNft = () => {
-        // NFTid: number; 
-        // image: string;
-        // price: number;
-        // description: string;
-        // count: number;
-        // collectionID: number DETTA BEHÖVS NOG EJ OM VI KOLLAR VILKEN KOLLEKTION MAN ÄR INNE OCH REDIGERAR
+    const editNft = (nft : NftItem, collectionID?: number) => {
+        let updatedList = collections.map((collection : collectionDataItem) => {
+            if (collection.id === collectionID) {
+                collection.NFTS.map((nftItem : NftItem) => {
+                    if(nftItem.NFTid === nft.NFTid) {
+                        nftItem = nft
+                        console.log(nftItem)
+                    }
+                    return nftItem
+                })
+            }
+            return collection
+        });
+        setCollections(updatedList)
+        localStorage.setItem('collections', JSON.stringify(updatedList))
     }
     const addNft = (nft : NftItem, collectionID : number) => {
         let updatedList = collections.map((collection : collectionDataItem) => {

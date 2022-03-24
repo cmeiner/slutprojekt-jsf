@@ -6,6 +6,9 @@ import {
 import { padding } from "@mui/system";
 import { count } from "console";
 import AddNewCollection from "../components/admin/addNewCollection";
+import AddNewNFT from "../components/admin/addNewNFT";
+import EditNFT from "../components/admin/editNFT";
+import { CSSProperties } from "react";
 
 function AdminPage() {
 
@@ -22,21 +25,33 @@ function AdminPage() {
 
 
     return (
-        <div>
-            <h1>LÄGG TILL YTTLIGARE KOLLEKTION</h1>
+        <div style={adminPageLayout}>
+            {/* <h1>LÄGG TILL YTTLIGARE KOLLEKTION</h1>
             <AddNewCollection />
-            <FontAwesomeIcon  icon={faAdd}/>
+            <h2>Bög</h2>
+            <AddNewNFT />
+            <h2>Tutte</h2> */}
+            <EditNFT />
             {collections.map((collection, index) => (
                 
-                <div key={index}> {/* DETTA ÄR COLLECTION DIVEN */}
-                    <h1>{collection.name}</h1>
-                    <p>Innehåller {collection.NFTS.length} nfter</p>
-                    <FontAwesomeIcon  onClick={() => addNft(testNFT /**/ , collection.id)} icon={faAdd}/>
-                    {collection.NFTS.map((nft, index) => ( /* DETTA ÄR NFTERNA */
-                        <div key={index}>{nft.description}<FontAwesomeIcon  icon={faRemove} onClick={() => removeNft(collection.id, nft.NFTid)} /></div>
-                    ))}
+                <div style={adminCollections} key={index}> {/* DETTA ÄR COLLECTION DIVEN */}
+                    <div style={adminCollectionsHeader}>
+                        <h1>{collection.name}</h1>
+                        <p>Innehåller {collection.NFTS.length} NFTS</p>
+                        <FontAwesomeIcon  onClick={() => addNft(testNFT /**/ , collection.id)} icon={faAdd}/>
+                    </div>
+                    <div style={adminCollectionMain}>
+                        {collection.NFTS.map((nft, index) => ( /* DETTA ÄR NFTERNA */
+                            <div style={adminAddStyle} key={index}>
+                                {nft.price}
+                                <img style={adminImageStyle} alt="" srcSet={nft.image} />
+                                {nft.description}<FontAwesomeIcon  icon={faRemove} onClick={() => removeNft(collection.id, nft.NFTid)} /></div>
+                        ))}
+                    </div>
+                    <div style={adminCollectionFooter}>
                     <FontAwesomeIcon icon={faEdit}  />
                     <FontAwesomeIcon icon={faRemove}  onClick={ () => removeCollection(collection.id) } />
+                    </div>
                 </div>
             ))}
         </div>
@@ -44,4 +59,55 @@ function AdminPage() {
     )
 }
 
-export default AdminPage
+export default AdminPage;
+
+const adminPageLayout: CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+
+};
+
+const adminCollections: CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column'
+
+};
+
+const adminCollectionsHeader: CSSProperties = {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: '1rem'
+
+};
+
+const adminAddStyle: CSSProperties = {
+    display: 'flex',
+    gap: '1rem',
+    alignItems: 'center',
+    flexDirection: 'column'
+
+};
+
+const adminAllCollections: CSSProperties = {
+    display: 'flex',
+
+};
+
+const adminImageStyle: CSSProperties = {
+    width: '5rem'
+
+};
+
+const adminCollectionMain: CSSProperties = {
+    display: 'flex',
+    gap: '1rem'
+
+};
+
+const adminCollectionFooter: CSSProperties = {
+    display: 'flex',
+    gap: '1rem'
+
+};

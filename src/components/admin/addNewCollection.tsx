@@ -41,8 +41,9 @@ function AddNewCollection () {
       NFTS: [],
         }
       addCollection(newCollection)
-          
-        },
+        formik.resetForm()
+    },
+     
     });
     return (
     <div>
@@ -54,6 +55,7 @@ function AddNewCollection () {
                     <TextField
                         style={textFieldStyle}
                         fullWidth
+                        autoComplete="off"
                         id="name"
                         name="name"
                         label="Collection Name"
@@ -67,7 +69,7 @@ function AddNewCollection () {
                     <TextField
                         style={textFieldStyle}
                         fullWidth
-                        
+                        autoComplete="off"
                         id="description"
                         name="description"
                         label="Collection description"
@@ -81,6 +83,7 @@ function AddNewCollection () {
                     <TextField
                         style={textFieldStyle}
                         fullWidth
+                        autoComplete="off"
                         id="productImage"
                         name="productImage"
                         label="Collection Image URL"

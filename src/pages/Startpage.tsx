@@ -25,6 +25,11 @@ function StartPage(startPageProps: any) {
             CHECKOUT
           </Button>
         </Link>
+        <Link style={linkButtonStyle} to="/Admin">
+          <Button style={StyledButton} variant="contained" href="">
+            ADMIN
+          </Button>
+        </Link>
         <div style={startPageWelcomeText}>
           <h2 style={startPageHeadline}>
             Buy extreme NFTs and don't look back!
