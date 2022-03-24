@@ -20,11 +20,6 @@ function StartPage(startPageProps: any) {
   return (
     <div style={rootStyle}>
       <div style={contentContainer}>
-        <Link style={linkButtonStyle} to="/CheckoutDetails">
-          <Button style={StyledButton} variant="contained" href="">
-            CHECKOUT
-          </Button>
-        </Link>
         <div style={startPageWelcomeText}>
           <h2 style={startPageHeadline}>
             Buy extreme NFTs and don't look back!

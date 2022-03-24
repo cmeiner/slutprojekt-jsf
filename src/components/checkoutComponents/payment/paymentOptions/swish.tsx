@@ -4,6 +4,7 @@ import * as yup from "yup";
 import { Button, TextField } from "@mui/material";
 import { CSSProperties } from "react";
 import PaymentPopup from "../PaymentPopUp";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   deliveryInfo: DeliveryDataInfo;
@@ -23,10 +24,7 @@ const validationSchema = yup.object({
 });
 
 function Swish(props: Props) {
-  // const [swishNumber, setSwishNumber] = useState("");
-  // const handleChange = (event: any) => {
-  //   setSwishNumber(event.target.value);
-  // };
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       number: props.deliveryInfo.number,
@@ -39,8 +37,8 @@ function Swish(props: Props) {
       newObject.paymentMethod = "Swish";
       props.setDeliveryInfo(newObject);
       console.log(props.deliveryInfo);
-      // props.popupState(true)
-
+      // props.setPopupState(true);
+      navigate("/PurchaseComplete");
     },
   });
   return (
