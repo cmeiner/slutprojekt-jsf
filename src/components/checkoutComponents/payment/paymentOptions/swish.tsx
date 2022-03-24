@@ -24,6 +24,7 @@ const validationSchema = yup.object({
 });
 
 function Swish(props: Props) {
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       number: props.deliveryInfo.number,
@@ -36,7 +37,8 @@ function Swish(props: Props) {
       newObject.paymentMethod = "Swish";
       props.setDeliveryInfo(newObject);
       console.log(props.deliveryInfo);
-      props.setPopupState(true);
+      // props.setPopupState(true);
+      navigate("/PurchaseComplete");
     },
   });
   return (
