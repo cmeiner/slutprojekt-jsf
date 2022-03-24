@@ -13,8 +13,6 @@ interface ProductContext {
 }
 
 
-
-
 const ProductsContext = createContext<ProductContext>({
     collections: [],
     addCollection: (collection : collectionDataItem) => {},
@@ -57,12 +55,11 @@ export const ProductProvider: FC = (props) => {
     const editNft = (nft : NftItem, collectionID?: number) => {
         let updatedList = collections.map((collection : collectionDataItem) => {
             if (collection.id === collectionID) {
-                collection.NFTS.map((nftItem : NftItem) => {
+                collection.NFTS = collection.NFTS.map((nftItem : NftItem) => {
                     if(nftItem.NFTid === nft.NFTid) {
-                        nftItem = nft
-                        return nftItem
-                    }
-                    console.log(nftItem)
+                        nftItem = nft;                        
+                        return nftItem;
+                    }                    
                     return nftItem
                 })
             }
