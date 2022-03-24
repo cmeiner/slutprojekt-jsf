@@ -60,8 +60,9 @@ export const ProductProvider: FC = (props) => {
                 collection.NFTS.map((nftItem : NftItem) => {
                     if(nftItem.NFTid === nft.NFTid) {
                         nftItem = nft
-                        console.log(nftItem)
+                        return nftItem
                     }
+                    console.log(nftItem)
                     return nftItem
                 })
             }
