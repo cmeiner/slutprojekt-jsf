@@ -4,7 +4,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { DeliveryDataInfo } from "../../../data/collections/deliveryData";
-import { CSSProperties } from "react";
+import { CSSProperties, useState } from "react";
 import CreditCard from "./paymentOptions/creditCard";
 import Swish from "./paymentOptions/swish";
 import Invoice from "./paymentOptions/invoice";
@@ -16,6 +16,8 @@ interface Props {
 }
 
 function PaymentBox(props: Props) {
+  const [popupState, setPopupState] = useState(false)
+  const [popClass, setPopClass] = useState( "popupClosed" )
   return (
     <div style={paymentBox}>
       {props.paymentOption === "swish" && (
@@ -30,6 +32,8 @@ function PaymentBox(props: Props) {
           <Swish
             deliveryInfo={props.deliveryInfo}
             setDeliveryInfo={props.setDeliveryInfo}
+            popupState ={popupState}
+            setPopupState={setPopupState}
           />
         </div>
       )}

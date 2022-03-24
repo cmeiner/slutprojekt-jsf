@@ -80,3 +80,11 @@ code {
 .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
   color: white !important;
 }
+
+.popupOpen {
+  display: block
+}
+
+.popupClosed {
+  display: none
+}

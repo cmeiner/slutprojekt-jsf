@@ -1,24 +1,16 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
 import { CSSProperties } from "react";
-import { NftItem } from "../data/collections/collection";
+import { collectionDataItem, NftItem } from "../data/collections/collection";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import addCart from "../functions/addCart";
 import { useCart } from "./context/CartContext";
+import FlipCard from "./FlipCard";
 
 interface cardInfo {
   nftCard?: NftItem
-  collectionCard?: {
-    id: number;
-    name: string;
-    description: string;
-    volumeTraded: number;
-    floorPrice: number;
-    header: string;
-    productImage: string;
-    NFTS: NftItem[];
-  };
+  collectionCard?: collectionDataItem; 
   nftHeader? : string;
   collectionName? : string;
 }
@@ -88,10 +80,7 @@ function ItemCard(props: cardInfo) {
               </div>
             </div>
             <div style={cardContent}>
-              <img style={productImage} srcSet={nftInfo.image} alt="mainImg" />
-                <div style={descStyle}>
-                  {nftInfo.description}
-                </div>
+               <FlipCard nftCard={props.nftCard}/>
               <Button
                 style={buttonStyle}
                 variant="contained"
@@ -137,7 +126,8 @@ const priceStyle: CSSProperties = {
 const buttonStyle: CSSProperties = {
   fontWeight: "bold",
   background: "#00214c",
-  color: 'white'
+  color: 'white',
+  width: '100%'
 };
 
 const cardHeader: CSSProperties = {
@@ -173,7 +163,8 @@ const descStyle: CSSProperties = {
 const cardContent: CSSProperties = {
   display: "flex",
   flexDirection: "column",
-  justifyContent: "center",
+  alignItems: 'center',
   gap: "1rem",
+  width: '95%',
   padding: ".5rem",
 };
