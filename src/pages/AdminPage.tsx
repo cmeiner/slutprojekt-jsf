@@ -92,7 +92,7 @@ function AdminPage() {
                   onClick={() => removeNft(collection.id, nft.NFTid)}
                 style={removeButton}/>
                 <Button
-                onClick={() => openEditNftModal(nft.NFTid, collection.id)}
+                onClick={() => openEditNftModal(nft, collection.id, collection)}
                 style={editButtonStyle}
                 variant="contained"
                 href=""

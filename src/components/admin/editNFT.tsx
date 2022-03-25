@@ -17,19 +17,13 @@ import { useProducts } from "../context/ProductContext";
 
 function EditNFT () {
 
-  const { collections, editNft, closeEditNftModal, editNftModal, selectedCollectionID, selectedNftID } = useProducts()
+  const { collections, editNft, closeEditNftModal, editNftModal, selectedCollectionID, selectedNftID, selectedNFT, selectedCollection } = useProducts()
   
-  const [selectedCollection, setCollection] = useState(collections.find((collectionItem : collectionDataItem) => selectedCollectionID === collectionItem.id) || {  
-    id: 420,
-    name: "test",
-    description: "test",
-    volumeTraded: 1,
-    floorPrice: 1,
-    header: "test",
-    productImage: "test",
-    NFTS: [],})
+  // const [selectedCollection, setCollection] = useState(collections.find((collectionItem : collectionDataItem) => selectedCollectionID === collectionItem.id))
+  // const [selectedNFT, setSelectedNFT] = useState(collections.find((collectionItem : collectionDataItem) => selectedCollectionID === collectionItem.id)?.NFTS.find((item : NftItem) => item.NFTid === selectedNftID))
+  // const [newObject, setNewObject] = useState({  NFTid: 12, image: "test", price: 12, description: "bollar", count: 12, collectionID: 1})
   
-    const [selectedNFT, setNft] = useState(selectedCollection.NFTS.find((nft : NftItem) => nft.NFTid === selectedNftID) || {  NFTid: 12, image: "test", price: 12, description: "bollar", count: 12, collectionID: 1}) 
+    // const [selectedNFT, setNft] = useState(selectedCollection.NFTS.find((nft : NftItem) => nft.NFTid === selectedNftID) || {  NFTid: 12, image: "test", price: 12, description: "bollar", count: 12, collectionID: 1}) 
 //     const handleCollectionChange = (event: any) => {
     
 //     let collection = collections.find((collectionItem : collectionDataItem) => selectedCollectionID === event.target.value)
@@ -52,13 +46,13 @@ function EditNFT () {
       
     },
     onSubmit: (values) => {
-    let newNft : NftItem = {
-    NFTid: selectedNFT.NFTid,
-    image: values.nftImage,
-    description: values.description,
-    price: values.price,
-    count: 1,
-    collectionID: selectedNFT.collectionID,
+      let newNft : NftItem = {
+      NFTid: selectedNFT.NFTid,
+      image: values.nftImage,
+      description: values.description,
+      price: values.price,
+      count: 1,
+      collectionID: selectedNFT.collectionID,
     }
     editNft(newNft, selectedCollection?.id)
         formik.resetForm();
@@ -72,7 +66,7 @@ function EditNFT () {
                 <div>
                     <form style={formStyle} onSubmit={formik.handleSubmit}>
                         <h3>Edit NFT</h3>
-                        <h3>Editing: {selectedNFT.description}</h3>
+                        <h3>Editing: {selectedNFT?.description}</h3>
                             
                         <div style={textFieldsContainer}>
                         <TextField
