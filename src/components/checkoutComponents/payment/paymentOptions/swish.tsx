@@ -3,7 +3,6 @@ import { DeliveryDataInfo } from "../../../../data/collections/deliveryData";
 import * as yup from "yup";
 import { Button, TextField } from "@mui/material";
 import { CSSProperties } from "react";
-import PaymentPopup from "../PaymentPopUp";
 import { useNavigate } from "react-router-dom";
 
 interface Props {
