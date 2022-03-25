@@ -4,10 +4,12 @@ import { CSSProperties, useState } from "react";
 import PaymentBox from "./paymentBox";
 import { DeliveryDataInfo } from "../../../data/collections/deliveryData";
 import DeliveryInfoTable from "../DeliveryInfoTable";
+import TotalSumWithShipping, { totalSumWithShipping } from "./TotalSumWithShipping";
 
 interface Props {
   deliveryInfo: DeliveryDataInfo;
   setDeliveryInfo: any;
+  deliveryOption: string;
 }
 
 // const navigate = useNavigate();
@@ -31,6 +33,9 @@ function PaymentPage(props: Props) {
         <h2 style={headlineStyle}>Checkout</h2>
         <div>
           <DeliveryInfoTable deliveryInfo={props.deliveryInfo} />
+        </div>
+        <div>
+          <TotalSumWithShipping deliveryInfo={props.deliveryInfo} />
         </div>
 
         <form onSubmit={formik.handleSubmit}>

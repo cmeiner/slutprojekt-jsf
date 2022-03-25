@@ -153,6 +153,7 @@ const adminAddStyle: CSSProperties = {
 
 const adminImageStyle: CSSProperties = {
   width: "90%",
+  maxHeight: '30vh'
 };
 
 const adminCollectionMain: CSSProperties = {

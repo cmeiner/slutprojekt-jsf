@@ -191,18 +191,18 @@ function CheckoutForm(props: Props) {
                     Postnord - Postal agent - Free!
                   </MenuItem>
                   <MenuItem value={"DHL agent"}>
-                    DHL - Postal agent - 29kr{" "}
+                    DHL - Postal agent - 2 ETH {" "}
                   </MenuItem>
                   <MenuItem value={"Postnord home delivery"}>
-                    Postnord - Home delivery day/evening - 49kr
+                    Postnord - Home delivery day/evening - 4 ETH
                   </MenuItem>
                   <MenuItem value={"DHL express"}>
-                    DHL express - Home delivery within 24h - 100kr
+                    DHL express - Home delivery within 24h - 6 ETH
                   </MenuItem>
                 </Select>
               </FormControl>
               <div style={deliveryBox}>
-                <DeliveryBox DeliveryOption={deliveryOption} />
+                <DeliveryBox deliveryOption={deliveryOption} />
               </div>
             </Box>
 
