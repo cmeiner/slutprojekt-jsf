@@ -9,6 +9,7 @@ export function getDelivery(selectedOption: string) {
         time: ` Estimated delivery date: 2022-${date.getMonth() + 1}-${
           date.getDate() + 2
         }`,
+        price: 2
       };
     }
     case "DHL express": {
@@ -18,6 +19,7 @@ export function getDelivery(selectedOption: string) {
         time: `Estimated delivery date: 2022-${date.getMonth() + 1}-${
           date.getDate() + 1
         }`,
+        price: 6
       };
     }
     case "Postnord home delivery": {
@@ -27,6 +29,7 @@ export function getDelivery(selectedOption: string) {
         time: `Estimated delivery date: 2022-${date.getMonth() + 1}-${
           date.getDate() + 1
         }`,
+        price: 4
       };
     }
     case "Postnord agent": {
@@ -37,6 +40,7 @@ export function getDelivery(selectedOption: string) {
         time: `Estimated delivery date: 2022-${date.getMonth() + 1}-${
           date.getDate() + 2
         }`,
+        price: "Free!"
       };
     }
     default: {

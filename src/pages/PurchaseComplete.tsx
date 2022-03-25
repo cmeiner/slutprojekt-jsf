@@ -7,6 +7,7 @@ import { faCoins } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import DeliveryInfoTable from "../components/checkoutComponents/DeliveryInfoTable";
 import GenerateOrderNumber from "../components/checkoutComponents/OrderNumber";
+import TotalSumWithShipping from "../components/checkoutComponents/payment/TotalSumWithShipping";
 
 interface Props {
   deliveryInfo: DeliveryDataInfo;

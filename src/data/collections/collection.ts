@@ -335,7 +335,7 @@ export const collectionData: collectionDataItem[] = [
         NFTid: 31,
         image: "/assets/images/Products/NoccoNFT/BloodOrangeNoccoNFT.png",
         price: 12,
-        description: "Nocco's new and powerful bloodorange flavor",
+        description: "Nocco's new and powerful Blood Orange flavor",
         count: 1,
         collectionID: 6,
       },
