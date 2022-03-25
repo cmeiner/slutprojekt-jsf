@@ -104,7 +104,6 @@ const purchasedItems: CSSProperties = {
 
 const purchasedItemTestCard: CSSProperties = {
   width: "25%",
-  height: "20rem",
   flexWrap: "wrap",
   boxShadow: "2px 4px 12px #0049A9",
   borderRadius: "2rem",

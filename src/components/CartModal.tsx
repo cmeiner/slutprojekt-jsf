@@ -20,18 +20,6 @@ interface CartProps {
   setModalState: any;
 }
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: "44vw",
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
-
 function CartModal(props: CartProps) {
   const { cart, decQty, incQty, clearCart, totalPrice } = useCart();
   const handleClose = () => props.setModalState(false);
@@ -45,7 +33,7 @@ function CartModal(props: CartProps) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box style={boxStyle}>
           <Typography id="modal-modal-title" variant="h6" component="h1">
             Your cart
             <div style={cartHeader}>
@@ -119,6 +107,19 @@ function CartModal(props: CartProps) {
   );
 }
 
+
+const boxStyle: CSSProperties = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  minWidth: "40rem",
+  background: "white",
+  border: "2px solid #000",
+  boxShadow: '24',
+  padding: '4%',
+};
+
 const cartHeader: CSSProperties = {
   display: "flex",
   flexDirection: "row",
@@ -130,6 +131,7 @@ const cartFooter: CSSProperties = {
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-between",
+  flexWrap: 'wrap-reverse',
   gap: "1rem",
   width: "100%",
 };

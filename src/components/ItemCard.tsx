@@ -9,22 +9,21 @@ import { useCart } from "./context/CartContext";
 import FlipCard from "./FlipCard";
 
 interface cardInfo {
-  nftCard?: NftItem
-  collectionCard?: collectionDataItem; 
-  nftHeader? : string;
-  collectionName? : string;
+  nftCard?: NftItem;
+  collectionCard?: collectionDataItem;
+  nftHeader?: string;
+  collectionName?: string;
 }
 
 function ItemCard(props: cardInfo) {
+  const { addProduct } = useCart();
 
-  const { addProduct } = useCart()
-  
   const nftInfo = {
     id: props.nftCard?.NFTid,
     buyPrice: props.nftCard?.price,
     image: props.nftCard?.image,
     headerImage: props.nftHeader,
-    collectionName: props.collectionName, 
+    collectionName: props.collectionName,
     description: props.nftCard?.description,
   };
 
@@ -50,7 +49,11 @@ function ItemCard(props: cardInfo) {
               />
             </div>
             <h1 style={priceStyle}>
-              FROM: <FontAwesomeIcon icon={faCoins} style={{paddingLeft: '4rem', paddingRight: '.3rem'}}/>
+              FROM:{" "}
+              <FontAwesomeIcon
+                icon={faCoins}
+                style={{ paddingLeft: "4rem", paddingRight: ".3rem" }}
+              />
               {collectionInfo.floorPrice}
             </h1>
             <Link to={`/Collections/${collectionInfo.id}`}>
@@ -62,33 +65,36 @@ function ItemCard(props: cardInfo) {
         </div>
       )}
       {props.nftCard && (
-        <div>
-          <div style={cardContainer}>
-            <div style={cardHeader}>
-              <img
-                style={collectionImage}
-                srcSet={nftInfo.headerImage}
-                alt="headerImg"
-              />
-              <div style={headerText}>
-                <div style={nameStyle}>{nftInfo.collectionName} #{nftInfo.id}</div>
-                <div style={priceStyle}>
-                  Price: 
-                  <FontAwesomeIcon icon={faCoins} style={{paddingLeft: '4rem', paddingRight: '.3rem'}}/>
-                  {nftInfo.buyPrice}
-                </div>
+        <div style={cardContainer}>
+          <div style={cardHeader}>
+            <img
+              style={collectionImage}
+              srcSet={nftInfo.headerImage}
+              alt="headerImg"
+            />
+            <div style={headerText}>
+              <div style={nameStyle}>
+                {nftInfo.collectionName} #{nftInfo.id}
+              </div>
+              <div style={priceStyle}>
+                Price:
+                <FontAwesomeIcon
+                  icon={faCoins}
+                  style={{ paddingLeft: "4rem", paddingRight: ".3rem" }}
+                />
+                {nftInfo.buyPrice}
               </div>
             </div>
-            <div style={cardContent}>
-               <FlipCard nftCard={props.nftCard}/>
-              <Button
-                style={buttonStyle}
-                variant="contained"
-                onClick={() => addProduct(props.nftCard)}
-              >
-                BUY NOW
-              </Button>
-            </div>
+          </div>
+          <div style={cardContent}>
+            <FlipCard nftCard={props.nftCard} />
+            <Button
+              style={buttonStyle}
+              variant="contained"
+              onClick={() => addProduct(props.nftCard)}
+            >
+              BUY NOW
+            </Button>
           </div>
         </div>
       )}
@@ -119,15 +125,15 @@ const productImage: CSSProperties = {
 
 const priceStyle: CSSProperties = {
   fontSize: "1rem",
-  display: 'flex',
-  justifyContent: 'space-around'
+  display: "flex",
+  justifyContent: "space-around",
 };
 
 const buttonStyle: CSSProperties = {
   fontWeight: "bold",
   background: "#00214c",
-  color: 'white',
-  width: '100%'
+  color: "white",
+  width: "100%",
 };
 
 const cardHeader: CSSProperties = {
@@ -153,18 +159,18 @@ const collectionImage: CSSProperties = {
 const nameStyle: CSSProperties = {};
 
 const descStyle: CSSProperties = {
-  fontSize: '.8rem',
-  display: 'flex', 
-  justifyContent: 'center',
-  textTransform: 'uppercase',
-  fontWeight: 'bold'
+  fontSize: ".8rem",
+  display: "flex",
+  justifyContent: "center",
+  textTransform: "uppercase",
+  fontWeight: "bold",
 };
 
 const cardContent: CSSProperties = {
   display: "flex",
   flexDirection: "column",
-  alignItems: 'center',
+  alignItems: "center",
   gap: "1rem",
-  width: '95%',
+  width: "95%",
   padding: ".5rem",
 };

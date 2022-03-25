@@ -291,7 +291,7 @@ export const collectionData: collectionDataItem[] = [
         NFTid: 27,
         image: "/assets/images/Products/DCNFT/WonderWomanDCNFT.png",
         price: 12,
-        description: "Princess Diana's NFT that represents truth, justice and equality for all",
+        description: "Diana's truthful and equal NFT",
         count: 1,
         collectionID: 5,
       },

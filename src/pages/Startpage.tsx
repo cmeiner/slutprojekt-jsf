@@ -8,14 +8,12 @@ import { useProducts } from "../components/context/ProductContext";
 
 interface startPageProps {
   focusHeader?: any;
-  cartState : any
-  setCart : any
+  cartState: any;
+  setCart: any;
 }
 
 function StartPage(startPageProps: any) {
-
-  const { collections } = useProducts()
-
+  const { collections } = useProducts();
 
   return (
     <div style={rootStyle}>
@@ -53,15 +51,22 @@ function StartPage(startPageProps: any) {
           </div>
           <div style={flexProducts}>
             {collections.map((collection, index) => (
-              <ItemCard key={index} collectionCard={collection}/>
+              <ItemCard key={index} collectionCard={collection} />
             ))}
           </div>
         </div>
-        <div style={hottestItems}>
-          <h1>HOTTEST ITEMS RIGHT NOW</h1>
+        <div style={hottestStyle}>
+          <div style={hottestTitle}>
+            <h1>HOTTEST ITEMS RIGHT NOW</h1>
+          </div>
           <div style={flexItems}>
             {collections.map((collection, index) => (
-              <ItemCard key={index} nftCard={collection.NFTS[0]} nftHeader={collection?.header} collectionName={collection?.name}/>
+              <ItemCard
+                key={index}
+                nftCard={collection.NFTS[0]}
+                nftHeader={collection?.header}
+                collectionName={collection?.name}
+              />
             ))}
           </div>
         </div>
@@ -83,10 +88,14 @@ const rootStyle: CSSProperties = {
 
 const startPageHeadline: CSSProperties = {
   fontSize: "2rem",
+  textAlign: "center",
+  padding: "0 1rem",
 };
 
 const headlineSubText: CSSProperties = {
   maxWidth: "30rem",
+  textAlign: "center",
+  padding: "0 1rem",
 };
 
 const flexProducts: CSSProperties = {
@@ -94,16 +103,15 @@ const flexProducts: CSSProperties = {
   flexWrap: "wrap",
   gap: "2rem",
   flexDirection: "row-reverse",
-  justifyContent: "space-around",
-  marginTop: "5rem",
+  justifyContent: "space-evenly",
+  margin: "1rem 0",
 };
 
 const flexItems: CSSProperties = {
   display: "flex",
   flexWrap: "wrap",
   gap: "2rem",
-  justifyContent: "space-around",
-  padding: '2rem'
+  justifyContent: "space-evenly",
 };
 
 const startPageWelcomeText: CSSProperties = {
@@ -133,7 +141,7 @@ const StyledButton: CSSProperties = {
   background: "#002f6b",
   margin: "1rem",
   fontSize: "2rem",
-  fontWeight: 'bold'
+  fontWeight: "bold",
 };
 
 const hottestStyle: CSSProperties = {
@@ -142,7 +150,9 @@ const hottestStyle: CSSProperties = {
   alignItems: "center",
 };
 
-const hottestTitle: CSSProperties = {};
+const hottestTitle: CSSProperties = {
+  textAlign: "center",
+};
 
 const hottestItems: CSSProperties = {
   display: "flex",

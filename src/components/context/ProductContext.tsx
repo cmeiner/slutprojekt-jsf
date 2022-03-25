@@ -9,7 +9,17 @@ interface ProductContext {
     editCollection: (collection : collectionDataItem) => void
     addNft: (nft : NftItem, collectionID : number) => void,
     removeNft: (collectionID : number, nftID : number) => void,
-    editNft: (nft : NftItem, collectionID? : number) => void
+    editNft: (nft : NftItem, collectionID? : number) => void,
+    selectedCollectionID: number,
+    selectedCollection: {}, 
+    selectedNftID: number,
+    selectedNft: {},
+    addNftModal: boolean,
+    openAddNftModal: (collectionID : number) => void,
+    closeAddNftModal: () => void,
+    editNftModal: boolean,
+    openEditNftModal: (nftID: number, collectionID : number) => void,
+    closeEditNftModal: () => void, 
 }
 
 
@@ -23,12 +33,39 @@ const ProductsContext = createContext<ProductContext>({
     addNft: (nft : NftItem, collectionID : number) => {},
     removeNft: (collectionID : number, nftID : number) => {},
     editNft: (nft : NftItem, collectionID? : number) => {},
+    selectedCollectionID: 0,
+    selectedNftID: 0,
+    addNftModal: false,
+    openAddNftModal: (collectionID : number) => {},
+    closeAddNftModal: () => {},
+    editNftModal: false, 
+    openEditNftModal: (nftID: number, collectionID : number) => {},
+    closeEditNftModal: () => {},
+    selectedCollection: {}, 
+    selectedNft: {},
+
 })
 
-
 export const ProductProvider: FC = (props) => {
-    let localData = localStorage.getItem('collections')
+    let localData = localStorage.getItem('collections');
+    const [addNftModal, setAddNftModal] = useState(false);
+    const [editNftModal, setEditNftModal] = useState(false);
     const [collections, setCollections] = useState(localData ? JSON.parse(localData) : collectionData);
+    const [selectedCollectionID, setSelectedCollectionID] = useState(0);
+    const [selectedNftID, setSelectedNftID] = useState(0);
+    const [selectedCollection, setSelectedCollection] = useState<collectionDataItem>();
+    const [selectedNft, setSelectedNft] = useState<NftItem>();
+
+    const openAddNftModal = (collectionID : number) => {setAddNftModal(true); setSelectedCollectionID(collectionID);}
+    const closeAddNftModal = () => {setAddNftModal(false)}
+
+    const openEditNftModal = (nftID : number, collectionID : number) => {
+        setSelectedCollection(collections.find((collectionItem : collectionDataItem) => collectionItem.id === collectionID));
+        let nft = selectedCollection?.NFTS.find((nftItem : NftItem) => nftItem.NFTid === nftID);
+        setSelectedNft(nft);
+    }
+    const closeEditNftModal = () => {setEditNftModal(false)}
+
 
     const addCollection = (collection : collectionDataItem) => {
         collection.id = collections.length + 1
@@ -94,7 +131,7 @@ export const ProductProvider: FC = (props) => {
     }
 
     return (
-        <ProductsContext.Provider value={{ collections, addCollection, removeCollection, editCollection, addNft, editNft, removeNft }}>
+        <ProductsContext.Provider value={{ collections, addCollection, removeCollection, editCollection, addNft, editNft, removeNft, addNftModal, closeAddNftModal, openAddNftModal, editNftModal, openEditNftModal, closeEditNftModal, selectedCollectionID, selectedNftID, selectedCollection }}>
             {props.children}
         </ProductsContext.Provider>
         
@@ -102,4 +139,3 @@ export const ProductProvider: FC = (props) => {
 };
 
 export const useProducts = () => useContext(ProductsContext)
-
