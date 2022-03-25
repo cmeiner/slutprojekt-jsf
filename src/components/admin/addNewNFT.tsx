@@ -16,11 +16,10 @@ import { useProducts } from "../context/ProductContext";
 
 
 function AddNewNFT () {
-  const { collections, addNft } = useProducts()
-  const [selectedCollectionID, setCollectionID] = useState(0) 
-  const handleChange = (event: any) => {
-    setCollectionID(event.target.value);
-  };
+  const { collections, addNft, addNftModal, closeAddNftModal, selectedCollectionID } = useProducts()
+//   const handleChange = (event: any) => {
+//     setCollectionID(event.target.value);
+//   };
   const formik = useFormik({
     initialValues: {
         collection: 0,
@@ -41,104 +40,117 @@ function AddNewNFT () {
     }
     addNft(newNft, selectedCollectionID)
         formik.resetForm()
+        closeAddNftModal()
+
     },
     });
     return (
     <div>
-        <div style={newCollectionContainer}>
-            <div>
-                <form style={formStyle} onSubmit={formik.handleSubmit}>
-                    <h3>Add new NFT</h3>
-                    <Box style={collectionBox}>
-                        <h2>Select collection</h2>
-                            <FormControl fullWidth>
-                                <InputLabel id="collection">Collection</InputLabel>
-                                <Select
-                                labelId="collection"
-                                id="collection"
-                                value={selectedCollectionID}
-                                label="Select collection"
-                                onChange={handleChange}
-                                >
-                                {collections.map((collection, index) => (
-                                    <MenuItem key={index} value={collection.id}>
-                                        {collection.name}
-                                    </MenuItem>
-                                ))}
-                                </Select>
-                            </FormControl>
-                        </Box>
-                    <div style={textFieldsContainer}>
-                    <TextField
-                        style={textFieldStyle}
+        {addNftModal &&
+                <div style={newCollectionContainer}>
+                <div>
+                    <form style={formStyle} onSubmit={formik.handleSubmit}>
+                        <h3>Add new NFT</h3>
+                        {/* <Box style={collectionBox}>
+                            <h2>Select collection</h2>
+                                <FormControl fullWidth>
+                                    <InputLabel id="collection">Collection</InputLabel>
+                                    <Select
+                                    labelId="collection"
+                                    id="collection"
+                                    value={selectedCollectionID}
+                                    label="Select collection"
+                                    onChange={handleChange}
+                                    >
+                                    {collections.map((collection, index) => (
+                                        <MenuItem key={index} value={collection.id}>
+                                            {collection.name}
+                                        </MenuItem>
+                                    ))}
+                                    </Select>
+                                </FormControl>
+                            </Box> */}
+                        <div style={textFieldsContainer}>
+                        <TextField
+                            style={textFieldStyle}
+                            fullWidth
+                            autoComplete="off"
+                            id="NFTid"
+                            name="NFTid"
+                            label="NFT ID"
+                            value={formik.values.NFTid}
+                            onChange={formik.handleChange}
+                            error={
+                            formik.touched.NFTid && Boolean(formik.errors.NFTid)
+                            }
+                            helperText={formik.touched.NFTid && formik.errors.NFTid}
+                        />
+                        <TextField
+                            style={textFieldStyle}
+                            fullWidth
+                            autoComplete="off"
+                            id="nftImage"
+                            name="nftImage"
+                            label="NFT image URL"
+                            value={formik.values.nftImage}
+                            onChange={formik.handleChange}
+                            error={
+                            formik.touched.nftImage && Boolean(formik.errors.nftImage)
+                            }
+                            helperText={formik.touched.nftImage && formik.errors.nftImage}
+                        />
+                        <TextField
+                            style={textFieldStyle}
+                            fullWidth
+                            autoComplete="off"
+                            id="description"
+                            name="description"
+                            label="NFT description"
+                            value={formik.values.description}
+                            onChange={formik.handleChange}
+                            error={
+                            formik.touched.description && Boolean(formik.errors.description)
+                            }
+                            helperText={formik.touched.description && formik.errors.description}
+                        />
+                        <TextField
+                            style={textFieldStyle}
+                            fullWidth
+                            autoComplete="off"
+                            id="price"
+                            name="price"
+                            label="Set NFT price"
+                            value={formik.values.price}
+                            onChange={formik.handleChange}
+                            error={
+                            formik.touched.price && Boolean(formik.errors.price)
+                            }
+                            helperText={formik.touched.price && formik.errors.price}
+                        />
+                        </div>
+                        <Button
+                        style={{ marginTop: "1rem", width: "40%", marginBottom: "1rem" }}
+                        color="primary"
+                        variant="contained"
                         fullWidth
-                        autoComplete="off"
-                        id="NFTid"
-                        name="NFTid"
-                        label="NFT ID"
-                        value={formik.values.NFTid}
-                        onChange={formik.handleChange}
-                        error={
-                        formik.touched.NFTid && Boolean(formik.errors.NFTid)
-                        }
-                        helperText={formik.touched.NFTid && formik.errors.NFTid}
-                    />
-                    <TextField
-                        style={textFieldStyle}
+                        type="submit"
+                        >
+                        Add new NFT
+                        </Button>
+                        <Button
+                        style={{ marginTop: "1rem", width: "40%", marginBottom: "1rem" }}
+                        color="primary"
+                        variant="contained"
                         fullWidth
-                        autoComplete="off"
-                        id="nftImage"
-                        name="nftImage"
-                        label="NFT image URL"
-                        value={formik.values.nftImage}
-                        onChange={formik.handleChange}
-                        error={
-                        formik.touched.nftImage && Boolean(formik.errors.nftImage)
-                        }
-                        helperText={formik.touched.nftImage && formik.errors.nftImage}
-                    />
-                    <TextField
-                        style={textFieldStyle}
-                        fullWidth
-                        autoComplete="off"
-                        id="description"
-                        name="description"
-                        label="NFT description"
-                        value={formik.values.description}
-                        onChange={formik.handleChange}
-                        error={
-                        formik.touched.description && Boolean(formik.errors.description)
-                        }
-                        helperText={formik.touched.description && formik.errors.description}
-                    />
-                    <TextField
-                        style={textFieldStyle}
-                        fullWidth
-                        autoComplete="off"
-                        id="price"
-                        name="price"
-                        label="Set NFT price"
-                        value={formik.values.price}
-                        onChange={formik.handleChange}
-                        error={
-                        formik.touched.price && Boolean(formik.errors.price)
-                        }
-                        helperText={formik.touched.price && formik.errors.price}
-                    />
+                        onClick={closeAddNftModal}
+                        >
+                        Close window
+                        </Button>
+                    </form>
                     </div>
-                    <Button
-                    style={{ marginTop: "1rem", width: "40%", marginBottom: "1rem" }}
-                    color="primary"
-                    variant="contained"
-                    fullWidth
-                    type="submit"
-                    >
-                    Add new NFT
-                    </Button>
-                </form>
-                </div>
-            
-        </div>
+                
+            </div> 
+        }
     </div>
     )}
 

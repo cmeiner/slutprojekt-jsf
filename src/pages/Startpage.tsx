@@ -57,7 +57,7 @@ function StartPage(startPageProps: any) {
             ))}
           </div>
         </div>
-        <div style={hottestItems}>
+        <div style={hottestTitle}>
           <h1>HOTTEST ITEMS RIGHT NOW</h1>
           <div style={flexItems}>
             {collections.map((collection, index) => (
@@ -83,10 +83,14 @@ const rootStyle: CSSProperties = {
 
 const startPageHeadline: CSSProperties = {
   fontSize: "2rem",
+  textAlign: 'center',
+  padding: '0 1rem'
 };
 
 const headlineSubText: CSSProperties = {
   maxWidth: "30rem",
+  textAlign: 'center',
+  padding: '0 1rem'
 };
 
 const flexProducts: CSSProperties = {
@@ -95,7 +99,7 @@ const flexProducts: CSSProperties = {
   gap: "2rem",
   flexDirection: "row-reverse",
   justifyContent: "space-around",
-  marginTop: "5rem",
+  marginTop: "1rem",
 };
 
 const flexItems: CSSProperties = {
@@ -142,7 +146,10 @@ const hottestStyle: CSSProperties = {
   alignItems: "center",
 };
 
-const hottestTitle: CSSProperties = {};
+const hottestTitle: CSSProperties = {
+  textAlign: 'center',
+  padding: '0 1rem'
+};
 
 const hottestItems: CSSProperties = {
   display: "flex",
