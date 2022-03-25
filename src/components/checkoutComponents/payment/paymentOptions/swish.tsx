@@ -9,8 +9,8 @@ import { useNavigate } from "react-router-dom";
 interface Props {
   deliveryInfo: DeliveryDataInfo;
   setDeliveryInfo: any;
-  popupState: boolean;
-  setPopupState: any;
+  paymentModalOpen: boolean;
+  setPaymentModal: any;
 }
 
 const validationSchema = yup.object({
@@ -25,6 +25,12 @@ const validationSchema = yup.object({
 
 function Swish(props: Props) {
   const navigate = useNavigate();
+
+  const closeModal = () =>
+    setTimeout(() => {
+      props.setPaymentModal(false);
+      navigate("/PurchaseComplete");
+    }, 5000);
   const formik = useFormik({
     initialValues: {
       number: props.deliveryInfo.number,
@@ -37,8 +43,10 @@ function Swish(props: Props) {
       newObject.paymentMethod = "Swish";
       props.setDeliveryInfo(newObject);
       console.log(props.deliveryInfo);
-      // props.setPopupState(true);
-      navigate("/PurchaseComplete");
+      props.setPaymentModal(true);
+      console.log(props.paymentModalOpen);
+      closeModal();
+      
     },
   });
   return (

@@ -8,6 +8,7 @@ import { CSSProperties, useState } from "react";
 import CreditCard from "./paymentOptions/creditCard";
 import Swish from "./paymentOptions/swish";
 import Invoice from "./paymentOptions/invoice";
+import PaymentModal from "./PaymentModal";
 
 interface Props {
   paymentOption: string;
@@ -16,8 +17,7 @@ interface Props {
 }
 
 function PaymentBox(props: Props) {
-  const [popupState, setPopupState] = useState(false)
-  const [popClass, setPopClass] = useState( "popupClosed" )
+  const [paymentModalOpen, setPaymentModalOpen] = useState(false);
   return (
     <div style={paymentBox}>
       {props.paymentOption === "swish" && (
@@ -32,8 +32,8 @@ function PaymentBox(props: Props) {
           <Swish
             deliveryInfo={props.deliveryInfo}
             setDeliveryInfo={props.setDeliveryInfo}
-            popupState ={popupState}
-            setPopupState={setPopupState}
+            paymentModalOpen={paymentModalOpen}
+            setPaymentModal={setPaymentModalOpen}
           />
         </div>
       )}
@@ -45,6 +45,8 @@ function PaymentBox(props: Props) {
           <CreditCard
             deliveryInfo={props.deliveryInfo}
             setDeliveryInfo={props.setDeliveryInfo}
+            paymentModalOpen={paymentModalOpen}
+            setPaymentModal={setPaymentModalOpen}
           />
         </div>
       )}
@@ -59,6 +61,7 @@ function PaymentBox(props: Props) {
           />
         </div>
       )}
+      {paymentModalOpen === true && <PaymentModal />}
     </div>
   );
 }

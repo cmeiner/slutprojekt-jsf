@@ -7,6 +7,8 @@ import * as yup from "yup";
 interface Props {
   deliveryInfo: DeliveryDataInfo;
   setDeliveryInfo: any;
+  paymentModalOpen: boolean;
+  setPaymentModal: any;
 }
 
 interface Values {
@@ -54,6 +56,7 @@ function CreditCard(props: Props) {
       newObject.paymentMethod = "Card";
       props.setDeliveryInfo(newObject);
       console.log(props.deliveryInfo);
+      props.setPaymentModal(true);
     },
   });
   return (
