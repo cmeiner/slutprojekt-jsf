@@ -34,8 +34,8 @@ function StartPage(startPageProps: any) {
           </h2>
           <p style={headlineSubText}>
             Are you looking for insane NFTs? Do you want to make money quick?
-            You've come to the right place. NFT Heaven is the worlds latest and
-            smallest NFT-website.
+            You've come to the right place. We scoured the internet and handpicked the best NFTS for you! 
+            Enjoy! 
           </p>
         </div>
         <div style={hottestStyle}>

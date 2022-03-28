@@ -29,7 +29,7 @@ function Header(headerProps: any) {
           </Link>
         </div>
         <div style={headerDiv2}> 
-            <Link to="/CollectionPage">
+            <Link style={{textDecoration: "none"}} to="/CollectionPage">
               <Button style={StyledButton} variant="contained" href="">
                 EXPLORE
               </Button>
