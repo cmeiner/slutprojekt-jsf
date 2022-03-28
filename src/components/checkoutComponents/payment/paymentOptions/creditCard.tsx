@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 import { CSSProperties } from "react";
 import { DeliveryDataInfo } from "../../../../data/collections/deliveryData";
 import * as yup from "yup";
+import { useCart } from "../../../context/CartContext";
 
 interface Props {
   deliveryInfo: DeliveryDataInfo;
@@ -42,6 +43,7 @@ const validationSchema = yup.object({
 });
 
 function CreditCard(props: Props) {
+  const { addPurchaseList, cart, clearCart } = useCart()
   const formik = useFormik({
     initialValues: {
       CardNumber: "",
@@ -57,6 +59,8 @@ function CreditCard(props: Props) {
       props.setDeliveryInfo(newObject);
       console.log(props.deliveryInfo);
       props.setPaymentModal(true);
+      addPurchaseList(cart)
+      clearCart()
     },
   });
   return (

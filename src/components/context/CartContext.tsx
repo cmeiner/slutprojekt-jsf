@@ -2,31 +2,64 @@
 
 import { createContext, FC, useContext, useState } from "react";
 import { NftItem } from "../../data/collections/collection";
-
+import { ToastContainer, toast } from 'react-toastify';
+import { DeliveryDataInfo, DeliveryDataInfoObject } from "../../data/collections/deliveryData";
+import { number } from "yup";
+  
 interface CartContext {
+  purchaseList: NftItem[];
   cart: NftItem[];
   addProduct: (item?: NftItem) => void;
   incQty: (itemID: number) => void;
   decQty: (itemID: number) => void;
   clearCart: () => void;
+  addPurchaseList: (list : NftItem[]) => void;
   totalPrice: number;
+  purchaseTotal : number;
+  addPurchaseTotal: (plus: number) => void;
+
 }
 
 export const CartContext = createContext<CartContext>({
+  purchaseList: [],
+  addPurchaseList: (list : NftItem[]) => {},
   cart: [],
   addProduct: (item?: NftItem) => {},
   incQty: (itemID: number) => {},
   decQty: (itemID: number) => {},
   clearCart: () => {},
   totalPrice: 1,
+  purchaseTotal: 1,
+  addPurchaseTotal: (plus : number) => {},
+
 });
 
 export const CartProvider: FC = (props) => {
   let localData = localStorage.getItem('cart')
   const [cart, setCart] = useState<NftItem[]>(localData ? JSON.parse(localData) : []);
+  const [purchaseList, setPurchaseList] = useState<NftItem[]>([])
   const [totalPrice, setTotalPrice] = useState(cart.reduce((sum, nft) => sum + nft.price * nft.count, 0))
+  const [purchaseTotal, setPurchaseTotal] = useState(purchaseList.reduce((sum, nft) => sum + nft.price * nft.count, 0))
+
+  const addPurchaseList = (list : NftItem[]) => {setPurchaseList(list); setPurchaseTotal(totalPrice) }
+
+
+
+  const addPurchaseTotal = (plus : number) => {
+    console.log(plus)
+    // setPurchaseTotal(plus)
+  }
 
   const addProduct = (item?: NftItem) => {
+    toast.success('Item added to cart', { 
+    position: "bottom-left",
+    autoClose: 1500,
+    hideProgressBar: false,
+    closeOnClick: true,
+    draggable: true,
+    progress: undefined,
+    pauseOnHover: false,
+    })
     let NewProductList = cart;
     let foundItem = NewProductList.find(
       (listedItem: any) => listedItem.NFTid === item?.NFTid
@@ -34,6 +67,9 @@ export const CartProvider: FC = (props) => {
     if (foundItem) {
       foundItem.count += 1;
     } else {
+      if(item) {
+        item.count = 1
+      }
       NewProductList.push(
         item || {
           NFTid: 12,
@@ -68,6 +104,8 @@ export const CartProvider: FC = (props) => {
         if (item.count > 1) {
           item.count -= 1;
           return item;
+        }else {
+          item.count = 0
         }
       } else {
         return item;
@@ -85,7 +123,7 @@ export const CartProvider: FC = (props) => {
   };
 
   return (
-    <CartContext.Provider value={{ cart, addProduct, incQty, decQty, clearCart, totalPrice }}>
+    <CartContext.Provider value={{ purchaseTotal, addPurchaseTotal,  addPurchaseList ,purchaseList, cart, addProduct, incQty, decQty, clearCart, totalPrice, }}>
       {props.children}
     </CartContext.Provider>
   );

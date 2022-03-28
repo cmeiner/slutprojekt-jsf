@@ -1,4 +1,3 @@
-import { on } from "events";
 import { CSSProperties, useState } from "react";
 
 function PaymentPopup() {
@@ -6,6 +5,13 @@ function PaymentPopup() {
     <div>
       <div style={paymentPopUp}>
         <h2>Taking your money, hang on...</h2>
+        <img
+              
+              src="/assets/images/Icons/loading.gif"
+              alt="Tar dina pengar"
+        />
+
+        
       </div>
     </div>
   );

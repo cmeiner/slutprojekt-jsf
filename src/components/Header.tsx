@@ -2,7 +2,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { CSSProperties, useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import SearchBar from "./Searchbar";
 import { Button } from "@mui/material";
 
 interface headerProps {
@@ -30,10 +29,11 @@ function Header(headerProps: any) {
           </Link>
         </div>
         <div style={headerDiv2}> 
-          <SearchBar
-            isFocused={searchFocused}
-            focusOut={headerProps.searchBarFocusOut}
-          />
+            <Link style={{textDecoration: "none"}} to="/CollectionPage">
+              <Button style={StyledButton} variant="contained" href="">
+                EXPLORE
+              </Button>
+            </Link>
         </div>
         <div style={headerDiv3}>
           <Button style={headerCartLink} onClick={openModal}>
@@ -51,7 +51,7 @@ const rootStyle: CSSProperties = {
 };
 
 const innerHeader: CSSProperties = {
-  width: "100%",
+  width: "90%",
   height: "10vh",
   display: "flex",
   margin: "0 auto",
@@ -63,11 +63,12 @@ const innerHeader: CSSProperties = {
 const headline: CSSProperties = {
   textDecoration: "none",
   color: "white",
+  fontSize: '5vmin'
 };
 
 const headerCartLink: CSSProperties = {
   color: "white",
-  fontSize: "2.5rem",
+  fontSize: '5vmin'
 };
 
 const headerDiv1: CSSProperties = {
@@ -83,5 +84,11 @@ const headerDiv3: CSSProperties = {
   display: 'flex',
   justifyContent: 'flex-end'
 }
+const StyledButton: CSSProperties = {
+  background: "#00214c",
+  margin: "1rem",
+  fontSize: "3vmin",
+  fontWeight: "bold",
+};
 
 export default Header;
