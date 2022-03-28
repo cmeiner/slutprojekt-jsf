@@ -37,6 +37,8 @@ function ItemCard(props: cardInfo) {
     productImageURL: props.collectionCard?.productImage,
   };
 
+  
+
   return (
     <div>
       {props.collectionCard && (

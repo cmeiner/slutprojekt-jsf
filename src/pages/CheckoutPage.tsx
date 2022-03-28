@@ -155,6 +155,7 @@ const itemDesc: CSSProperties = {
   textAlign: "center",
   marginTop: ".5rem",
   marginBottom: "0",
+  fontSize: "80%",
 };
 
 const buttonStyle: CSSProperties = {
