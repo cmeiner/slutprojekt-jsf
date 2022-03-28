@@ -21,7 +21,6 @@ function TotalSumWithShipping(props: deliveryItem) {
     totalSumWithShipping = totalPrice + 4;
   }
   props.setFinalTotalSum(totalSumWithShipping);
-  console.log("finalTotalSum=", props.finalTotalSum);
 
   return (
     <div>

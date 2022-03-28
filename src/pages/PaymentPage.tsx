@@ -29,7 +29,7 @@ function PaymentPage(props: Props) {
     },
   });
   const [paymentOption, setPaymentOption] = useState("");
-  const [finalTotalSum, setFinalTotalSum] = useState<number>(1);
+  const [finalTotalSum, setFinalTotalSum] = useState(1);
 
   return (
     <div style={rootStyle}>

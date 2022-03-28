@@ -15,8 +15,21 @@ interface Props {
 }
 
 function PurchaseComplete(props: Props) {
-  const { purchaseList } = useCart();
+  const { purchaseList, purchaseTotal } = useCart();
   const { collections } = useProducts();
+
+
+  let totalSumWithShipping = 0;
+
+  if (props.deliveryInfo.deliveryMethod === "DHL agent") {
+    totalSumWithShipping = purchaseTotal + 2;
+  } else if (props.deliveryInfo.deliveryMethod === "DHL express") {
+    totalSumWithShipping = purchaseTotal + 6;
+  } else if (props.deliveryInfo.deliveryMethod === "Postnord home delivery") {
+    totalSumWithShipping = purchaseTotal + 4;
+  }
+
+
   return (
     <div>
       <div style={rootStyle}>
@@ -31,7 +44,7 @@ function PurchaseComplete(props: Props) {
           </div>
           <div style={{ display: "flex" }}>
             <h2 style={{ marginRight: ".1rem" }}>
-              Total price: {props.finalTotalSum}
+              Total price: {totalSumWithShipping}
             </h2>
             <FontAwesomeIcon icon={faCoins} style={{ marginTop: "1.8rem" }} />
           </div>
@@ -149,4 +162,5 @@ const itemDesc: CSSProperties = {
   textAlign: "center",
   marginTop: ".5rem",
   marginBottom: "0",
+  fontSize: "80%",
 };

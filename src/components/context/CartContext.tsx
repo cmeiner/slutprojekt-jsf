@@ -13,6 +13,8 @@ interface CartContext {
   clearCart: () => void;
   addPurchaseList: (list: NftItem[]) => void;
   totalPrice: number;
+  purchaseTotal: number;
+  newPurchaseTotal: (total : number) => void
   // purchaseTotal : number;
   // addPurchaseTotal: (plus: number) => void;
 }
@@ -26,6 +28,8 @@ export const CartContext = createContext<CartContext>({
   decQty: (itemID: number) => {},
   clearCart: () => {},
   totalPrice: 1,
+  purchaseTotal: 1,
+  newPurchaseTotal: (total : number) => {}
   // purchaseTotal: 1,
   // addPurchaseTotal: (plus : number) => {},
 });
@@ -39,12 +43,15 @@ export const CartProvider: FC = (props) => {
   const [totalPrice, setTotalPrice] = useState(
     cart.reduce((sum, nft) => sum + nft.price * nft.count, 0)
   );
+  const [purchaseTotal, setPurchaseTotal] = useState(1)
   // const [purchaseTotal, setPurchaseTotal] = useState(purchaseList.reduce((sum, nft) => sum + nft.price * nft.count, 0))
 
   const addPurchaseList = (list: NftItem[]) => {
     setPurchaseList(list);
     // setPurchaseTotal(totalPrice);
   };
+
+  const newPurchaseTotal = (total : number) => {setPurchaseTotal(total)}
 
   const addProduct = (item?: NftItem) => {
     toast.success("Item added to cart", {
@@ -129,6 +136,8 @@ export const CartProvider: FC = (props) => {
         decQty,
         clearCart,
         totalPrice,
+        purchaseTotal,
+        newPurchaseTotal,
       }}
     >
       {props.children}

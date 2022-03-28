@@ -15,6 +15,9 @@ interface startPageProps {
 function StartPage(startPageProps: any) {
   const { collections } = useProducts();
 
+  let randomList =  collections.sort(() => Math.random() - Math.random()).slice(0, 3)
+
+
   return (
     <div style={rootStyle}>
       <div style={contentContainer}>
@@ -43,7 +46,7 @@ function StartPage(startPageProps: any) {
             <h1>HOTTEST COLLECTIONS RIGHT NOW</h1>
           </div>
           <div style={flexProducts}>
-            {collections.map((collection, index) => (
+            {randomList.map((collection, index) => (
               <ItemCard key={index} collectionCard={collection} />
             ))}
           </div>
@@ -53,7 +56,7 @@ function StartPage(startPageProps: any) {
             <h1>HOTTEST ITEMS RIGHT NOW</h1>
           </div>
           <div style={flexItems}>
-            {collections.map((collection, index) => (
+            {randomList.map((collection, index) => (
               <ItemCard
                 key={index}
                 nftCard={collection.NFTS[0]}

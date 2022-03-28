@@ -3,6 +3,7 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { CSSProperties, useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
+import { useCart } from "./context/CartContext";
 
 interface headerProps {
   searchBarFocused?: any;
@@ -13,6 +14,8 @@ interface headerProps {
 
 function Header(headerProps: any) {
   const [searchFocused, setSearchFocused] = useState(false);
+
+  const {cart} = useCart()
 
   const openModal = () => headerProps.setModalState(true)
 
@@ -37,6 +40,7 @@ function Header(headerProps: any) {
         </div>
         <div style={headerDiv3}>
           <Button style={headerCartLink} onClick={openModal}>
+            <p style={{fontSize: "2.2rem"}}>{cart.length}</p>
             <FontAwesomeIcon icon={faShoppingCart} />
           </Button>
         </div>
