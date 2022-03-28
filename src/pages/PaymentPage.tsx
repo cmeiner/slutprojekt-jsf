@@ -10,6 +10,8 @@ import TotalSumWithShipping from "../components/checkoutComponents/payment/Total
 interface Props {
   deliveryInfo: DeliveryDataInfo;
   setDeliveryInfo: any;
+  finalTotalSum: number;
+  setFinalTotalSum: any;
 }
 
 // const navigate = useNavigate();
@@ -27,7 +29,7 @@ function PaymentPage(props: Props) {
     },
   });
   const [paymentOption, setPaymentOption] = useState("");
-  const [finalTotalSum, setFinalTotalSum] = useState<number>(0)
+  const [finalTotalSum, setFinalTotalSum] = useState<number>(1);
 
   return (
     <div style={rootStyle}>
@@ -37,7 +39,11 @@ function PaymentPage(props: Props) {
           <DeliveryInfoTable deliveryInfo={props.deliveryInfo} />
         </div>
         <div>
-          <TotalSumWithShipping deliveryInfo={props.deliveryInfo} finalTotalSum={finalTotalSum} setFinalTotalSum={setFinalTotalSum} />
+          <TotalSumWithShipping
+            deliveryInfo={props.deliveryInfo}
+            finalTotalSum={finalTotalSum}
+            setFinalTotalSum={setFinalTotalSum}
+          />
         </div>
 
         <form onSubmit={formik.handleSubmit}>

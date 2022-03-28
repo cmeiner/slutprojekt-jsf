@@ -14,7 +14,6 @@ import AdminPage from "../pages/AdminPage";
 import PurchaseComplete from "../pages/PurchaseComplete";
 import PaymentPage from "../pages/PaymentPage";
 
-
 interface NftItem {
   NFTid: number;
   image: string;
@@ -22,61 +21,70 @@ interface NftItem {
   description: string;
 }
 
-
 function Layout() {
   const [modalState, setModalState] = useState(false);
   const [searchFocused, setSearchFocused] = useState(false);
   const [deliveryInfo, setDeliveryInfo] = useState(DeliveryDataInfoObject);
+  const [finalTotalSum, setFinalTotalSum] = useState<number>(1);
   return (
     <div>
       <CartProvider>
         <ProductProvider>
-      <BrowserRouter>
-        <Header
-          modalState={modalState}
-          setModalState={setModalState}
-          searchBarFocused={searchFocused}
-          searchBarFocusOut={() => setSearchFocused(false)}
-        />
-        <CartModal modalState={modalState} setModalState={setModalState}/>
-        <div style={rootStyle}>
-          <Routes>
-            <Route path="/" element={<StartPage />} />
-            <Route path="/admin" element={<AdminPage />} />
-            <Route path="/CollectionPage" element={<CollectionPage />} />
-            <Route path="/Collections/:id" element={<Collections />} />
-            <Route
-              path="/"
-              element={<StartPage focusHeader={() => setSearchFocused(true)}/>}
+          <BrowserRouter>
+            <Header
+              modalState={modalState}
+              setModalState={setModalState}
+              searchBarFocused={searchFocused}
+              searchBarFocusOut={() => setSearchFocused(false)}
             />
-            <Route path="/Checkout" element={<CheckoutPage />} />
-            <Route
-              path="/CheckoutDetails"
-              element={
-                <CheckoutPageDetails
-                  deliveryInfo={deliveryInfo}
-                  setDeliveryInfo={setDeliveryInfo}
+            <CartModal modalState={modalState} setModalState={setModalState} />
+            <div style={rootStyle}>
+              <Routes>
+                <Route path="/" element={<StartPage />} />
+                <Route path="/admin" element={<AdminPage />} />
+                <Route path="/CollectionPage" element={<CollectionPage />} />
+                <Route path="/Collections/:id" element={<Collections />} />
+                <Route
+                  path="/"
+                  element={
+                    <StartPage focusHeader={() => setSearchFocused(true)} />
+                  }
                 />
-              }
-            />
-            <Route
-              path="/PaymentPage"
-              element={
-                <PaymentPage
-                  deliveryInfo={deliveryInfo}
-                  setDeliveryInfo={setDeliveryInfo}
+                <Route path="/Checkout" element={<CheckoutPage />} />
+                <Route
+                  path="/CheckoutDetails"
+                  element={
+                    <CheckoutPageDetails
+                      deliveryInfo={deliveryInfo}
+                      setDeliveryInfo={setDeliveryInfo}
+                    />
+                  }
                 />
-              }
-            />
+                <Route
+                  path="/PaymentPage"
+                  element={
+                    <PaymentPage
+                      deliveryInfo={deliveryInfo}
+                      setDeliveryInfo={setDeliveryInfo}
+                      finalTotalSum={finalTotalSum}
+                      setFinalTotalSum={setFinalTotalSum}
+                    />
+                  }
+                />
 
-            <Route
-              path="/PurchaseComplete"
-              element={<PurchaseComplete deliveryInfo={deliveryInfo} />}
-            />
-          </Routes>
-        </div>
-      </BrowserRouter>
-      </ProductProvider>
+                <Route
+                  path="/PurchaseComplete"
+                  element={
+                    <PurchaseComplete
+                      deliveryInfo={deliveryInfo}
+                      finalTotalSum={finalTotalSum}
+                    />
+                  }
+                />
+              </Routes>
+            </div>
+          </BrowserRouter>
+        </ProductProvider>
       </CartProvider>
     </div>
   );

@@ -1,17 +1,17 @@
-import { CSSProperties, useState } from "react";
+import { CSSProperties } from "react";
 
 function PaymentPopup() {
   return (
     <div>
       <div style={paymentPopUp}>
-        <h2>Taking your money, hang on...</h2>
-        <img
-              
-              src="/assets/images/Icons/loading.gif"
-              alt="Tar dina pengar"
-        />
-
-        
+        <h2 style={{ color: "black" }}>Taking your money, hang on...</h2>
+        <div style={{ width: "100%" }}>
+          <img
+            style={{ width: "100%" }}
+            src="/assets/images/Icons/loading2.gif"
+            alt="Waiting for payment"
+          />
+        </div>
       </div>
     </div>
   );
@@ -24,10 +24,10 @@ const paymentPopUp: CSSProperties = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "44vw",
-  height: "44vh",
-  background: "grey",
+  width: "30%",
+  background: "#C0D6DF",
   border: "2px solid #000",
+  borderRadius: "2rem",
   zIndex: "9001",
   //   boxShadow: 24,
   textAlign: "center",

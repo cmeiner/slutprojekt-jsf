@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 import addCart from "../functions/addCart";
 import { useCart } from "./context/CartContext";
 import FlipCard from "./FlipCard";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface cardInfo {
   nftCard?: NftItem;
@@ -18,8 +18,6 @@ interface cardInfo {
 }
 
 function ItemCard(props: cardInfo) {
-
-
   const { addProduct } = useCart();
 
   const nftInfo = {

@@ -35,7 +35,7 @@ function CartModal(props: CartProps) {
       >
         <Box style={boxStyle}>
           {cart.length === 0 ? (
-            <h1 style={{textAlign: "center"}}>Your cart is empty!</h1>
+            <h1 style={{ textAlign: "center" }}>Your cart is empty!</h1>
           ) : (
             <div>
               <Typography id="modal-modal-title" variant="h6" component="h1">
@@ -87,6 +87,14 @@ function CartModal(props: CartProps) {
                     </div>
                   </div>
                 ))}
+                <div style={priceStyle}>
+                  Your total:{" "}
+                  <FontAwesomeIcon
+                    style={{ marginRight: ".2rem" }}
+                    icon={faCoins}
+                  />
+                  {totalPrice}
+                </div>
                 <div style={cartFooter}>
                   <div style={cartButton}>
                     <Button
@@ -101,10 +109,6 @@ function CartModal(props: CartProps) {
                         Proceed to checkout
                       </Button>
                     </Link>
-                  </div>
-                  <div>
-                    Your total: <FontAwesomeIcon icon={faCoins} />
-                    {totalPrice}
                   </div>
                 </div>
               </Typography>
@@ -123,10 +127,12 @@ const boxStyle: CSSProperties = {
   transform: "translate(-50%, -50%)",
   width: "40%",
   minWidth: "20rem",
-  background: "white",
+  background: "#EAEAEA",
   border: "2px solid #000",
+  borderRadius: "1rem",
   boxShadow: "24",
-  padding: "4%",
+  padding: "2%",
+  // color: "white",
 };
 
 const cartHeader: CSSProperties = {
@@ -140,10 +146,11 @@ const cartHeader: CSSProperties = {
 const cartFooter: CSSProperties = {
   display: "flex",
   flexDirection: "row",
-  justifyContent: "space-between",
+  justifyContent: "center",
   flexWrap: "wrap-reverse",
   gap: "1rem",
   width: "100%",
+  marginTop: "0.7rem",
 };
 
 const iconCol: CSSProperties = {
@@ -181,8 +188,6 @@ const priceCol: CSSProperties = {
   fontSize: "2vmin",
 };
 
-const priceStyle: CSSProperties = {};
-
 const buttonStyle: CSSProperties = {
   fontWeight: "bold",
   background: "#00214c",
@@ -196,6 +201,7 @@ const nftContainer: CSSProperties = {
   gap: "1rem",
   width: "100%",
   margin: ".5rem 0",
+  borderBottom: "1px solid black",
 };
 
 const cartButton: CSSProperties = {
@@ -207,6 +213,14 @@ const cartButton: CSSProperties = {
 const iconStyle: CSSProperties = {
   width: "100%",
   cursor: "pointer",
+};
+
+const priceStyle: CSSProperties = {
+  display: "flex",
+  justifyContent: "center",
+  marginTop: "1rem",
+  fontSize: "1.5rem",
+  alignItems: "center",
 };
 
 export default CartModal;

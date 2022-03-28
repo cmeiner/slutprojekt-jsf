@@ -40,13 +40,22 @@ function CheckoutPage() {
                     }}
                   >
                     <p style={itemDesc}>{item.description}</p>
+                    <p
+                      style={{
+                        textAlign: "center",
+                        marginTop: "20px",
+                        marginBottom: "0",
+                      }}
+                    >
+                      Qty: {item.count}
+                    </p>
                     <div style={{ display: "flex", justifyContent: "center" }}>
-                      <p style={{ marginRight: ".1rem" }}>
-                        Price: {item.price}
+                      <p style={{ margin: "0 .1rem 0 0 " }}>
+                        Price each: {item.price}
                       </p>
                       <FontAwesomeIcon
                         icon={faCoins}
-                        style={{ marginTop: "1.1rem" }}
+                        style={{ marginTop: "0.1rem" }}
                       />
                     </div>
                   </div>
@@ -103,12 +112,19 @@ const purchasedItems: CSSProperties = {
 };
 
 const purchasedItemTestCard: CSSProperties = {
-  width: "25%",
+  minWidth: "15rem",
+  maxWidth: "15rem",
   flexWrap: "wrap",
   boxShadow: "2px 4px 12px #0049A9",
   borderRadius: "2rem",
   display: "flex",
   justifyContent: "center",
+};
+
+const itemCountStyle: CSSProperties = {
+  fontSize: "2rem",
+  color: "red",
+  margin: "0",
 };
 
 const checkoutPic: CSSProperties = {

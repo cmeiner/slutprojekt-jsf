@@ -11,10 +11,11 @@ import DeliveryInfoTableWithPay from "../components/checkoutComponents/DeliveryI
 
 interface Props {
   deliveryInfo: DeliveryDataInfo;
+  finalTotalSum: number;
 }
 
 function PurchaseComplete(props: Props) {
-  const { purchaseList, purchaseTotal } = useCart();
+  const { purchaseList } = useCart();
   const { collections } = useProducts();
   return (
     <div>
@@ -29,7 +30,9 @@ function PurchaseComplete(props: Props) {
             <DeliveryInfoTableWithPay deliveryInfo={props.deliveryInfo} />
           </div>
           <div style={{ display: "flex" }}>
-            <h2 style={{ marginRight: ".1rem" }}>Total price: {purchaseTotal}</h2>
+            <h2 style={{ marginRight: ".1rem" }}>
+              Total price: {props.finalTotalSum}
+            </h2>
             <FontAwesomeIcon icon={faCoins} style={{ marginTop: "1.8rem" }} />
           </div>
           <h2>Your purchase</h2>
@@ -43,7 +46,7 @@ function PurchaseComplete(props: Props) {
                       {
                         collections.find((col) => col.id === item.collectionID)
                           ?.name
-                      } 
+                      }
                       #{item.NFTid}
                     </h3>
                   </div>
@@ -56,17 +59,14 @@ function PurchaseComplete(props: Props) {
                     }}
                   >
                     <p style={itemDesc}>{item.description}</p>
-                    
                   </div>
-                    <div style={{ display: "flex", justifyContent: "center" }}>
-                      <p style={{ marginRight: ".1rem" }}>
-                        Price: {item.price}
-                      </p>
-                      <FontAwesomeIcon
-                        icon={faCoins}
-                        style={{ marginTop: "1.1rem" }}
-                      />
-                    </div>
+                  <div style={{ display: "flex", justifyContent: "center" }}>
+                    <p style={{ marginRight: ".1rem" }}>Price: {item.price}</p>
+                    <FontAwesomeIcon
+                      icon={faCoins}
+                      style={{ marginTop: "1.1rem" }}
+                    />
+                  </div>
                 </div>
               ))}
             </div>
@@ -111,7 +111,8 @@ const purchasedItems: CSSProperties = {
 };
 
 const purchasedItemTestCard: CSSProperties = {
-  width: "25%",
+  minWidth: "15rem",
+  maxWidth: "15rem",
   flexDirection: "column",
   alignItems: "center",
   boxShadow: "2px 4px 12px #0049A9",
