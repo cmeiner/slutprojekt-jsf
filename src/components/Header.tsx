@@ -51,7 +51,7 @@ const rootStyle: CSSProperties = {
 };
 
 const innerHeader: CSSProperties = {
-  width: "100%",
+  width: "90%",
   height: "10vh",
   display: "flex",
   margin: "0 auto",
@@ -63,11 +63,12 @@ const innerHeader: CSSProperties = {
 const headline: CSSProperties = {
   textDecoration: "none",
   color: "white",
+  fontSize: '5vmin'
 };
 
 const headerCartLink: CSSProperties = {
   color: "white",
-  fontSize: "2.5rem",
+  fontSize: '5vmin'
 };
 
 const headerDiv1: CSSProperties = {
@@ -86,7 +87,7 @@ const headerDiv3: CSSProperties = {
 const StyledButton: CSSProperties = {
   background: "#00214c",
   margin: "1rem",
-  fontSize: "1.5rem",
+  fontSize: "3vmin",
   fontWeight: "bold",
 };
 

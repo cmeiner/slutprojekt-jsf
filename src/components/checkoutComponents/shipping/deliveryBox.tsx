@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { getDelivery } from "./deliverySwitch";
 import { CSSProperties } from "react";
-import TotalSumWithShipping from "../payment/TotalSumWithShipping";
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 

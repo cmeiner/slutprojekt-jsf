@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import { CSSProperties } from "react";
 import { DeliveryDataInfo } from "../../../../data/collections/deliveryData";
+import { useCart } from "../../../context/CartContext";
 
 interface Props {
   deliveryInfo: DeliveryDataInfo;
@@ -8,10 +9,13 @@ interface Props {
 }
 
 function Invoice(props: Props) {
+  const { addPurchaseList, cart, clearCart } = useCart()
   const completePayment = (props: Props) => {
     let newObject = props.deliveryInfo;
     newObject.paymentMethod = "Card";
     props.setDeliveryInfo(newObject);
+    addPurchaseList(cart)
+    clearCart()
   };
   return (
     <div style={invoiceInfoBox}>

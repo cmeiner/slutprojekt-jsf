@@ -52,8 +52,42 @@ function DeliveryInfoTable(props: Props) {
               {props.deliveryInfo.deliveryMethod}
             </td>
           </tr>
+          <tr>
+            <td>Payment method</td>
+            <td style={{ paddingLeft: "1rem" }}>
+              {props.deliveryInfo.paymentMethod}
+            </td>
+          </tr>
         </tbody>
       </table>
+
+      {/* <div style={infoBox}>
+        <p>
+          Name -{" "}
+          {props.deliveryInfo.firstName + " " + props.deliveryInfo.lastName}
+        </p>
+      </div>
+      <div style={infoBox}>
+        <p>Email - {props.deliveryInfo.email}</p>
+      </div>
+      <div style={infoBox}>
+        <p>Phone number - {props.deliveryInfo.number}</p>
+      </div>
+      <div style={infoBox}>
+        <p>Address - {props.deliveryInfo.address}</p>
+      </div>
+      <div style={infoBox}>
+        <p>Zipcode - {props.deliveryInfo.zipCode}</p>
+      </div>
+      <div style={infoBox}>
+        <p>City - {props.deliveryInfo.city}</p>
+      </div>
+      <div style={infoBox}>
+        <p>Country - {props.deliveryInfo.country}</p>
+      </div>
+      <div style={infoBox}>
+        <p>Delivery Method - {props.deliveryInfo.deliveryMethod}</p>
+      </div> */}
     </div>
   );
 }

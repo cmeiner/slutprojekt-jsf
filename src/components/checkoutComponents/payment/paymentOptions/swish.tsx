@@ -4,6 +4,7 @@ import * as yup from "yup";
 import { Button, TextField } from "@mui/material";
 import { CSSProperties } from "react";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../../../context/CartContext";
 
 interface Props {
   deliveryInfo: DeliveryDataInfo;
@@ -24,7 +25,7 @@ const validationSchema = yup.object({
 
 function Swish(props: Props) {
   const navigate = useNavigate();
-
+  const { addPurchaseList, cart, clearCart} = useCart()
   const closeModal = () =>
     setTimeout(() => {
       props.setPaymentModal(false);
@@ -36,8 +37,6 @@ function Swish(props: Props) {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      // alert(JSON.stringify(values));
-
       let newObject = props.deliveryInfo;
       newObject.paymentMethod = "Swish";
       props.setDeliveryInfo(newObject);
@@ -45,6 +44,9 @@ function Swish(props: Props) {
       props.setPaymentModal(true);
       console.log(props.paymentModalOpen);
       closeModal();
+      addPurchaseList(cart)
+      clearCart()
+
       
     },
   });

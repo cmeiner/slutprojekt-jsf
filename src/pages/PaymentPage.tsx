@@ -1,10 +1,11 @@
 import { Box, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import { useFormik } from "formik";
 import { CSSProperties, useState } from "react";
-import PaymentBox from "./paymentBox";
-import { DeliveryDataInfo } from "../../../data/collections/deliveryData";
-import DeliveryInfoTable from "../DeliveryInfoTable";
-import TotalSumWithShipping from "./TotalSumWithShipping";
+
+import DeliveryInfoTable from "../components/checkoutComponents/DeliveryInfoTable";
+import { DeliveryDataInfo } from "../data/collections/deliveryData";
+import PaymentBox from "../components/checkoutComponents/payment/paymentBox";
+import TotalSumWithShipping from "../components/checkoutComponents/payment/TotalSumWithShipping";
 
 interface Props {
   deliveryInfo: DeliveryDataInfo;
@@ -26,6 +27,8 @@ function PaymentPage(props: Props) {
     },
   });
   const [paymentOption, setPaymentOption] = useState("");
+  const [finalTotalSum, setFinalTotalSum] = useState<number>(0)
+
   return (
     <div style={rootStyle}>
       <div style={checkoutContainer}>
@@ -34,7 +37,7 @@ function PaymentPage(props: Props) {
           <DeliveryInfoTable deliveryInfo={props.deliveryInfo} />
         </div>
         <div>
-          <TotalSumWithShipping deliveryInfo={props.deliveryInfo} />
+          <TotalSumWithShipping deliveryInfo={props.deliveryInfo} finalTotalSum={finalTotalSum} setFinalTotalSum={setFinalTotalSum} />
         </div>
 
         <form onSubmit={formik.handleSubmit}>

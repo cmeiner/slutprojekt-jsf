@@ -7,14 +7,14 @@ import { faCoins } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import DeliveryInfoTable from "../components/checkoutComponents/DeliveryInfoTable";
 import GenerateOrderNumber from "../components/checkoutComponents/OrderNumber";
-import TotalSumWithShipping from "../components/checkoutComponents/payment/TotalSumWithShipping";
+import DeliveryInfoTableWithPay from "../components/checkoutComponents/DeliveryInfoTableWithPay";
 
 interface Props {
   deliveryInfo: DeliveryDataInfo;
 }
 
 function PurchaseComplete(props: Props) {
-  const { cart, totalPrice } = useCart();
+  const { purchaseList, purchaseTotal } = useCart();
   const { collections } = useProducts();
   return (
     <div>
@@ -26,16 +26,16 @@ function PurchaseComplete(props: Props) {
             <h2 style={{ textAlign: "center", marginTop: "0" }}>
               Delivery details
             </h2>
-            <DeliveryInfoTable deliveryInfo={props.deliveryInfo} />
+            <DeliveryInfoTableWithPay deliveryInfo={props.deliveryInfo} />
           </div>
           <div style={{ display: "flex" }}>
-            <h2 style={{ marginRight: ".1rem" }}>Total price: {totalPrice}</h2>
+            <h2 style={{ marginRight: ".1rem" }}>Total price: {purchaseTotal}</h2>
             <FontAwesomeIcon icon={faCoins} style={{ marginTop: "1.8rem" }} />
           </div>
           <h2>Your purchase</h2>
           <div style={cardContainer}>
             <div style={purchasedItems}>
-              {cart.map((item: NftItem, index: number) => (
+              {purchaseList.map((item: NftItem, index: number) => (
                 <div style={purchasedItemTestCard} key={index}>
                   <div style={cardHeader}>
                     <h3>
@@ -43,8 +43,8 @@ function PurchaseComplete(props: Props) {
                       {
                         collections.find((col) => col.id === item.collectionID)
                           ?.name
-                      }
-                      # {item.NFTid}
+                      } 
+                      #{item.NFTid}
                     </h3>
                   </div>
                   <img alt="test" style={checkoutPic} srcSet={item.image} />
@@ -56,6 +56,8 @@ function PurchaseComplete(props: Props) {
                     }}
                   >
                     <p style={itemDesc}>{item.description}</p>
+                    
+                  </div>
                     <div style={{ display: "flex", justifyContent: "center" }}>
                       <p style={{ marginRight: ".1rem" }}>
                         Price: {item.price}
@@ -65,7 +67,6 @@ function PurchaseComplete(props: Props) {
                         style={{ marginTop: "1.1rem" }}
                       />
                     </div>
-                  </div>
                 </div>
               ))}
             </div>
@@ -111,12 +112,11 @@ const purchasedItems: CSSProperties = {
 
 const purchasedItemTestCard: CSSProperties = {
   width: "25%",
-  height: "20rem",
-  flexWrap: "wrap",
+  flexDirection: "column",
+  alignItems: "center",
   boxShadow: "2px 4px 12px #0049A9",
   borderRadius: "2rem",
   display: "flex",
-  justifyContent: "center",
 };
 
 const checkoutPic: CSSProperties = {
@@ -137,6 +137,7 @@ const cardContainer: CSSProperties = {
 
 const cardHeader: CSSProperties = {
   width: "100%",
+  height: "5rem",
   display: "flex",
   flexDirection: "row",
   justifyContent: "center",

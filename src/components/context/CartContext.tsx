@@ -3,29 +3,52 @@
 import { createContext, FC, useContext, useState } from "react";
 import { NftItem } from "../../data/collections/collection";
 import { ToastContainer, toast } from 'react-toastify';
-
+import { DeliveryDataInfo, DeliveryDataInfoObject } from "../../data/collections/deliveryData";
+import { number } from "yup";
+  
 interface CartContext {
+  purchaseList: NftItem[];
   cart: NftItem[];
   addProduct: (item?: NftItem) => void;
   incQty: (itemID: number) => void;
   decQty: (itemID: number) => void;
   clearCart: () => void;
+  addPurchaseList: (list : NftItem[]) => void;
   totalPrice: number;
+  purchaseTotal : number;
+  addPurchaseTotal: (plus: number) => void;
+
 }
 
 export const CartContext = createContext<CartContext>({
+  purchaseList: [],
+  addPurchaseList: (list : NftItem[]) => {},
   cart: [],
   addProduct: (item?: NftItem) => {},
   incQty: (itemID: number) => {},
   decQty: (itemID: number) => {},
   clearCart: () => {},
   totalPrice: 1,
+  purchaseTotal: 1,
+  addPurchaseTotal: (plus : number) => {},
+
 });
 
 export const CartProvider: FC = (props) => {
   let localData = localStorage.getItem('cart')
   const [cart, setCart] = useState<NftItem[]>(localData ? JSON.parse(localData) : []);
+  const [purchaseList, setPurchaseList] = useState<NftItem[]>([])
   const [totalPrice, setTotalPrice] = useState(cart.reduce((sum, nft) => sum + nft.price * nft.count, 0))
+  const [purchaseTotal, setPurchaseTotal] = useState(purchaseList.reduce((sum, nft) => sum + nft.price * nft.count, 0))
+
+  const addPurchaseList = (list : NftItem[]) => {setPurchaseList(list); setPurchaseTotal(totalPrice) }
+
+
+
+  const addPurchaseTotal = (plus : number) => {
+    console.log(plus)
+    // setPurchaseTotal(plus)
+  }
 
   const addProduct = (item?: NftItem) => {
     toast.success('Item added to cart', { 
@@ -100,7 +123,7 @@ export const CartProvider: FC = (props) => {
   };
 
   return (
-    <CartContext.Provider value={{ cart, addProduct, incQty, decQty, clearCart, totalPrice }}>
+    <CartContext.Provider value={{ purchaseTotal, addPurchaseTotal,  addPurchaseList ,purchaseList, cart, addProduct, incQty, decQty, clearCart, totalPrice, }}>
       {props.children}
     </CartContext.Provider>
   );
