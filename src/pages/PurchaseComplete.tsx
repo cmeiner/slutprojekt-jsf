@@ -111,7 +111,8 @@ const purchasedItems: CSSProperties = {
 };
 
 const purchasedItemTestCard: CSSProperties = {
-  width: "25%",
+  minWidth: "15rem",
+  maxWidth: "15rem",
   flexDirection: "column",
   alignItems: "center",
   boxShadow: "2px 4px 12px #0049A9",

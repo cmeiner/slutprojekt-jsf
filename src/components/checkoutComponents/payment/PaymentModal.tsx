@@ -9,7 +9,7 @@ function PaymentPopup() {
           <img
             style={{ width: "100%" }}
             src="/assets/images/Icons/loading2.gif"
-            alt="Tar dina pengar"
+            alt="Waiting for payment"
           />
         </div>
       </div>
