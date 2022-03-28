@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { getDelivery } from "./deliverySwitch";
 import { CSSProperties } from "react";
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
@@ -13,19 +12,19 @@ function DeliveryBox(props: deliveryItem) {
     <div>
       {props.deliveryOption && (
         <div style={deliveryOptionDescription}>
-          <div style={{display: "flex"}}>
-          <img
-            style={deliveryOptionThumbnail}
-            srcSet={getDelivery(props.deliveryOption).image}
-            alt="ICON"
-          />
-          <p style={deliveryDescription}>
-            {getDelivery(props.deliveryOption).description}
-          </p>
+          <div style={{ display: "flex" }}>
+            <img
+              style={deliveryOptionThumbnail}
+              srcSet={getDelivery(props.deliveryOption).image}
+              alt="ICON"
+            />
+            <p style={deliveryDescription}>
+              {getDelivery(props.deliveryOption).description}
+            </p>
           </div>
-          <div style={{display: "flex", alignItems: "center"}}>
+          <div style={{ display: "flex", alignItems: "center" }}>
             <p> Shipping price: {getDelivery(props.deliveryOption).price} </p>
-            <FontAwesomeIcon icon={faCoins} style={{marginLeft: ".3rem"}} />
+            <FontAwesomeIcon icon={faCoins} style={{ marginLeft: "0.3rem" }} />
           </div>
         </div>
       )}
@@ -48,7 +47,7 @@ const deliveryOptionDescription: CSSProperties = {
 
 const deliveryDescription: CSSProperties = {
   fontSize: ".8rem",
-  display: "flex", 
+  display: "flex",
   alignItems: "center",
 };
 
