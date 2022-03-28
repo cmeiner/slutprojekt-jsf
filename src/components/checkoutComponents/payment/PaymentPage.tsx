@@ -4,12 +4,11 @@ import { CSSProperties, useState } from "react";
 import PaymentBox from "./paymentBox";
 import { DeliveryDataInfo } from "../../../data/collections/deliveryData";
 import DeliveryInfoTable from "../DeliveryInfoTable";
-import TotalSumWithShipping, { totalSumWithShipping } from "./TotalSumWithShipping";
+import TotalSumWithShipping from "./TotalSumWithShipping";
 
 interface Props {
   deliveryInfo: DeliveryDataInfo;
   setDeliveryInfo: any;
-  deliveryOption: string;
 }
 
 // const navigate = useNavigate();

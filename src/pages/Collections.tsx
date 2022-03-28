@@ -24,11 +24,15 @@ function Collections() {
   }, []);
 
   return (
+    <div>
+
     <div style={flexProducts}>
       {nft?.map((nftItem, index) => (
         <ItemCard key={index} nftCard={nftItem} nftHeader={collection?.header} collectionName={collection?.name}/>
-      ))}
+        
+        ))}
     </div>
+        </div>
   );
 }
 

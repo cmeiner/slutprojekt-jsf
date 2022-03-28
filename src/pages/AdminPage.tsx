@@ -8,10 +8,10 @@ import AddNewNFT from "../components/admin/addNewNFT";
 import EditNFT from "../components/admin/editNFT";
 import { CSSProperties } from "react";
 import { autocompleteClasses, Button } from "@mui/material";
-// import EditCollection from "../components/admin/editCollection";
+import EditCollection from "../components/admin/editCollection";
 
 function AdminPage() {
-  const { collections, removeCollection, removeNft, addNft, addCollection, openAddNftModal, openEditNftModal } =
+  const { collections, removeCollection, removeNft, addNft, addCollection, openAddNftModal, openEditNftModal, openEditCollectionModal } =
     useProducts();
   let testNFT = {
     NFTid: 34,
@@ -24,9 +24,10 @@ function AdminPage() {
 
   return (
     <div style={adminPageLayout}>
-      <button onClick={() => localStorage.clear()}>ASD</button>
+      <button onClick={() => localStorage.clear()}>Cleara ditt Localstorage</button>
       <AddNewNFT />
       <EditNFT /> 
+      <EditCollection /> 
       {/* <h1>LÄGG TILL YTTLIGARE KOLLEKTION</h1>
             <AddNewCollection />
             <h2>Bög</h2>
@@ -57,6 +58,7 @@ function AdminPage() {
               style={buttonStyle}
               variant="contained"
               href=""
+              onClick={() => openEditCollectionModal(collection)}
             >
               Edit
             </Button> 

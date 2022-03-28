@@ -51,25 +51,6 @@ function AddNewNFT () {
                 <div>
                     <form style={formStyle} onSubmit={formik.handleSubmit}>
                         <h3>Add new NFT</h3>
-                        {/* <Box style={collectionBox}>
-                            <h2>Select collection</h2>
-                                <FormControl fullWidth>
-                                    <InputLabel id="collection">Collection</InputLabel>
-                                    <Select
-                                    labelId="collection"
-                                    id="collection"
-                                    value={selectedCollectionID}
-                                    label="Select collection"
-                                    onChange={handleChange}
-                                    >
-                                    {collections.map((collection, index) => (
-                                        <MenuItem key={index} value={collection.id}>
-                                            {collection.name}
-                                        </MenuItem>
-                                    ))}
-                                    </Select>
-                                </FormControl>
-                            </Box> */}
                         <div style={textFieldsContainer}>
                         <TextField
                             style={textFieldStyle}

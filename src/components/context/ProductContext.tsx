@@ -16,10 +16,14 @@ interface ProductContext {
     openAddNftModal: (collectionID : number) => void,
     closeAddNftModal: () => void,
     editNftModal: boolean,
+    editCollectionModal: boolean,
     openEditNftModal: (nft : NftItem, collectionID : number, collection : collectionDataItem) => void,
     closeEditNftModal: () => void, 
     selectedCollection: collectionDataItem,
-    selectedNFT: NftItem
+    selectedNFT: NftItem,
+    openEditCollectionModal: (collection: collectionDataItem) => void,
+    closeEditCollectionModal: () => void,
+
 }
 
 
@@ -40,15 +44,19 @@ const ProductsContext = createContext<ProductContext>({
     closeAddNftModal: () => {},
     editNftModal: false, 
     openEditNftModal: (nft : NftItem, collectionID : number, collection : collectionDataItem) => {},
-    closeEditNftModal: () => {},
+    closeEditNftModal: () => {},    
     selectedCollection: {id: 420, name: "test", description: "test", volumeTraded: 1, floorPrice: 1, header: "test", productImage: "test", NFTS: []},
     selectedNFT: {  NFTid: 12, image: "test", price: 12, description: "bollar", count: 12, collectionID: 1},
+    editCollectionModal: false,
+    openEditCollectionModal: (collection: collectionDataItem) => {},
+    closeEditCollectionModal: () => {},
 
 })
 
 export const ProductProvider: FC = (props) => {
     let localData = localStorage.getItem('collections');
     const [addNftModal, setAddNftModal] = useState(false);
+    const [editCollectionModal, setEditCollectionModal] = useState(false)
     const [editNftModal, setEditNftModal] = useState(false);
     const [collections, setCollections] = useState(localData ? JSON.parse(localData) : collectionData);
     const [selectedCollectionID, setSelectedCollectionID] = useState(0);
@@ -58,6 +66,15 @@ export const ProductProvider: FC = (props) => {
 
     const openAddNftModal = (collectionID : number) => {setAddNftModal(true); setSelectedCollectionID(collectionID);}
     const closeAddNftModal = () => {setAddNftModal(false)}
+
+    const openEditCollectionModal = (collection : collectionDataItem) => {
+        setEditCollectionModal(true)
+        setSelectedCollection(collection)
+    }
+
+    const closeEditCollectionModal = () => {setEditCollectionModal(false)}
+
+    
 
     const openEditNftModal = (nft : NftItem, collectionID : number, collection : collectionDataItem) => {
         setSelectedCollectionID(collectionID)
@@ -84,15 +101,16 @@ export const ProductProvider: FC = (props) => {
         localStorage.setItem('collections', JSON.stringify(updatedList))
     }
 
-    const editCollection = () => {
-        // id: number;
-        // name: string;
-        // description: string;
-        // volumeTraded: number;
-        // floorPrice: number; 
-        // header: string; // HUR SKA VI SKÖTA UPPLADDNING AV BILDER ?
-        // productImage: string; // HUR SKA VI SKÖTA UPPLADDNING AV BILDER ?
-        // NFTS: NftItem[]; GÖTA EN EMPTY ARRAY I BÖRJAN
+    const editCollection = (newCollection : collectionDataItem) => {
+        let updatedList = collections.map((collection : collectionDataItem) => {
+            if(collection.id === newCollection.id) {
+                collection = newCollection
+                return collection
+            }
+            return collection
+        })
+        setCollections(updatedList)
+        localStorage.setItem('collections', JSON.stringify(updatedList))
     }
 
     const editNft = (nft : NftItem, collectionID?: number) => {
@@ -136,7 +154,7 @@ export const ProductProvider: FC = (props) => {
     }
 
     return (
-        <ProductsContext.Provider value={{ selectedNFT, selectedCollection, collections, addCollection, removeCollection, editCollection, addNft, editNft, removeNft, addNftModal, closeAddNftModal, openAddNftModal, editNftModal, openEditNftModal, closeEditNftModal, selectedCollectionID, selectedNftID}}>
+        <ProductsContext.Provider value={{ closeEditCollectionModal, openEditCollectionModal, editCollectionModal, selectedNFT, selectedCollection, collections, addCollection, removeCollection, editCollection, addNft, editNft, removeNft, addNftModal, closeAddNftModal, openAddNftModal, editNftModal, openEditNftModal, closeEditNftModal, selectedCollectionID, selectedNftID}}>
             {props.children}
         </ProductsContext.Provider>
         

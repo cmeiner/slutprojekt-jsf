@@ -37,13 +37,6 @@ function StartPage(startPageProps: any) {
             You've come to the right place. NFT Heaven is the worlds latest and
             smallest NFT-website.
           </p>
-          <div style={startPageLinkButtonContainer}>
-            <Link style={linkButtonStyle} to="/CollectionPage">
-              <Button style={StyledButton} variant="contained" href="">
-                EXPLORE
-              </Button>
-            </Link>
-          </div>
         </div>
         <div style={hottestStyle}>
           <div style={hottestTitle}>

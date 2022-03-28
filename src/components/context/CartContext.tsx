@@ -2,6 +2,7 @@
 
 import { createContext, FC, useContext, useState } from "react";
 import { NftItem } from "../../data/collections/collection";
+import { ToastContainer, toast } from 'react-toastify';
 
 interface CartContext {
   cart: NftItem[];
@@ -27,6 +28,15 @@ export const CartProvider: FC = (props) => {
   const [totalPrice, setTotalPrice] = useState(cart.reduce((sum, nft) => sum + nft.price * nft.count, 0))
 
   const addProduct = (item?: NftItem) => {
+    toast.success('Item added to cart', { 
+    position: "bottom-left",
+    autoClose: 1500,
+    hideProgressBar: false,
+    closeOnClick: true,
+    draggable: true,
+    progress: undefined,
+    pauseOnHover: false,
+    })
     let NewProductList = cart;
     let foundItem = NewProductList.find(
       (listedItem: any) => listedItem.NFTid === item?.NFTid
@@ -34,6 +44,9 @@ export const CartProvider: FC = (props) => {
     if (foundItem) {
       foundItem.count += 1;
     } else {
+      if(item) {
+        item.count = 1
+      }
       NewProductList.push(
         item || {
           NFTid: 12,
@@ -68,6 +81,8 @@ export const CartProvider: FC = (props) => {
         if (item.count > 1) {
           item.count -= 1;
           return item;
+        }else {
+          item.count = 0
         }
       } else {
         return item;

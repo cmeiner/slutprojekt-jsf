@@ -2,7 +2,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { CSSProperties, useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import SearchBar from "./Searchbar";
 import { Button } from "@mui/material";
 
 interface headerProps {
@@ -30,10 +29,11 @@ function Header(headerProps: any) {
           </Link>
         </div>
         <div style={headerDiv2}> 
-          <SearchBar
-            isFocused={searchFocused}
-            focusOut={headerProps.searchBarFocusOut}
-          />
+            <Link to="/CollectionPage">
+              <Button style={StyledButton} variant="contained" href="">
+                EXPLORE
+              </Button>
+            </Link>
         </div>
         <div style={headerDiv3}>
           <Button style={headerCartLink} onClick={openModal}>
@@ -83,5 +83,11 @@ const headerDiv3: CSSProperties = {
   display: 'flex',
   justifyContent: 'flex-end'
 }
+const StyledButton: CSSProperties = {
+  background: "#00214c",
+  margin: "1rem",
+  fontSize: "1.5rem",
+  fontWeight: "bold",
+};
 
 export default Header;

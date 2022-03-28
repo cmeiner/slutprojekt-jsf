@@ -34,79 +34,87 @@ function CartModal(props: CartProps) {
         aria-describedby="modal-modal-description"
       >
         <Box style={boxStyle}>
-          <Typography id="modal-modal-title" variant="h6" component="h1">
-            Your cart
-            <div style={cartHeader}>
-              <div style={prodCol}>Product</div>
-              <div style={qtyCol}>Quantity</div>
-              <div style={priceCol}>Price</div>
-            </div>
-          </Typography>
-          <Typography
-            id="modal-modal-description"
-            sx={{ mt: 2 }}
-            component="div"
-          >
-            {cart.map((item: any, index: number) => (
-              <div style={nftContainer} key={index}>
-                <div style={iconCol}>
-                  <img style={iconStyle} srcSet={item.image} alt="test" />
+          {cart.length === 0 ? (
+            <h1 style={{textAlign: "center"}}>Your cart is empty!</h1>
+          ) : (
+            <div>
+              <Typography id="modal-modal-title" variant="h6" component="h1">
+                <div style={cartHeader}>
+                  <div style={prodCol}>Product</div>
+                  <div style={qtyCol}>Quantity</div>
+                  <div style={priceCol}>Price</div>
                 </div>
-                <div style={prodColMid}>
-                  <div>
-                    {
-                      collectionList.find((col) => col.id === item.collectionID)
-                        ?.name
-                    }
-                    #{item.NFTid}
+              </Typography>
+              <Typography
+                id="modal-modal-description"
+                sx={{ mt: 2 }}
+                component="div"
+              >
+                {cart.map((item: any, index: number) => (
+                  <div style={nftContainer} key={index}>
+                    <div style={iconCol}>
+                      <img style={iconStyle} srcSet={item.image} alt="test" />
+                    </div>
+                    <div style={prodColMid}>
+                      <div>
+                        {
+                          collectionList.find(
+                            (col) => col.id === item.collectionID
+                          )?.name
+                        }
+                        #{item.NFTid}
+                      </div>
+                      <div style={{ fontSize: "0.7rem" }}>
+                        {item.description}
+                      </div>
+                    </div>
+                    <div style={qtyCol}>
+                      <FontAwesomeIcon
+                        icon={faMinus}
+                        style={iconStyle}
+                        onClick={() => decQty(item.NFTid)}
+                      />
+                      {item.count}
+                      <FontAwesomeIcon
+                        icon={faPlus}
+                        style={iconStyle}
+                        onClick={() => incQty(item.NFTid)}
+                      />
+                    </div>
+                    <div style={priceCol}>
+                      <FontAwesomeIcon icon={faCoins} />
+                      {item.price}
+                    </div>
                   </div>
-                  <div>{item.description}</div>
+                ))}
+                <div style={cartFooter}>
+                  <div style={cartButton}>
+                    <Button
+                      style={buttonStyle}
+                      variant="contained"
+                      onClick={clearCart}
+                    >
+                      Empty your cart
+                    </Button>
+                    <Link onClick={handleClose} to={"/Checkout"}>
+                      <Button style={buttonStyle} variant="contained">
+                        Proceed to checkout
+                      </Button>
+                    </Link>
+                  </div>
+                  <div>
+                    Your total: <FontAwesomeIcon icon={faCoins} />
+                    {totalPrice}
+                  </div>
                 </div>
-                <div style={qtyCol}>
-                  <FontAwesomeIcon
-                    icon={faMinus}
-                    style={iconStyle}
-                    onClick={() => decQty(item.NFTid)}
-                  />
-                  {item.count}
-                  <FontAwesomeIcon
-                    icon={faPlus}
-                    style={iconStyle}
-                    onClick={() => incQty(item.NFTid)}
-                  />
-                </div>
-                <div style={priceCol}>
-                  <FontAwesomeIcon icon={faCoins} />
-                  {item.price}
-                </div>
-              </div>
-            ))}
-            <div style={cartFooter}>
-              <div style={cartButton}>
-                <Button
-                  style={buttonStyle}
-                  variant="contained"
-                  onClick={clearCart}
-                >
-                  Empty your cart
-                </Button>
-                <Link onClick={handleClose} to={"/Checkout"}>
-                  <Button style={buttonStyle} variant="contained">
-                    Proceed to checkout
-                  </Button>
-                </Link>
-              </div>
-              <div>
-                Your total: <FontAwesomeIcon icon={faCoins} />{totalPrice}
-              </div>
+              </Typography>
             </div>
-          </Typography>
+          )}
         </Box>
       </Modal>
     </div>
   );
 }
-
 
 const boxStyle: CSSProperties = {
   position: "absolute",
@@ -114,11 +122,11 @@ const boxStyle: CSSProperties = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: "40%",
-  minWidth: '20rem',
+  minWidth: "20rem",
   background: "white",
   border: "2px solid #000",
-  boxShadow: '24',
-  padding: '4%',
+  boxShadow: "24",
+  padding: "4%",
 };
 
 const cartHeader: CSSProperties = {
@@ -126,14 +134,14 @@ const cartHeader: CSSProperties = {
   flexDirection: "row",
   gap: "1rem",
   width: "100%",
-  fontSize: '2.5vmin'
+  fontSize: "2.5vmin",
 };
 
 const cartFooter: CSSProperties = {
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-between",
-  flexWrap: 'wrap-reverse',
+  flexWrap: "wrap-reverse",
   gap: "1rem",
   width: "100%",
 };
@@ -154,7 +162,7 @@ const prodColMid: CSSProperties = {
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  fontSize: '2vmin'
+  fontSize: "2vmin",
 };
 
 const qtyCol: CSSProperties = {
@@ -162,7 +170,7 @@ const qtyCol: CSSProperties = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  fontSize: '2vmin'
+  fontSize: "2vmin",
 };
 
 const priceCol: CSSProperties = {
@@ -170,7 +178,7 @@ const priceCol: CSSProperties = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  fontSize: '2vmin'
+  fontSize: "2vmin",
 };
 
 const priceStyle: CSSProperties = {};
@@ -179,7 +187,7 @@ const buttonStyle: CSSProperties = {
   fontWeight: "bold",
   background: "#00214c",
   color: "white",
-  fontSize: '1.5vmin'
+  fontSize: "1.5vmin",
 };
 
 const nftContainer: CSSProperties = {

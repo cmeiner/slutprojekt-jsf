@@ -5,7 +5,6 @@ import CheckoutPageDetails from "../pages/CheckoutPageDetails";
 import CollectionPage from "../pages/CollectionPage";
 import Collections from "../pages/Collections";
 import StartPage from "../pages/Startpage";
-import TestPage from "../pages/TestPage";
 import CartModal from "./CartModal";
 import Header from "./Header";
 import PaymentPage from "./checkoutComponents/payment/PaymentPage";
@@ -50,7 +49,6 @@ function Layout() {
               path="/"
               element={<StartPage focusHeader={() => setSearchFocused(true)}/>}
             />
-            <Route path="TestPage" element={<TestPage />} />
             <Route path="/Checkout" element={<CheckoutPage />} />
             <Route
               path="/CheckoutDetails"

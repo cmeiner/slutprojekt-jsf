@@ -1,6 +1,6 @@
 import { CSSProperties, useRef, useState } from "react";
 import { collectionDataItem, NftItem } from "../data/collections/collection";
-import "./FlipCard.css";
+import "../CSS/FlipCard.css";
 
 interface cardInfo {
   nftCard?: NftItem;
