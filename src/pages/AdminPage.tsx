@@ -1,46 +1,42 @@
 import { useProducts } from "../components/context/ProductContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faEdit,
-  faRemove,
-  faAdd,
-  faCoins,
-} from "@fortawesome/free-solid-svg-icons";
-import { padding } from "@mui/system";
-import { count } from "console";
-import AddNewCollection from "../components/admin/addNewCollection";
+import { faRemove, faCoins } from "@fortawesome/free-solid-svg-icons";
+
 import AddNewNFT from "../components/admin/addNewNFT";
 import EditNFT from "../components/admin/editNFT";
 import { CSSProperties } from "react";
-import { autocompleteClasses, Button } from "@mui/material";
+import { Button } from "@mui/material";
 import EditCollection from "../components/admin/editCollection";
+import AddNewCollection from "../components/admin/addNewCollection";
 
 function AdminPage() {
   const {
     collections,
     removeCollection,
     removeNft,
-    addNft,
-    addCollection,
+    openAddCollectionModal,
     openAddNftModal,
     openEditNftModal,
     openEditCollectionModal,
   } = useProducts();
-  let testNFT = {
-    NFTid: 34,
-    image: "testimg",
-    price: 12,
-    description: "walla test",
-    count: 1,
-    collectionID: 1,
-  };
 
   return (
     <div style={adminPageLayout}>
       <button onClick={() => localStorage.clear()}>Clear local storage</button>
-      <AddNewNFT />
-      <EditNFT />
-      <EditCollection />
+      <Button
+        onClick={() => openAddCollectionModal()}
+        style={buttonStyle}
+        variant="contained"
+        href=""
+      >
+        Add Collection
+      </Button>
+      <div>
+        <AddNewCollection />
+        <AddNewNFT />
+        <EditNFT />
+        <EditCollection />
+      </div>
       {collections.map((collection, index) => (
         <div style={adminCollections} key={index}>
           {" "}
@@ -60,7 +56,6 @@ function AdminPage() {
                 Remove
               </Button>
               <Button
-                // onClick={() => editCollection(collection.id)}
                 style={buttonStyle}
                 variant="contained"
                 href=""
