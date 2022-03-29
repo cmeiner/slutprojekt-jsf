@@ -1,7 +1,7 @@
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button } from "@mui/material";
-import { CSSProperties, useState } from "react";
+import { CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../components/context/CartContext";
 import { useProducts } from "../components/context/ProductContext";
@@ -26,7 +26,7 @@ function CheckoutPage() {
                       {" "}
                       {
                         collections.find((col) => col.id === item.collectionID)
-                          ?.name 
+                          ?.name
                       }
                       &nbsp;#{item.NFTid}
                     </h3>
@@ -119,13 +119,7 @@ const purchasedItemTestCard: CSSProperties = {
   borderRadius: ".5rem",
   display: "flex",
   justifyContent: "center",
-  background: '#00214c'
-};
-
-const itemCountStyle: CSSProperties = {
-  fontSize: "2rem",
-  color: "red",
-  margin: "0",
+  background: "#00214c",
 };
 
 const checkoutPic: CSSProperties = {

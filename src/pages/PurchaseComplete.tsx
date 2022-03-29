@@ -5,7 +5,6 @@ import { DeliveryDataInfo } from "../data/collections/deliveryData";
 import { useProducts } from "../components/context/ProductContext";
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import DeliveryInfoTable from "../components/checkoutComponents/DeliveryInfoTable";
 import GenerateOrderNumber from "../components/checkoutComponents/OrderNumber";
 import DeliveryInfoTableWithPay from "../components/checkoutComponents/DeliveryInfoTableWithPay";
 
@@ -18,7 +17,6 @@ function PurchaseComplete(props: Props) {
   const { purchaseList, purchaseTotal } = useCart();
   const { collections } = useProducts();
 
-
   let totalSumWithShipping = 0;
 
   if (props.deliveryInfo.deliveryMethod === "DHL agent") {
@@ -28,7 +26,6 @@ function PurchaseComplete(props: Props) {
   } else if (props.deliveryInfo.deliveryMethod === "Postnord home delivery") {
     totalSumWithShipping = purchaseTotal + 4;
   }
-
 
   return (
     <div>

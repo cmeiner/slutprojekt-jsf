@@ -9,18 +9,11 @@ import CartModal from "./CartModal";
 import Header from "./Header";
 import { DeliveryDataInfoObject } from "../data/collections/deliveryData";
 import { CartProvider } from "./context/CartContext";
-import { ProductProvider, useProducts } from "./context/ProductContext";
+import { ProductProvider } from "./context/ProductContext";
 import AdminPage from "../pages/AdminPage";
 import PurchaseComplete from "../pages/PurchaseComplete";
 import PaymentPage from "../pages/PaymentPage";
 import { ToastContainer } from "react-toastify";
-
-interface NftItem {
-  NFTid: number;
-  image: string;
-  price: number;
-  description: string;
-}
 
 function Layout() {
   const [modalState, setModalState] = useState(false);

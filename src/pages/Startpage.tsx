@@ -1,20 +1,11 @@
-import { Button, Card } from "@mui/material";
-import { CSSProperties, useState } from "react";
+import { Button } from "@mui/material";
+import { CSSProperties } from "react";
 import { Link } from "react-router-dom";
-import { collectionData, NftItem } from "../data/collections/collection";
 import ItemCard from "../components/ItemCard";
-import CartModal from "../components/CartModal";
 import { useProducts } from "../components/context/ProductContext";
-import { useCart } from "../components/context/CartContext";
-
-interface startPageProps {
-  focusHeader?: any;
-  cartState: any;
-  setCart: any;
-}
 
 function StartPage(startPageProps: any) {
-  const { collections, randomCollections } = useProducts();
+  const { randomCollections } = useProducts();
 
   // let randomList =  collections.sort(() => Math.random() - Math.random()).slice(0, 3)
 
@@ -120,11 +111,6 @@ const contentContainer: CSSProperties = {
   alignItems: "center",
 };
 
-const startPageLinkButtonContainer: CSSProperties = {
-  display: "flex",
-  justifyContent: "center",
-};
-
 const linkButtonStyle: CSSProperties = {
   textDecoration: "none",
 };
@@ -145,11 +131,4 @@ const hottestStyle: CSSProperties = {
 
 const hottestTitle: CSSProperties = {
   textAlign: "center",
-};
-
-const hottestItems: CSSProperties = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  marginTop: "5rem",
 };

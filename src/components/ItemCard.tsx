@@ -4,10 +4,8 @@ import { CSSProperties } from "react";
 import { collectionDataItem, NftItem } from "../data/collections/collection";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
-import addCart from "../functions/addCart";
 import { useCart } from "./context/CartContext";
 import FlipCard from "./FlipCard";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 interface cardInfo {
@@ -75,7 +73,7 @@ function ItemCard(props: cardInfo) {
               alt="headerImg"
             />
             <div style={headerText}>
-              <div style={nameStyle}>
+              <div>
                 {nftInfo.collectionName} #{nftInfo.id}
               </div>
               <div style={priceStyle}>
@@ -129,12 +127,12 @@ const clickMeStyle: CSSProperties = {
   zIndex: "10000",
   top: "23%",
   left: "1%",
-  fontWeight: 'bold',
-  fontSize: 'smaller',
-  transform: 'rotate(-30deg)',
-  background: '#00214c',
-  padding: '.5rem',
-  pointerEvents: 'none'
+  fontWeight: "bold",
+  fontSize: "smaller",
+  transform: "rotate(-30deg)",
+  background: "#00214c",
+  padding: ".5rem",
+  pointerEvents: "none",
 };
 
 const productImage: CSSProperties = {
@@ -172,16 +170,6 @@ const collectionImage: CSSProperties = {
   width: "4rem",
   display: "flex",
   alignItems: "center",
-};
-
-const nameStyle: CSSProperties = {};
-
-const descStyle: CSSProperties = {
-  fontSize: ".8rem",
-  display: "flex",
-  justifyContent: "center",
-  textTransform: "uppercase",
-  fontWeight: "bold",
 };
 
 const cardContent: CSSProperties = {

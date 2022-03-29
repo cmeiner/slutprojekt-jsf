@@ -1,34 +1,25 @@
-import {
-  Box,
-  Button,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-} from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import { useFormik } from "formik";
-import { CSSProperties, Props, useState } from "react";
-import * as yup from "yup";
-import { collectionData, collectionDataItem, NftItem } from "../../data/collections/collection";
+import { CSSProperties } from "react";
+import { collectionDataItem } from "../../data/collections/collection";
 import { useProducts } from "../context/ProductContext";
 
+function EditCollection() {
+  const {
+    editCollectionModal,
+    selectedCollection,
+    editCollection,
+    closeEditCollectionModal,
+  } = useProducts();
 
-
-function EditCollection () {
-
-  const { collections, closeEditNftModal, editCollectionModal, selectedCollectionID, selectedCollection, editCollection, closeEditCollectionModal } = useProducts()
-  
-  
   const formik = useFormik({
     initialValues: {
-        name: "",
-        description: "",
-        productImage: "",
-      
+      name: "",
+      description: "",
+      productImage: "",
     },
     onSubmit: (values) => {
-      let newCollection : collectionDataItem = {
+      let newCollection: collectionDataItem = {
         id: selectedCollection.id,
         name: values.name,
         description: values.description,
@@ -37,96 +28,108 @@ function EditCollection () {
         header: selectedCollection.header,
         productImage: values.productImage,
         NFTS: selectedCollection.NFTS,
-    }
-    editCollection(newCollection)
-        formik.resetForm();
-        closeEditCollectionModal()
+      };
+      editCollection(newCollection);
+      formik.resetForm();
+      closeEditCollectionModal();
     },
-    });
-    return (
+  });
+  return (
     <div>
-        {editCollectionModal && 
-                <div style={newCollectionContainer}>
-                <div>
-                    <form style={formStyle} onSubmit={formik.handleSubmit}>
-                        <h3>Edit Collection</h3>
-                        <h3>Editing: {selectedCollection.name}</h3>
-                            
-                        <div style={textFieldsContainer}>
-                        <TextField
-                            style={textFieldStyle}
-                            fullWidth
-                            autoComplete="off"
-                            id="name"
-                            name="name"
-                            label="Colleciton name"
-                            value={formik.values.name}
-                            onChange={formik.handleChange}
-                            error={
-                            formik.touched.name && Boolean(formik.errors.name)
-                            }
-                            helperText={formik.touched.name && formik.errors.name}
-                        />
-                        <TextField
-                            style={textFieldStyle}
-                            fullWidth
-                            autoComplete="off"
-                            id="description"
-                            name="description"
-                            label="Collection description"
-                            value={formik.values.description}
-                            onChange={formik.handleChange}
-                            error={
-                            formik.touched.description && Boolean(formik.errors.description)
-                            }
-                            helperText={formik.touched.description && formik.errors.description}
-                        />
-                        <TextField
-                            style={textFieldStyle}
-                            fullWidth
-                            autoComplete="off"
-                            id="productImage"
-                            name="productImage"
-                            label="Set collection image URL"
-                            value={formik.values.productImage}
-                            onChange={formik.handleChange}
-                            error={
-                            formik.touched.productImage && Boolean(formik.errors.productImage)
-                            }
-                            helperText={formik.touched.productImage && formik.errors.productImage}
-                        />
-                        </div>
-                        <Button
-                        style={{ marginTop: "1rem", width: "40%", marginBottom: "1rem" }}
-                        color="primary"
-                        variant="contained"
-                        fullWidth
-                        type="submit"
-                        >
-                        Save Edit
-                        </Button>
-                        <Button
-                        style={{ marginTop: "1rem", width: "40%", marginBottom: "1rem" }}
-                        color="primary"
-                        variant="contained"
-                        fullWidth
-                        onClick={closeEditCollectionModal}
-                        >
-                        Close window
-                        </Button>
-                    </form>
-                    </div>
-                
-            </div>
-        }
-    </div>
-    )}
+      {editCollectionModal && (
+        <div style={newCollectionContainer}>
+          <div>
+            <form style={formStyle} onSubmit={formik.handleSubmit}>
+              <h3>Edit Collection</h3>
+              <h3>Editing: {selectedCollection.name}</h3>
 
-export default EditCollection
+              <div style={textFieldsContainer}>
+                <TextField
+                  style={textFieldStyle}
+                  fullWidth
+                  autoComplete="off"
+                  id="name"
+                  name="name"
+                  label="Colleciton name"
+                  value={formik.values.name}
+                  onChange={formik.handleChange}
+                  error={formik.touched.name && Boolean(formik.errors.name)}
+                  helperText={formik.touched.name && formik.errors.name}
+                />
+                <TextField
+                  style={textFieldStyle}
+                  fullWidth
+                  autoComplete="off"
+                  id="description"
+                  name="description"
+                  label="Collection description"
+                  value={formik.values.description}
+                  onChange={formik.handleChange}
+                  error={
+                    formik.touched.description &&
+                    Boolean(formik.errors.description)
+                  }
+                  helperText={
+                    formik.touched.description && formik.errors.description
+                  }
+                />
+                <TextField
+                  style={textFieldStyle}
+                  fullWidth
+                  autoComplete="off"
+                  id="productImage"
+                  name="productImage"
+                  label="Set collection image URL"
+                  value={formik.values.productImage}
+                  onChange={formik.handleChange}
+                  error={
+                    formik.touched.productImage &&
+                    Boolean(formik.errors.productImage)
+                  }
+                  helperText={
+                    formik.touched.productImage && formik.errors.productImage
+                  }
+                />
+              </div>
+              <Button
+                style={{
+                  marginTop: "1rem",
+                  width: "40%",
+                  marginBottom: "1rem",
+                }}
+                color="primary"
+                variant="contained"
+                fullWidth
+                type="submit"
+              >
+                Save Edit
+              </Button>
+              <Button
+                style={{
+                  marginTop: "1rem",
+                  width: "40%",
+                  marginBottom: "1rem",
+                }}
+                color="primary"
+                variant="contained"
+                fullWidth
+                onClick={closeEditCollectionModal}
+              >
+                Close window
+              </Button>
+            </form>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default EditCollection;
 
 const newCollectionContainer: CSSProperties = {
-    backgroundColor: "black",
-    position: "fixed",
+  backgroundColor: "black",
+  position: "fixed",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
@@ -135,7 +138,7 @@ const newCollectionContainer: CSSProperties = {
   zIndex: "9001",
   //   boxShadow: 24,
   textAlign: "center",
-}
+};
 
 const textFieldStyle: CSSProperties = {
   marginBottom: "1rem",
@@ -150,18 +153,10 @@ const formStyle: CSSProperties = {
   flexDirection: "column",
 };
 
-
 const textFieldsContainer: CSSProperties = {
   display: "flex",
   justifyContent: "center",
   flexDirection: "column",
   width: "30rem",
   margin: "1rem",
-};
-
-const collectionBox: CSSProperties = {
-  display: "flex",
-  flexDirection: "column",
-  width: "25rem",
-  textAlign: "center",
 };
