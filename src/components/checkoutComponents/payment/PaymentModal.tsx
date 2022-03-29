@@ -8,7 +8,7 @@ function PaymentPopup() {
         <div style={{ width: "100%" }}>
           <img
             style={{ width: "100%" }}
-            src="/assets/images/Icons/loading2.gif"
+            src="/assets/images/Icons/loading.svg"
             alt="Waiting for payment"
           />
         </div>

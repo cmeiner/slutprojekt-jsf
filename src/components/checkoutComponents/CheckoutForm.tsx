@@ -208,7 +208,7 @@ function CheckoutForm(props: Props) {
             </Box>
 
             <Button
-              style={{ marginTop: "1rem", width: "40%" }}
+              style={{ marginTop: "1rem", width: "40vmin", }}
               color="primary"
               variant="contained"
               fullWidth
@@ -260,7 +260,8 @@ const formStyle: CSSProperties = {
 const deliveryBox: CSSProperties = {
   display: "flex",
   flexDirection: "column",
-  width: "25rem",
+  minWidth: '60vmin',
+  maxWidth: '3rem',
   textAlign: "center",
 };
 

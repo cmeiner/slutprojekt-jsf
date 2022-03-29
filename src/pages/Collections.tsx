@@ -36,6 +36,7 @@ function Collections() {
               alt="test"
             />
             <h2 style={{maxWidth: "35rem"}} >{collection?.description}</h2>
+            <p style={{margin: 0, fontSize: 'small'}}>Psst! If you click the picture there's a description hidden behind!</p>
           </div>
         </div>
       </div>

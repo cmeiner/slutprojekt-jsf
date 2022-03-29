@@ -26,9 +26,9 @@ function CheckoutPage() {
                       {" "}
                       {
                         collections.find((col) => col.id === item.collectionID)
-                          ?.name
+                          ?.name 
                       }
-                      # {item.NFTid}
+                      &nbsp;#{item.NFTid}
                     </h3>
                   </div>
                   <img alt="test" style={checkoutPic} srcSet={item.image} />
@@ -94,7 +94,7 @@ const purchaseCompleteContainer: CSSProperties = {
   flexDirection: "column",
   alignItems: "center",
   width: "80%",
-  background: "#202225",
+  background: "#002f6b",
   boxShadow: "2px 5px 12px black",
   marginBottom: "2rem",
 };
@@ -116,9 +116,10 @@ const purchasedItemTestCard: CSSProperties = {
   maxWidth: "15rem",
   flexWrap: "wrap",
   boxShadow: "2px 4px 12px #0049A9",
-  borderRadius: "2rem",
+  borderRadius: ".5rem",
   display: "flex",
   justifyContent: "center",
+  background: '#00214c'
 };
 
 const itemCountStyle: CSSProperties = {
@@ -160,7 +161,7 @@ const itemDesc: CSSProperties = {
 
 const buttonStyle: CSSProperties = {
   fontWeight: "bold",
-  background: "#2081e2",
+  background: "#00214c",
   fontSize: "1.5rem",
 };
 

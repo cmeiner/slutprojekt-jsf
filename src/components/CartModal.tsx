@@ -60,9 +60,9 @@ function CartModal(props: CartProps) {
                         {
                           collectionList.find(
                             (col) => col.id === item.collectionID
-                          )?.name
+                          )?.name 
                         }
-                        #{item.NFTid}
+                         &nbsp;#{item.NFTid}
                       </div>
                       <div style={{ fontSize: "0.7rem" }}>
                         {item.description}

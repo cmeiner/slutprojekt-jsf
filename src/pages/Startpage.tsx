@@ -1,10 +1,11 @@
 import { Button, Card } from "@mui/material";
 import { CSSProperties, useState } from "react";
 import { Link } from "react-router-dom";
-import { collectionData } from "../data/collections/collection";
+import { collectionData, NftItem } from "../data/collections/collection";
 import ItemCard from "../components/ItemCard";
 import CartModal from "../components/CartModal";
 import { useProducts } from "../components/context/ProductContext";
+import { useCart } from "../components/context/CartContext";
 
 interface startPageProps {
   focusHeader?: any;
@@ -13,24 +14,14 @@ interface startPageProps {
 }
 
 function StartPage(startPageProps: any) {
-  const { collections } = useProducts();
+  const { collections, randomCollections } = useProducts();
 
-  let randomList =  collections.sort(() => Math.random() - Math.random()).slice(0, 3)
+  // let randomList =  collections.sort(() => Math.random() - Math.random()).slice(0, 3)
 
 
   return (
     <div style={rootStyle}>
       <div style={contentContainer}>
-        <Link style={linkButtonStyle} to="/CheckoutDetails">
-          <Button style={StyledButton} variant="contained" href="">
-            CHECKOUT
-          </Button>
-        </Link>
-        <Link style={linkButtonStyle} to="/Admin">
-          <Button style={StyledButton} variant="contained" href="">
-            ADMIN
-          </Button>
-        </Link>
         <div style={startPageWelcomeText}>
           <h2 style={startPageHeadline}>
             Buy extreme NFTs and don't look back!
@@ -46,7 +37,7 @@ function StartPage(startPageProps: any) {
             <h1>HOTTEST COLLECTIONS RIGHT NOW</h1>
           </div>
           <div style={flexProducts}>
-            {randomList.map((collection, index) => (
+            {randomCollections.map((collection, index) => (
               <ItemCard key={index} collectionCard={collection} />
             ))}
           </div>
@@ -56,7 +47,7 @@ function StartPage(startPageProps: any) {
             <h1>HOTTEST ITEMS RIGHT NOW</h1>
           </div>
           <div style={flexItems}>
-            {randomList.map((collection, index) => (
+            {randomCollections.map((collection, index) => (
               <ItemCard
                 key={index}
                 nftCard={collection.NFTS[0]}
@@ -108,6 +99,7 @@ const flexItems: CSSProperties = {
   flexWrap: "wrap",
   gap: "2rem",
   justifyContent: "space-evenly",
+  margin: '1rem 1rem'
 };
 
 const startPageWelcomeText: CSSProperties = {
@@ -144,6 +136,7 @@ const hottestStyle: CSSProperties = {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
+  paddingTop: '2rem'
 };
 
 const hottestTitle: CSSProperties = {

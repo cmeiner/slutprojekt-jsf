@@ -106,7 +106,7 @@ const purchaseCompleteContainer: CSSProperties = {
   flexDirection: "column",
   alignItems: "center",
   width: "80%",
-  background: "#202225",
+  background: "#rgb(0, 47, 107)",
   boxShadow: "2px 5px 12px black",
   marginBottom: "2rem",
 };
