@@ -37,8 +37,6 @@ function ItemCard(props: cardInfo) {
     productImageURL: props.collectionCard?.productImage,
   };
 
-  
-
   return (
     <div>
       {props.collectionCard && (
@@ -90,6 +88,7 @@ function ItemCard(props: cardInfo) {
               </div>
             </div>
           </div>
+          <p style={clickMeStyle}>Click me!</p>
           <div style={cardContent}>
             <FlipCard nftCard={props.nftCard} />
             <Button
@@ -99,8 +98,6 @@ function ItemCard(props: cardInfo) {
             >
               BUY NOW
             </Button>
-            {/* <button onClick={testToast}>Toast</button> */}
-            <ToastContainer />
           </div>
         </div>
       )}
@@ -120,9 +117,24 @@ const cardContainer: CSSProperties = {
   paddingBottom: "1rem",
   background: "#002f6b",
   boxShadow: "2px 4px 12px #0049A9",
+  position: "relative",
 };
 const cardPicture: CSSProperties = {
   width: "18rem",
+};
+
+const clickMeStyle: CSSProperties = {
+  margin: 0,
+  position: "absolute",
+  zIndex: "10000",
+  top: "23%",
+  left: "1%",
+  fontWeight: 'bold',
+  fontSize: 'smaller',
+  transform: 'rotate(-30deg)',
+  background: '#00214c',
+  padding: '.5rem',
+  pointerEvents: 'none'
 };
 
 const productImage: CSSProperties = {

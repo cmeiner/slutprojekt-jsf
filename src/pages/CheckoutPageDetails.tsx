@@ -42,7 +42,7 @@ const checkoutContainer: CSSProperties = {
   flexDirection: "column",
   alignItems: "center",
   width: "80%",
-  background: "#202225",
+  background: "#002f6b",
   boxShadow: "2px 5px 12px black",
   marginBottom: "2rem",
 };

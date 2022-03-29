@@ -40,7 +40,7 @@ function Header(headerProps: any) {
         </div>
         <div style={headerDiv3}>
           <Button style={headerCartLink} onClick={openModal}>
-            <p style={{fontSize: "2.2rem"}}>{cart.length}</p>
+            <p style={{fontSize: "2.2rem"}}>{cart.reduce((sum, nft) => sum + nft.count, 0)}</p>
             <FontAwesomeIcon icon={faShoppingCart} />
           </Button>
         </div>

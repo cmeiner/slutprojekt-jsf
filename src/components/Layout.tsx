@@ -13,6 +13,7 @@ import { ProductProvider, useProducts } from "./context/ProductContext";
 import AdminPage from "../pages/AdminPage";
 import PurchaseComplete from "../pages/PurchaseComplete";
 import PaymentPage from "../pages/PaymentPage";
+import { ToastContainer } from "react-toastify";
 
 interface NftItem {
   NFTid: number;
@@ -83,6 +84,7 @@ function Layout() {
                 />
               </Routes>
             </div>
+            <ToastContainer />
           </BrowserRouter>
         </ProductProvider>
       </CartProvider>
