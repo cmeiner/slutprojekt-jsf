@@ -2,7 +2,6 @@ import { CSSProperties, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useProducts } from "../components/context/ProductContext";
 import ItemCard from "../components/ItemCard";
-import { collectionData, NftItem } from "../data/collections/collection";
 
 function Collections() {
   // Använder ID från routern (:id) lägger det i en variabel
@@ -36,7 +35,6 @@ function Collections() {
               alt="test"
             />
             <h2 style={{maxWidth: "35rem"}} >{collection?.description}</h2>
-            <p style={{margin: 0, fontSize: 'small'}}>Psst! If you click the picture there's a description hidden behind!</p>
           </div>
         </div>
       </div>
@@ -65,7 +63,7 @@ const flexProducts: CSSProperties = {
   display: "flex",
   flexWrap: "wrap",
   gap: "2rem",
-  justifyContent: "space-around",
+  justifyContent: "center",
   margin: "5rem 0",
 };
 
@@ -83,7 +81,8 @@ const descriptionStyle: CSSProperties = {
   justifyContent: "center",
   width: "80%",
   gap: "2rem",
-  flexWrap: 'wrap'
+  flexWrap: 'wrap',
+  textAlign: 'center'
 };
 
 const productImage: CSSProperties = {

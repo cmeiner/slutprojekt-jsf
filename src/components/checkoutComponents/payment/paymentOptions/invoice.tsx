@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import { CSSProperties } from "react";
+import { useNavigate } from "react-router-dom";
 import { DeliveryDataInfo } from "../../../../data/collections/deliveryData";
 import { useCart } from "../../../context/CartContext";
 
@@ -9,6 +10,7 @@ interface Props {
 }
 
 function Invoice(props: Props) {
+  const navigate = useNavigate();
   const { addPurchaseList, cart, clearCart, totalPrice, newPurchaseTotal } = useCart()
   const completePayment = (props: Props) => {
     let newObject = props.deliveryInfo;
@@ -17,6 +19,7 @@ function Invoice(props: Props) {
     addPurchaseList(cart)
     newPurchaseTotal(totalPrice)
     clearCart()
+    navigate("/PurchaseComplete");
   };
   return (
     <div style={invoiceInfoBox}>

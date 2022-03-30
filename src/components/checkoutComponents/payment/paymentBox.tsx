@@ -100,6 +100,7 @@ const Box: CSSProperties = {
 
 const CardImg: CSSProperties = {
   fontSize: "10rem",
+  marginTop: '2rem'
 };
 
 const paymentIconImg: CSSProperties = {

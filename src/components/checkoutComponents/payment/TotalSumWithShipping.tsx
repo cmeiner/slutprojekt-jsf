@@ -19,6 +19,8 @@ function TotalSumWithShipping(props: deliveryItem) {
     totalSumWithShipping = totalPrice + 6;
   } else if (props.deliveryInfo.deliveryMethod === "Postnord home delivery") {
     totalSumWithShipping = totalPrice + 4;
+  } else if (props.deliveryInfo.deliveryMethod === "Postnord agent") {
+    totalSumWithShipping = totalPrice + 0
   }
   props.setFinalTotalSum(totalSumWithShipping);
 

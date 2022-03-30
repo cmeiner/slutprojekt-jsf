@@ -1,11 +1,11 @@
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button } from "@mui/material";
-import { CSSProperties, useState } from "react";
+import { CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../components/context/CartContext";
 import { useProducts } from "../components/context/ProductContext";
-import { NftItem } from "../data/collections/collection";
+import { collectionDataItem, NftItem } from "../data/collections/collection";
 
 function CheckoutPage() {
   const { cart, totalPrice } = useCart();
@@ -15,44 +15,41 @@ function CheckoutPage() {
     <div>
       <div style={rootStyle}>
         <div style={purchaseCompleteContainer}>
-          <h2>Checkout</h2>
+          <h1>Checkout</h1>
           <h2>Your purchase:</h2>
           <div style={cardContainer}>
             <div style={purchasedItems}>
               {cart.map((item: NftItem, index: number) => (
                 <div style={purchasedItemTestCard} key={index}>
+                    <div style={itemCountBadge}>
+                      <p
+                        style={{
+                          textAlign: "center",
+                          width: "100%",
+                          letterSpacing: 0,
+                          fontWeight: "bold",
+                        }}
+                      >
+                        {item.count}
+                      </p>
+                    </div>
                   <div style={cardHeader}>
-                    <h3>
-                      {" "}
+                    <h3 style={{ margin: 0 }}>
                       {
                         collections.find((col) => col.id === item.collectionID)
-                          ?.name 
+                          ?.name
                       }
                       &nbsp;#{item.NFTid}
                     </h3>
                   </div>
-                  <img alt="test" style={checkoutPic} srcSet={item.image} />
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      width: "90%",
-                    }}
-                  >
-                    <p style={itemDesc}>{item.description}</p>
-                    <p
-                      style={{
-                        textAlign: "center",
-                        marginTop: "20px",
-                        marginBottom: "0",
-                      }}
-                    >
-                      Qty: {item.count}
-                    </p>
-                    <div style={{ display: "flex", justifyContent: "center" }}>
-                      <p style={{ margin: "0 .1rem 0 0 " }}>
-                        Price each: {item.price}
-                      </p>
+                  <div style={cardBody}>
+                    <div style={{ width: "100%" }}>
+                      <img srcSet={item.image} style={{ width: "100%" }} />
+                    </div>
+                  </div>
+                  <div style={cardFooter}>
+                    <div>
+                      Price per unit: {item.price} &nbsp;
                       <FontAwesomeIcon
                         icon={faCoins}
                         style={{ marginTop: "0.1rem" }}
@@ -86,7 +83,6 @@ const rootStyle: CSSProperties = {
   alignItems: "center",
   margin: "0 auto",
   width: "100%",
-  // border: "2px solid #88D9E6",
 };
 
 const purchaseCompleteContainer: CSSProperties = {
@@ -94,48 +90,49 @@ const purchaseCompleteContainer: CSSProperties = {
   flexDirection: "column",
   alignItems: "center",
   width: "80%",
-  background: "#002f6b",
-  boxShadow: "2px 5px 12px black",
+  background: "#202225",
   marginBottom: "2rem",
 };
-
-// const purchasedProducts: CSSProperties = {};
 
 const purchasedItems: CSSProperties = {
   display: "flex",
   justifyContent: "center",
-  width: "90%",
-  height: "30%",
+  width: "100%",
   gap: "1rem",
   margin: 0,
   flexWrap: "wrap",
 };
 
 const purchasedItemTestCard: CSSProperties = {
-  minWidth: "15rem",
-  maxWidth: "15rem",
-  flexWrap: "wrap",
-  boxShadow: "2px 4px 12px #0049A9",
+  boxShadow: "1px 1px 6px black",
   borderRadius: ".5rem",
   display: "flex",
+  alignItems: "center",
+  flexDirection: "column",
+  background: "#303339",
+  gap: "1rem",
+  padding: "1rem",
+  width: "20vmin",
+  position: 'relative'
+};
+
+const cardBody: CSSProperties = {
+  width: "90%",
+  display: "flex",
+  flexDirection: "column",
   justifyContent: "center",
-  background: '#00214c'
+  alignItems: "center",
 };
 
-const itemCountStyle: CSSProperties = {
-  fontSize: "2rem",
-  color: "red",
-  margin: "0",
-};
-
-const checkoutPic: CSSProperties = {
-  maxWidth: "10rem",
-  maxHeight: "10rem",
-  borderRadius: ".2rem",
+const cardFooter: CSSProperties = {
+  display: "flex",
+  flexDirection: "column",
+  textAlign: "center",
+  fontSize: "1.5vmin",
 };
 
 const cardContainer: CSSProperties = {
-  width: "90%",
+  width: "100%",
   borderRadius: ".5rem",
   display: "flex",
   justifyContent: "center",
@@ -147,25 +144,32 @@ const cardContainer: CSSProperties = {
 const cardHeader: CSSProperties = {
   width: "100%",
   display: "flex",
-  flexDirection: "row",
   justifyContent: "center",
   alignItems: "center",
-};
-
-const itemDesc: CSSProperties = {
-  textAlign: "center",
-  marginTop: ".5rem",
-  marginBottom: "0",
-  fontSize: "80%",
+  fontSize: "2vmin",
 };
 
 const buttonStyle: CSSProperties = {
   fontWeight: "bold",
-  background: "#00214c",
+  background: "#2081e2",
   fontSize: "1.5rem",
 };
 
 const nextButton: CSSProperties = {
   textDecoration: "none",
-  margin: "2rem",
+};
+
+const itemCountBadge: CSSProperties = {
+  position: "absolute",
+  top: "-.5rem",
+  right: "-.5rem",
+  width: "3vmin",
+  height: "3vmin",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  borderRadius: "100%",
+  fontSize: "1.5vmin",
+  color: "white",
+  background: "#2081e2",
 };

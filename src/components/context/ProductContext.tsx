@@ -57,10 +57,10 @@ const ProductsContext = createContext<ProductContext>({
 
 export const ProductProvider: FC = (props) => {
     let localData = localStorage.getItem('collections');
+    const [collections, setCollections] = useState(localData ? JSON.parse(localData) : collectionData);
     const [addNftModal, setAddNftModal] = useState(false);
     const [editCollectionModal, setEditCollectionModal] = useState(false)
     const [editNftModal, setEditNftModal] = useState(false);
-    const [collections, setCollections] = useState(localData ? JSON.parse(localData) : collectionData);
     const [selectedCollectionID, setSelectedCollectionID] = useState(0);
     const [selectedNftID, setSelectedNftID] = useState(0);
     const [selectedNFT, setSelectedNFT] = useState({  NFTid: 12, image: "test", price: 12, description: "bollar", count: 12, collectionID: 1})
@@ -82,9 +82,6 @@ export const ProductProvider: FC = (props) => {
         setSelectedCollectionID(collectionID)
         setSelectedNFT(nft)
         setSelectedCollection(collection)
-        // setSelectedNftID(nftID)
-        // setSelectedCollection(collections.find((collectionItem : collectionDataItem) => selectedCollectionID === collectionItem.id))
-        // setSelectedNFT(collections.find((collectionItem : collectionDataItem) => selectedCollectionID === collectionItem.id)?.NFTS.find((item : NftItem) => item.NFTid === selectedNftID))
         setEditNftModal(true)
     }
     const closeEditNftModal = () => {setEditNftModal(false)}
@@ -121,7 +118,6 @@ export const ProductProvider: FC = (props) => {
                 collection.NFTS = collection.NFTS.map((nftItem : NftItem) => {
                     if(nftItem.NFTid === nft.NFTid) {
                         nftItem = nft
-                        // console.log(nftItem)
                         return nftItem
                     }
                     return nftItem
@@ -129,7 +125,6 @@ export const ProductProvider: FC = (props) => {
             }
             return collection
         });
-        console.log(updatedList)
         setCollections(updatedList)
         localStorage.setItem('collections', JSON.stringify(updatedList))
     }
@@ -152,6 +147,10 @@ export const ProductProvider: FC = (props) => {
             }
             return collection
         });
+        console.log('GAMLA LISTAN')
+        console.log(collections)
+        console.log('NYA LISTAN')
+        console.log(updatedList)
         setCollections(updatedList)
     }
 
