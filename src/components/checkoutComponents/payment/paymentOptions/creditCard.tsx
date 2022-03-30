@@ -13,14 +13,6 @@ interface Props {
   setPaymentModal: any;
 }
 
-interface Values {
-  CardNumber: number;
-  ExpMonth: string;
-  ExpYear: string;
-  Cvc: number;
-  CardHolder: string;
-}
-
 const validationSchema = yup.object({
   CardNumber: yup.number().required("Enter credit card number").min(16),
   Cvc: yup.number().required("Enter CVC number").min(3),
@@ -45,7 +37,8 @@ const validationSchema = yup.object({
 
 function CreditCard(props: Props) {
   const navigate = useNavigate();
-  const { addPurchaseList, cart, clearCart, totalPrice, newPurchaseTotal } = useCart();
+  const { addPurchaseList, cart, clearCart, totalPrice, newPurchaseTotal } =
+    useCart();
   const closeModal = () =>
     setTimeout(() => {
       props.setPaymentModal(false);
@@ -67,7 +60,7 @@ function CreditCard(props: Props) {
       console.log(props.deliveryInfo);
       props.setPaymentModal(true);
       addPurchaseList(cart);
-      newPurchaseTotal(totalPrice)
+      newPurchaseTotal(totalPrice);
       clearCart();
       closeModal();
     },
@@ -171,15 +164,6 @@ const creditCardForm: CSSProperties = {
 const CardHolderStyle: CSSProperties = {
   marginBottom: "1rem",
   width: "70%",
-};
-
-const CardNumberStyle: CSSProperties = {
-  marginBottom: "1rem",
-  width: "70%",
-};
-
-const textFieldStyle: CSSProperties = {
-  marginBottom: "1rem",
 };
 
 const ExpStyle: CSSProperties = {
