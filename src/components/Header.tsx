@@ -4,6 +4,7 @@ import { CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import { useCart } from "./context/CartContext";
+import { text } from "@fortawesome/fontawesome-svg-core";
 
 interface headerProps {
   searchBarFocused?: any;
@@ -33,6 +34,13 @@ function Header(headerProps: any) {
           </Link>
         </div>
         <div style={headerDiv3}>
+          <Button style={headerCartLink} onClick={openModal}> 
+          {cart.reduce((sum, nft) => sum + nft.count, 0) !== 0 && (
+          <div style={itemCountBadge}>
+            <p style={{textAlign: 'center', width: '100%', letterSpacing: 0, fontWeight: 'bold'}}>{cart.reduce((sum, nft) => sum + nft.count, 0)}</p>
+          </div>
+              )}
+            <FontAwesomeIcon icon={faShoppingCart}/>
           <Button style={headerCartLink} onClick={openModal}>
             <p style={{ fontSize: "2.2rem" }}>
               {cart.reduce((sum, nft) => sum + nft.count, 0)}
@@ -46,8 +54,11 @@ function Header(headerProps: any) {
 }
 
 const rootStyle: CSSProperties = {
-  background: "#002f6b",
+  background: "#04111d",
   color: "#eee",
+  position: 'sticky',
+  top: 0,
+  zIndex: '101'
 };
 
 const innerHeader: CSSProperties = {
@@ -68,6 +79,7 @@ const headline: CSSProperties = {
 
 const headerCartLink: CSSProperties = {
   color: "white",
+  position: 'relative'
   fontSize: "5vmin",
 };
 
@@ -80,15 +92,30 @@ const headerDiv2: CSSProperties = {
   justifyContent: "center",
 };
 const headerDiv3: CSSProperties = {
-  width: "33%",
-  display: "flex",
-  justifyContent: "flex-end",
-};
+  width: '33%',
+  display: 'flex',
+  justifyContent: 'flex-end',
+
 const StyledButton: CSSProperties = {
-  background: "#00214c",
+  background: "#2081e2",
   margin: "1rem",
   fontSize: "3vmin",
   fontWeight: "bold",
+};
+
+const itemCountBadge: CSSProperties = {
+  position:'absolute',
+  top: '-.5rem',
+  right: '-.5rem',
+  width: '3vmin',
+  height: '3vmin',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  borderRadius: '100%',
+  fontSize: '1.5vmin',
+  color: 'white',
+  background: '#2081e2'
 };
 
 export default Header;

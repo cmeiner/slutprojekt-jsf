@@ -45,37 +45,45 @@ function PurchaseComplete(props: Props) {
             </h2>
             <FontAwesomeIcon icon={faCoins} style={{ marginTop: "1.8rem" }} />
           </div>
-          <h2>Your purchase</h2>
+          <h2>Your purchase:</h2>
           <div style={cardContainer}>
             <div style={purchasedItems}>
               {purchaseList.map((item: NftItem, index: number) => (
                 <div style={purchasedItemTestCard} key={index}>
+                  <div style={itemCountBadge}>
+                    <p
+                      style={{
+                        textAlign: "center",
+                        width: "100%",
+                        letterSpacing: 0,
+                        fontWeight: "bold",
+                      }}
+                    >
+                      {item.count}
+                    </p>
+                  </div>
                   <div style={cardHeader}>
-                    <h3>
-                      {" "}
+                    <h3 style={{ margin: 0 }}>
                       {
                         collections.find((col) => col.id === item.collectionID)
                           ?.name
                       }
-                      #{item.NFTid}
+                      &nbsp;#{item.NFTid}
                     </h3>
                   </div>
-                  <img alt="test" style={checkoutPic} srcSet={item.image} />
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      width: "90%",
-                    }}
-                  >
-                    <p style={itemDesc}>{item.description}</p>
+                  <div style={cardBody}>
+                    <div style={{ width: "100%" }}>
+                      <img srcSet={item.image} style={{ width: "100%" }} />
+                    </div>
                   </div>
-                  <div style={{ display: "flex", justifyContent: "center" }}>
-                    <p style={{ marginRight: ".1rem" }}>Price: {item.price}</p>
-                    <FontAwesomeIcon
-                      icon={faCoins}
-                      style={{ marginTop: "1.1rem" }}
-                    />
+                  <div style={cardFooter}>
+                    <div>
+                      Price per unit: {item.price} &nbsp;
+                      <FontAwesomeIcon
+                        icon={faCoins}
+                        style={{ marginTop: "0.1rem" }}
+                      />
+                    </div>
                   </div>
                 </div>
               ))}
@@ -95,7 +103,6 @@ const rootStyle: CSSProperties = {
   alignItems: "center",
   margin: "0 auto",
   width: "100%",
-  // border: "2px solid #88D9E6",
 };
 
 const purchaseCompleteContainer: CSSProperties = {
@@ -103,41 +110,34 @@ const purchaseCompleteContainer: CSSProperties = {
   flexDirection: "column",
   alignItems: "center",
   width: "80%",
-  background: "#rgb(0, 47, 107)",
-  boxShadow: "2px 5px 12px black",
+  background: "#202225",
   marginBottom: "2rem",
 };
-
-// const purchasedProducts: CSSProperties = {};
 
 const purchasedItems: CSSProperties = {
   display: "flex",
   justifyContent: "center",
-  width: "90%",
-  height: "30%",
+  width: "100%",
   gap: "1rem",
   margin: 0,
   flexWrap: "wrap",
 };
 
 const purchasedItemTestCard: CSSProperties = {
-  minWidth: "15rem",
-  maxWidth: "15rem",
-  flexDirection: "column",
-  alignItems: "center",
-  boxShadow: "2px 4px 12px #0049A9",
-  borderRadius: "2rem",
+  boxShadow: "1px 1px 6px black",
+  borderRadius: ".5rem",
   display: "flex",
-};
-
-const checkoutPic: CSSProperties = {
-  maxWidth: "10rem",
-  maxHeight: "10rem",
-  borderRadius: ".2rem",
+  alignItems: "center",
+  flexDirection: "column",
+  background: "#303339",
+  gap: "1rem",
+  padding: "1rem",
+  width: "20vmin",
+  position: 'relative'
 };
 
 const cardContainer: CSSProperties = {
-  width: "90%",
+  width: "100%",
   borderRadius: ".5rem",
   display: "flex",
   justifyContent: "center",
@@ -146,18 +146,39 @@ const cardContainer: CSSProperties = {
   paddingBottom: "1rem",
 };
 
-const cardHeader: CSSProperties = {
-  width: "100%",
-  height: "5rem",
+const cardBody: CSSProperties = {
+  width: "90%",
   display: "flex",
-  flexDirection: "row",
+  flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
 };
 
-const itemDesc: CSSProperties = {
+const cardFooter: CSSProperties = {
+  display: "flex",
+  flexDirection: "column",
   textAlign: "center",
-  marginTop: ".5rem",
-  marginBottom: "0",
-  fontSize: "80%",
+  fontSize: "1.5vmin",
+};
+const cardHeader: CSSProperties = {
+  width: "100%",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  fontSize: "2vmin",
+};
+
+const itemCountBadge: CSSProperties = {
+  position: "absolute",
+  top: "-.5rem",
+  right: "-.5rem",
+  width: "3vmin",
+  height: "3vmin",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  borderRadius: "100%",
+  fontSize: "1.5vmin",
+  color: "white",
+  background: "#2081e2",
 };

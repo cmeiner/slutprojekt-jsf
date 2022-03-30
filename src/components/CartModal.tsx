@@ -74,12 +74,12 @@ function CartModal(props: CartProps) {
                     </div>
                     <div style={priceCol}>
                       <FontAwesomeIcon icon={faCoins} />
-                      {item.price}
+                      &nbsp;{item.price}
                     </div>
                   </div>
                 ))}
                 <div style={priceStyle}>
-                  Your total:{" "}
+                  Your total:&nbsp; {" "}
                   <FontAwesomeIcon
                     style={{ marginRight: ".2rem" }}
                     icon={faCoins}
@@ -95,7 +95,7 @@ function CartModal(props: CartProps) {
                     >
                       Empty your cart
                     </Button>
-                    <Link onClick={handleClose} to={"/Checkout"}>
+                    <Link style={{textDecoration: "none"}} onClick={handleClose} to={"/Checkout"}>
                       <Button style={buttonStyle} variant="contained">
                         Proceed to checkout
                       </Button>
@@ -118,12 +118,12 @@ const boxStyle: CSSProperties = {
   transform: "translate(-50%, -50%)",
   width: "40%",
   minWidth: "20rem",
-  background: "#EAEAEA",
-  border: "2px solid #000",
+  background: "#202225",
+  border: "1px solid #303339",
   borderRadius: "1rem",
   boxShadow: "24",
   padding: "2%",
-  zIndex: "9999",
+  color: "white",
 };
 
 const cartHeader: CSSProperties = {
@@ -131,7 +131,7 @@ const cartHeader: CSSProperties = {
   flexDirection: "row",
   gap: "1rem",
   width: "100%",
-  fontSize: "2.5vmin",
+  fontSize: "2vmin",
 };
 
 const cartFooter: CSSProperties = {
@@ -160,7 +160,7 @@ const prodColMid: CSSProperties = {
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  fontSize: "2vmin",
+  fontSize: "1.7vmin",
 };
 
 const qtyCol: CSSProperties = {
@@ -168,7 +168,7 @@ const qtyCol: CSSProperties = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  fontSize: "2vmin",
+  fontSize: "1.7vmin",
 };
 
 const priceCol: CSSProperties = {
@@ -176,14 +176,14 @@ const priceCol: CSSProperties = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  fontSize: "2vmin",
+  fontSize: "1.7vmin",
 };
 
 const buttonStyle: CSSProperties = {
   fontWeight: "bold",
-  background: "#00214c",
+  background: "#2081e2",
   color: "white",
-  fontSize: "1.5vmin",
+  fontSize: "1vmin",
 };
 
 const nftContainer: CSSProperties = {
@@ -192,7 +192,8 @@ const nftContainer: CSSProperties = {
   gap: "1rem",
   width: "100%",
   margin: ".5rem 0",
-  borderBottom: "1px solid black",
+  borderBottom: "1px solid white",
+  paddingBottom: '.5rem'
 };
 
 const cartButton: CSSProperties = {

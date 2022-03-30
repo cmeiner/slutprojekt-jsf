@@ -34,11 +34,8 @@ function Collections() {
               srcSet={collection?.productImage}
               alt="test"
             />
-            <h2 style={{ maxWidth: "35rem" }}>{collection?.description}</h2>
-            <p style={{ margin: 0, fontSize: "small" }}>
-              Psst! If you click the picture there's a description hidden
-              behind!
-            </p>
+            <h2 style={{maxWidth: "35rem"}} >{collection?.description}</h2>
+
           </div>
         </div>
       </div>
@@ -67,7 +64,7 @@ const flexProducts: CSSProperties = {
   display: "flex",
   flexWrap: "wrap",
   gap: "2rem",
-  justifyContent: "space-around",
+  justifyContent: "center",
   margin: "5rem 0",
 };
 
@@ -85,7 +82,8 @@ const descriptionStyle: CSSProperties = {
   justifyContent: "center",
   width: "80%",
   gap: "2rem",
-  flexWrap: "wrap",
+  flexWrap: 'wrap',
+  textAlign: 'center'
 };
 
 const productImage: CSSProperties = {

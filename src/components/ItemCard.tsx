@@ -49,14 +49,17 @@ function ItemCard(props: cardInfo) {
               />
             </div>
             <h1 style={priceStyle}>
-              FROM:{" "}
+              FROM:&nbsp;{" "}
+              <div>
               <FontAwesomeIcon
                 icon={faCoins}
-                style={{ paddingLeft: "4rem", paddingRight: ".3rem" }}
+                style={{ paddingRight: ".3rem" }}
               />
               {collectionInfo.floorPrice}
+
+              </div>
             </h1>
-            <Link to={`/Collections/${collectionInfo.id}`}>
+            <Link style={{textDecoration: "none"}} to={`/Collections/${collectionInfo.id}`}>
               <Button style={buttonStyle} variant="contained" href="">
                 VIEW COLLECTION
               </Button>
@@ -78,11 +81,14 @@ function ItemCard(props: cardInfo) {
               </div>
               <div style={priceStyle}>
                 Price:
+                <div>
                 <FontAwesomeIcon
                   icon={faCoins}
-                  style={{ paddingLeft: "4rem", paddingRight: ".3rem" }}
+                  style={{ paddingRight: ".3rem" }}
                 />
                 {nftInfo.buyPrice}
+
+                </div>
               </div>
             </div>
           </div>
@@ -113,8 +119,8 @@ const cardContainer: CSSProperties = {
   flexDirection: "column",
   alignItems: "center",
   paddingBottom: "1rem",
-  background: "#002f6b",
-  boxShadow: "2px 4px 12px #0049A9",
+  background: "#303339",
+  boxShadow: "1px 1px 6px black",
   position: "relative",
 };
 const cardPicture: CSSProperties = {
@@ -124,7 +130,7 @@ const cardPicture: CSSProperties = {
 const clickMeStyle: CSSProperties = {
   margin: 0,
   position: "absolute",
-  zIndex: "10000",
+  zIndex: "100",
   top: "23%",
   left: "1%",
   fontWeight: "bold",
@@ -142,14 +148,13 @@ const productImage: CSSProperties = {
 const priceStyle: CSSProperties = {
   fontSize: "1rem",
   display: "flex",
-  justifyContent: "space-around",
+  justifyContent: "space-between",
 };
 
 const buttonStyle: CSSProperties = {
   fontWeight: "bold",
-  background: "#00214c",
+  background: "#2081e2",
   color: "white",
-  width: "100%",
 };
 
 const cardHeader: CSSProperties = {
