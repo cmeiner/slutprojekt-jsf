@@ -137,6 +137,7 @@ const newCollectionContainer: CSSProperties = {
   border: "2px solid #000",
   zIndex: "9001",
   textAlign: "center",
+  width: "40%",
 };
 
 const textFieldStyle: CSSProperties = {

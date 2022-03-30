@@ -138,6 +138,7 @@ const newCollectionContainer: CSSProperties = {
   zIndex: "9001",
   //   boxShadow: 24,
   textAlign: "center",
+  width: "40%",
 };
 
 const textFieldStyle: CSSProperties = {
