@@ -136,7 +136,7 @@ const clickMeStyle: CSSProperties = {
   fontWeight: "bold",
   fontSize: "smaller",
   transform: "rotate(-30deg)",
-  background: "#00214c",
+  background: "#2081e2",
   padding: ".5rem",
   pointerEvents: "none",
 };

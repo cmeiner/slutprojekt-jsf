@@ -1,11 +1,12 @@
 import { Button } from "@mui/material";
-import { CSSProperties } from "react";
+import { CSSProperties, useState } from "react";
 import { Link } from "react-router-dom";
 import ItemCard from "../components/ItemCard";
 import { useProducts } from "../components/context/ProductContext";
 
 function StartPage(startPageProps: any) {
   const { randomCollections } = useProducts();
+  const [paymentModalOpen, setPaymentModalOpen] = useState(false);
 
   // let randomList =  collections.sort(() => Math.random() - Math.random()).slice(0, 3)
 
@@ -47,11 +48,6 @@ function StartPage(startPageProps: any) {
             ))}
           </div>
         </div>
-        <Link style={linkButtonStyle} to="/Admin">
-          <Button style={StyledButton} variant="contained" href="">
-            ADMIN
-          </Button>
-        </Link>
       </div>
     </div>
   );
@@ -111,16 +107,6 @@ const contentContainer: CSSProperties = {
   alignItems: "center",
 };
 
-const linkButtonStyle: CSSProperties = {
-  textDecoration: "none",
-};
-
-const StyledButton: CSSProperties = {
-  background: "#002f6b",
-  margin: "1rem",
-  fontSize: "2rem",
-  fontWeight: "bold",
-};
 
 const hottestStyle: CSSProperties = {
   display: "flex",

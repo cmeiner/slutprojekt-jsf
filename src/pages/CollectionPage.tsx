@@ -21,7 +21,7 @@ const flexProducts: CSSProperties = {
   display: "flex",
   flexWrap: "wrap",
   gap: "2rem",
-  justifyContent: "space-around",
+  justifyContent: "center",
   margin: "5rem 0",
 };
 

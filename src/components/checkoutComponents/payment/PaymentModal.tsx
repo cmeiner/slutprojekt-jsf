@@ -4,10 +4,10 @@ function PaymentPopup() {
   return (
     <div>
       <div style={paymentPopUp}>
-        <h2 style={{ color: "black" }}>Taking your money, hang on...</h2>
+        <h2 style={{ color: "white" }}>Taking your money, hang on...</h2>
         <div style={{ width: "100%" }}>
           <img
-            style={{ width: "100%" }}
+            style={spinStyle}
             src="/assets/images/Icons/loading.svg"
             alt="Waiting for payment"
           />
@@ -25,10 +25,15 @@ const paymentPopUp: CSSProperties = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: "30%",
-  background: "#C0D6DF",
-  border: "2px solid #000",
-  borderRadius: "2rem",
+  background: "#202225",
+  border: "1px solid #303339",
+  borderRadius: "1rem",
   zIndex: "9001",
-  //   boxShadow: 24,
+  boxShadow: '24',
   textAlign: "center",
 };
+
+const spinStyle: CSSProperties = {
+  width: '50%',
+  fill: 'white'
+}

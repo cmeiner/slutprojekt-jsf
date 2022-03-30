@@ -22,6 +22,7 @@
 .back {
   transform: rotateY(180deg);
   text-align: center;
+  width: 90%;
 }
 
 .image {

@@ -41,17 +41,13 @@ function Header(headerProps: any) {
           </div>
               )}
             <FontAwesomeIcon icon={faShoppingCart}/>
-          <Button style={headerCartLink} onClick={openModal}>
-            <p style={{ fontSize: "2.2rem" }}>
-              {cart.reduce((sum, nft) => sum + nft.count, 0)}
-            </p>
-            <FontAwesomeIcon icon={faShoppingCart} />
           </Button>
         </div>
       </div>
     </div>
   );
 }
+
 
 const rootStyle: CSSProperties = {
   background: "#04111d",
@@ -79,7 +75,7 @@ const headline: CSSProperties = {
 
 const headerCartLink: CSSProperties = {
   color: "white",
-  position: 'relative'
+  position: 'relative',
   fontSize: "5vmin",
 };
 
@@ -95,6 +91,7 @@ const headerDiv3: CSSProperties = {
   width: '33%',
   display: 'flex',
   justifyContent: 'flex-end',
+}
 
 const StyledButton: CSSProperties = {
   background: "#2081e2",

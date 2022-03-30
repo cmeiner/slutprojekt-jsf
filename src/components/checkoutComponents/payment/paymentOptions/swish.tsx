@@ -65,7 +65,7 @@ function Swish(props: Props) {
           helperText={formik.touched.number && formik.errors.number}
         />
         <Button
-          style={{ marginTop: "1rem", marginBottom: "1rem" }}
+          style={{ marginTop: "1rem", marginBottom: "1rem", background: '#2081e2' }}
           color="primary"
           variant="contained"
           fullWidth

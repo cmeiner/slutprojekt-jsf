@@ -1,5 +1,8 @@
 # NFT HEAVEN
 
+Welcome to our webshop! Here you can find the latest and greatest NFTs for sale in cyberspace.
+
+
 Created by:
 [Felix Bakkum](https://github.com/FrontFelix),
 [Christian Meiner](https://github.com/miMeiner) &
@@ -15,7 +18,7 @@ A live server will start automatically on port 3000 where you will be able to vi
 
 ## Admin-page
 
-On the bottom of the startpage you find a button that will take you to the admin page.
+On the bottom of the pages you find a button that will take you to the admin page.
 
 On the admin page you have tools to add/remove/edit collections and NFTs (items for sale)
 

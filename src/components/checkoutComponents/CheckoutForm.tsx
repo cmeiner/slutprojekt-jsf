@@ -194,7 +194,7 @@ function CheckoutForm(props: Props) {
             </Box>
 
             <Button
-              style={{ marginTop: "1rem", width: "40vmin" }}
+              style={{ marginTop: "1rem", width: "40vmin", background: '#2081e2', fontWeight:'bold' }}
               color="primary"
               variant="contained"
               fullWidth

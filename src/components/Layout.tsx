@@ -14,6 +14,7 @@ import AdminPage from "../pages/AdminPage";
 import PurchaseComplete from "../pages/PurchaseComplete";
 import PaymentPage from "../pages/PaymentPage";
 import { ToastContainer } from "react-toastify";
+import Footer from "./Footer";
 
 function Layout() {
   const [modalState, setModalState] = useState(false);
@@ -76,6 +77,7 @@ function Layout() {
                   }
                 />
               </Routes>
+              <Footer/>
             </div>
             <ToastContainer />
           </BrowserRouter>

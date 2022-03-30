@@ -22,7 +22,14 @@ function AdminPage() {
 
   return (
     <div style={adminPageLayout}>
-      <button onClick={() => localStorage.clear()}>Clear local storage</button>
+      <Button
+        onClick={() => localStorage.clear()}
+        style={buttonStyle}
+        variant="contained"
+        href=""
+      >
+        Clear local storage
+      </Button>
       <Button
         onClick={() => openAddCollectionModal()}
         style={buttonStyle}
@@ -127,7 +134,7 @@ const adminPageLayout: CSSProperties = {
 const adminCollections: CSSProperties = {
   display: "flex",
   flexDirection: "column",
-  boxShadow: "2px 4px 12px #0049A9",
+  boxShadow: "1px 1px 6px black",
   borderRadius: ".5rem",
   width: "100%",
   padding: "0 1rem 1rem 1rem",
@@ -149,9 +156,9 @@ const adminAddStyle: CSSProperties = {
   gap: "1rem",
   alignItems: "center",
   flexDirection: "column",
-  boxShadow: "2px 2px 8px #0049A9",
+  boxShadow: "1px 1px 6px black",
   borderRadius: ".5rem",
-  background: "#002f6b",
+  background: "#303339",
   width: "10rem",
   padding: "1rem",
   textAlign: "center",
@@ -185,7 +192,7 @@ const headerRight: CSSProperties = {
 
 const buttonStyle: CSSProperties = {
   fontWeight: "bold",
-  background: "#002f6b",
+  background: "rgb(32, 129, 226)",
   color: "white",
   fontSize: "small",
   width: "10rem",
@@ -193,7 +200,7 @@ const buttonStyle: CSSProperties = {
 
 const editButtonStyle: CSSProperties = {
   fontWeight: "bold",
-  background: "#00214c",
+  background: "#2081e2",
   color: "white",
   fontSize: "small",
   width: "100%",
