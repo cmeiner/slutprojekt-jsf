@@ -1,23 +1,13 @@
-import { Button, Card } from "@mui/material";
-import { CSSProperties, useState } from "react";
+import { Button } from "@mui/material";
+import { CSSProperties } from "react";
 import { Link } from "react-router-dom";
-import { collectionData, NftItem } from "../data/collections/collection";
 import ItemCard from "../components/ItemCard";
-import CartModal from "../components/CartModal";
 import { useProducts } from "../components/context/ProductContext";
-import { useCart } from "../components/context/CartContext";
-
-interface startPageProps {
-  focusHeader?: any;
-  cartState: any;
-  setCart: any;
-}
 
 function StartPage(startPageProps: any) {
-  const { collections, randomCollections } = useProducts();
+  const { randomCollections } = useProducts();
 
   // let randomList =  collections.sort(() => Math.random() - Math.random()).slice(0, 3)
-
 
   return (
     <div style={rootStyle}>
@@ -28,8 +18,8 @@ function StartPage(startPageProps: any) {
           </h2>
           <p style={headlineSubText}>
             Are you looking for insane NFTs? Do you want to make money quick?
-            You've come to the right place. We scoured the internet and handpicked the best NFTS for you! 
-            Enjoy! 
+            You've come to the right place. We scoured the internet and
+            handpicked the best NFTS for you! Enjoy!
           </p>
         </div>
         <div style={hottestStyle}>
@@ -57,6 +47,11 @@ function StartPage(startPageProps: any) {
             ))}
           </div>
         </div>
+        <Link style={linkButtonStyle} to="/Admin">
+          <Button style={StyledButton} variant="contained" href="">
+            ADMIN
+          </Button>
+        </Link>
       </div>
     </div>
   );
@@ -99,7 +94,7 @@ const flexItems: CSSProperties = {
   flexWrap: "wrap",
   gap: "2rem",
   justifyContent: "space-evenly",
-  margin: '1rem 1rem'
+  margin: "1rem 1rem",
 };
 
 const startPageWelcomeText: CSSProperties = {
@@ -114,11 +109,6 @@ const contentContainer: CSSProperties = {
   justifyContent: "center",
   flexDirection: "column",
   alignItems: "center",
-};
-
-const startPageLinkButtonContainer: CSSProperties = {
-  display: "flex",
-  justifyContent: "center",
 };
 
 const linkButtonStyle: CSSProperties = {
@@ -136,16 +126,9 @@ const hottestStyle: CSSProperties = {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  paddingTop: '2rem'
+  paddingTop: "2rem",
 };
 
 const hottestTitle: CSSProperties = {
   textAlign: "center",
-};
-
-const hottestItems: CSSProperties = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  marginTop: "5rem",
 };

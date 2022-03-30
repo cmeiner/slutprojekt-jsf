@@ -13,24 +13,10 @@ import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { DeliveryDataInfo } from "../../data/collections/deliveryData";
 import DeliveryBox from "./shipping/deliveryBox";
-import TotalSumWithShipping from "./payment/TotalSumWithShipping";
 
 interface Props {
   deliveryInfo: DeliveryDataInfo;
   setDeliveryInfo: any;
-}
-
-interface Values {
-  firstName: string;
-  lastName: string;
-  email: string;
-  deliveryMethod: string;
-  number: number;
-  address: string;
-  zipCode: number;
-  city: string;
-  country: string;
-  paymentMethod: string;
 }
 
 const validationSchema = yup.object({
@@ -72,7 +58,7 @@ function CheckoutForm(props: Props) {
     onSubmit: (values) => {
       values.deliveryMethod = deliveryOption;
       props.setDeliveryInfo(values);
-      console.log(props.deliveryInfo);
+      console.log(values);
       navigate("/PaymentPage");
     },
   });
@@ -192,7 +178,7 @@ function CheckoutForm(props: Props) {
                     Postnord - Postal agent - Free!
                   </MenuItem>
                   <MenuItem value={"DHL agent"}>
-                    DHL - Postal agent - 2 ETH {" "}
+                    DHL - Postal agent - 2 ETH{" "}
                   </MenuItem>
                   <MenuItem value={"Postnord home delivery"}>
                     Postnord - Home delivery day/evening - 4 ETH
@@ -208,7 +194,7 @@ function CheckoutForm(props: Props) {
             </Box>
 
             <Button
-              style={{ marginTop: "1rem", width: "40vmin", }}
+              style={{ marginTop: "1rem", width: "40vmin" }}
               color="primary"
               variant="contained"
               fullWidth
@@ -260,8 +246,8 @@ const formStyle: CSSProperties = {
 const deliveryBox: CSSProperties = {
   display: "flex",
   flexDirection: "column",
-  minWidth: '60vmin',
-  maxWidth: '3rem',
+  minWidth: "60vmin",
+  maxWidth: "3rem",
   textAlign: "center",
 };
 

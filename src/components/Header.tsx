@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import { CSSProperties, useRef, useEffect, useState } from "react";
+import { CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import { useCart } from "./context/CartContext";
@@ -9,20 +9,14 @@ import { text } from "@fortawesome/fontawesome-svg-core";
 interface headerProps {
   searchBarFocused?: any;
   searchBarFocusOut?: any;
-  modalState : boolean
-  setModalState : any
+  modalState: boolean;
+  setModalState: any;
 }
 
 function Header(headerProps: any) {
-  const [searchFocused, setSearchFocused] = useState(false);
+  const { cart } = useCart();
 
-  const {cart} = useCart()
-
-  const openModal = () => headerProps.setModalState(true)
-
-  useEffect(() => {
-    setSearchFocused(headerProps.searchBarFocused);
-  }, [headerProps.searchBarFocused]);
+  const openModal = () => headerProps.setModalState(true);
 
   return (
     <div style={rootStyle}>
@@ -32,12 +26,12 @@ function Header(headerProps: any) {
             <h1 style={headline}>NFT Heaven</h1>
           </Link>
         </div>
-        <div style={headerDiv2}> 
-            <Link style={{textDecoration: "none"}} to="/CollectionPage">
-              <Button style={StyledButton} variant="contained" href="">
-                EXPLORE
-              </Button>
-            </Link>
+        <div style={headerDiv2}>
+          <Link style={{ textDecoration: "none" }} to="/CollectionPage">
+            <Button style={StyledButton} variant="contained" href="">
+              EXPLORE
+            </Button>
+          </Link>
         </div>
         <div style={headerDiv3}>
           <Button style={headerCartLink} onClick={openModal}> 
@@ -47,6 +41,11 @@ function Header(headerProps: any) {
           </div>
               )}
             <FontAwesomeIcon icon={faShoppingCart}/>
+          <Button style={headerCartLink} onClick={openModal}>
+            <p style={{ fontSize: "2.2rem" }}>
+              {cart.reduce((sum, nft) => sum + nft.count, 0)}
+            </p>
+            <FontAwesomeIcon icon={faShoppingCart} />
           </Button>
         </div>
       </div>
@@ -75,28 +74,28 @@ const innerHeader: CSSProperties = {
 const headline: CSSProperties = {
   textDecoration: "none",
   color: "white",
-  fontSize: '5vmin'
+  fontSize: "5vmin",
 };
 
 const headerCartLink: CSSProperties = {
   color: "white",
-  fontSize: '5vmin',
   position: 'relative'
+  fontSize: "5vmin",
 };
 
 const headerDiv1: CSSProperties = {
-  width: '33%',
-}
+  width: "33%",
+};
 const headerDiv2: CSSProperties = {
-  width: '33%',
-  display: 'flex',
-  justifyContent: 'center'
-}
+  width: "33%",
+  display: "flex",
+  justifyContent: "center",
+};
 const headerDiv3: CSSProperties = {
   width: '33%',
   display: 'flex',
   justifyContent: 'flex-end',
-}
+
 const StyledButton: CSSProperties = {
   background: "#2081e2",
   margin: "1rem",

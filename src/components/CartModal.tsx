@@ -1,19 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus, faCoins } from "@fortawesome/free-solid-svg-icons";
 import { Box, Button, Modal, Typography } from "@mui/material";
-import { CSSProperties, useContext, useState } from "react";
+import { CSSProperties, useState } from "react";
 import { collectionData } from "../data/collections/collection";
-import ItemCard from "./ItemCard";
-import { NftItem } from "../data/collections/collection";
 import { Link } from "react-router-dom";
-import { CartContext, useCart } from "./context/CartContext";
-
-interface testNft {
-  NFTid: number;
-  image: string;
-  price: number;
-  description: string;
-}
+import { useCart } from "./context/CartContext";
 
 interface CartProps {
   modalState: boolean;
@@ -60,9 +51,9 @@ function CartModal(props: CartProps) {
                         {
                           collectionList.find(
                             (col) => col.id === item.collectionID
-                          )?.name 
+                          )?.name
                         }
-                         &nbsp;#{item.NFTid}
+                        &nbsp;#{item.NFTid}
                       </div>
                       <div style={{ fontSize: "0.7rem" }}>
                         {item.description}

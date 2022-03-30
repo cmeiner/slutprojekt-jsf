@@ -5,7 +5,6 @@ import { DeliveryDataInfo } from "../data/collections/deliveryData";
 import { useProducts } from "../components/context/ProductContext";
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import DeliveryInfoTable from "../components/checkoutComponents/DeliveryInfoTable";
 import GenerateOrderNumber from "../components/checkoutComponents/OrderNumber";
 import DeliveryInfoTableWithPay from "../components/checkoutComponents/DeliveryInfoTableWithPay";
 

@@ -35,6 +35,7 @@ function Collections() {
               alt="test"
             />
             <h2 style={{maxWidth: "35rem"}} >{collection?.description}</h2>
+
           </div>
         </div>
       </div>
@@ -56,7 +57,7 @@ function Collections() {
 
 const collectionsPage: CSSProperties = {
   display: "flex",
-  flexDirection: 'column',
+  flexDirection: "column",
 };
 
 const flexProducts: CSSProperties = {
