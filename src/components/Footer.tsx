@@ -22,18 +22,15 @@ const StyledButton: CSSProperties = {
   margin: "1rem",
   fontSize: "1rem",
   fontWeight: "bold",
-  position: "absolute",
-  right: 0,
-  top: '0'
 };
 
 const footerStyle: CSSProperties = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  paddingTop: "3rem",
-  paddingBottom: '1rem',
-  position: "relative",
+  flexDirection: 'column',
+  textAlign: 'center',
+  padding: '3rem 1rem 1rem 1rem'
 };
 
 export default Footer;

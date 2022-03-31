@@ -108,7 +108,7 @@ function CreditCard(props: Props) {
             style={ExpStyle}
             id="ExpMonth"
             name="ExpMonth"
-            label="Expiration month"
+            label="Exp. month"
             value={formik.values.ExpMonth}
             onChange={formik.handleChange}
             error={formik.touched.ExpMonth && Boolean(formik.errors.ExpMonth)}
@@ -118,7 +118,7 @@ function CreditCard(props: Props) {
             style={ExpStyle}
             id="ExpYear"
             name="ExpYear"
-            label="Expiration year"
+            label="Exp. year"
             value={formik.values.ExpYear}
             onChange={formik.handleChange}
             error={formik.touched.ExpYear && Boolean(formik.errors.ExpYear)}
@@ -151,30 +151,31 @@ const creditCardForm: CSSProperties = {
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  width: "50%",
 };
 
-const textFieldStyleCard: CSSProperties = { width: "55%" };
-const textFieldStyleCvc: CSSProperties = { width: "15%" };
+const textFieldStyleCard: CSSProperties = { width: "70%" };
+const textFieldStyleCvc: CSSProperties = { width: "30%" };
 
 const numberAndCvcContainer: CSSProperties = {
   display: "flex",
   justifyContent: "center",
   marginBottom: "1rem",
+  width: '80%'
 };
 
 const CardHolderStyle: CSSProperties = {
   marginBottom: "1rem",
-  width: "65%",
+  width: "80%",
 };
 
 const expDateContainer: CSSProperties = {
   display: "flex",
   justifyContent: "center",
+  width: '100%'
 };
 
 const ExpStyle: CSSProperties = {
-  width: "34%",
+  width: "40%",
 };
 
 const completePurchaseButton: CSSProperties = {

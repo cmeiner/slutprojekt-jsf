@@ -71,7 +71,7 @@ function PurchaseComplete(props: Props) {
                   </div>
                   <div style={cardFooter}>
                     <div>
-                      Price per unit: {item.price} &nbsp;
+                      Price per item: {item.price} &nbsp;
                       <FontAwesomeIcon icon={faCoins} style={coinIcon2} />
                     </div>
                   </div>
@@ -104,7 +104,7 @@ const purchaseCompleteContainer: CSSProperties = {
   marginBottom: "2rem",
 };
 
-const purchaseCompleteTextStyle: CSSProperties = { fontSize: "2rem" };
+const purchaseCompleteTextStyle: CSSProperties = { fontSize: "2rem", textAlign: 'center' };
 
 const deliveryDetailsTextStyle: CSSProperties = {
   textAlign: "center",
@@ -137,7 +137,7 @@ const purchasedItemTestCard: CSSProperties = {
   background: "#303339",
   gap: "1rem",
   padding: "1rem",
-  width: "20vmin",
+  width: "clamp(12vmax, 30vmax, 5rem)",
   position: "relative",
 };
 
@@ -163,14 +163,14 @@ const cardFooter: CSSProperties = {
   display: "flex",
   flexDirection: "column",
   textAlign: "center",
-  fontSize: "1.5vmin",
+  fontSize: "clamp(2vmin, 2.5vmin, 1.2rem)",
 };
 const cardHeader: CSSProperties = {
   width: "100%",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  fontSize: "2vmin",
+  fontSize: "clamp(2vmin, 3vmin, 1.2rem)",
 };
 
 const cardHeaderTextStyle: CSSProperties = { margin: 0 };
@@ -183,13 +183,13 @@ const itemCountBadge: CSSProperties = {
   position: "absolute",
   top: "-.5rem",
   right: "-.5rem",
-  width: "3vmin",
-  height: "3vmin",
+  width: "1.5rem",
+  height: "1.5rem",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   borderRadius: "100%",
-  fontSize: "1.5vmin",
+  fontSize: "1rem",
   color: "white",
   background: "#2081e2",
 };

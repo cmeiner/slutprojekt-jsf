@@ -69,7 +69,7 @@ const headline: CSSProperties = {
 const headerCartLink: CSSProperties = {
   color: "white",
   position: "relative",
-  fontSize: "5vmin",
+  fontSize: 'clamp(5vmin, 10vmin, 3rem)'
 };
 
 const headerDiv1: CSSProperties = {
@@ -99,20 +99,22 @@ const itemCountBadge: CSSProperties = {
   position: "absolute",
   top: "-.5rem",
   right: "-.5rem",
-  width: "3vmin",
-  height: "3vmin",
+  width: "1.5rem",
+  height: "1.5rem",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   borderRadius: "100%",
-  fontSize: "1.5vmin",
+  fontSize: "1rem",
   color: "white",
   background: "#2081e2",
 };
 
 const countStyle: CSSProperties = {
-  textAlign: "center",
+  textAlign: 'center',
+  margin: 0,
   width: "100%",
+  lineHeight: 0,
   letterSpacing: 0,
   fontWeight: "bold",
 };

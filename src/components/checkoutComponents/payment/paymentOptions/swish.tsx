@@ -80,7 +80,7 @@ function Swish(props: Props) {
 export default Swish;
 
 const swishForm: CSSProperties = {
-  width: "30%",
+margin: '0 1rem'
 };
 
 const textFieldStyle: CSSProperties = {

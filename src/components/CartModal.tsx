@@ -47,7 +47,7 @@ function CartModal(props: CartProps) {
                       <img style={iconStyle} srcSet={item.image} alt="test" />
                     </div>
                     <div style={prodColMid}>
-                      <div>
+                      <div style={nameColMid}>
                         {
                           collectionList.find(
                             (col) => col.id === item.collectionID
@@ -117,6 +117,8 @@ const boxStyle: CSSProperties = {
   transform: "translate(-50%, -50%)",
   width: "40%",
   minWidth: "20rem",
+  maxHeight: '90vh',
+  overflowY: 'scroll',
   background: "#202225",
   border: "1px solid #303339",
   borderRadius: "1rem",
@@ -132,10 +134,17 @@ const cartHeader: CSSProperties = {
   flexDirection: "row",
   gap: "1rem",
   width: "100%",
-  fontSize: "2vmin",
+  fontSize: "clamp(1vmin, 3vmin, 1.5rem)",
 };
 
-const itemDescStyle: CSSProperties = { fontSize: "0.7rem" };
+const itemDescStyle: CSSProperties = { 
+  fontSize: "clamp(1vmin, 2.5vmin, .9rem)", 
+};
+
+const nameColMid: CSSProperties = { 
+  fontWeight: "bold",
+  fontSize: 'clamp(1vmin, 3vmin, 1.5rem)'
+};
 
 const cartFooter: CSSProperties = {
   display: "flex",
@@ -163,7 +172,7 @@ const prodColMid: CSSProperties = {
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  fontSize: "1.7vmin",
+  fontSize: "clamp(1vmin, 3vmin, 1.5rem)",
 };
 
 const qtyCol: CSSProperties = {
@@ -171,7 +180,7 @@ const qtyCol: CSSProperties = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  fontSize: "1.7vmin",
+  fontSize: "clamp(1vmin, 3vmin, 1.5rem)",
 };
 
 const priceCol: CSSProperties = {
@@ -179,7 +188,7 @@ const priceCol: CSSProperties = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  fontSize: "1.7vmin",
+  fontSize: "clamp(1vmin, 3vmin, 1.5rem)",
 };
 
 const coinIcon: CSSProperties = { marginRight: ".2rem" };
@@ -188,7 +197,7 @@ const buttonStyle: CSSProperties = {
   fontWeight: "bold",
   background: "#2081e2",
   color: "white",
-  fontSize: "1vmin",
+  fontSize: "clamp(1.8vmin, 3vmin, 1.2rem)",
 };
 
 const nftContainer: CSSProperties = {
@@ -204,7 +213,9 @@ const nftContainer: CSSProperties = {
 const cartButton: CSSProperties = {
   display: "flex",
   flexDirection: "row",
+  justifyContent: "center",
   gap: "1rem",
+  flexWrap: "wrap",
 };
 
 const iconStyle: CSSProperties = {

@@ -48,7 +48,7 @@ const invoiceInfoBox: CSSProperties = {
   flexDirection: "column",
   alignItems: "center",
   textAlign: "center",
-  width: "40%",
+  width: "clamp(5rem, 60vmin, 20rem)",
 };
 
 const completePurchaseButton: CSSProperties = {

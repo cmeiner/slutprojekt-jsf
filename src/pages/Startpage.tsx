@@ -113,4 +113,5 @@ const hottestStyle: CSSProperties = {
 
 const hottestTitle: CSSProperties = {
   textAlign: "center",
+  margin: '0 1rem'
 };

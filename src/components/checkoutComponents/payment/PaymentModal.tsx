@@ -24,7 +24,7 @@ const paymentPopUp: CSSProperties = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "30%",
+  width: "clamp(50vmin, 90vmin, 20rem)",
   background: "#202225",
   border: "1px solid #303339",
   borderRadius: "1rem",

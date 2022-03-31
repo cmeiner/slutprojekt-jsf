@@ -44,7 +44,6 @@ function PaymentPage(props: Props) {
             setFinalTotalSum={setFinalTotalSum}
           />
         </div>
-
         <form onSubmit={formik.handleSubmit}>
           <h2 style={paymentDetailsTextStyle}>Payment details</h2>
           <Box style={boxStyle}>
@@ -93,6 +92,7 @@ const checkoutContainer: CSSProperties = {
   background: "#303339",
   boxShadow: "2px 5px 12px black",
   marginBottom: "2rem",
+  fontSize: "clamp(2vmin, 3.2vmin, 1.2rem)",
 };
 
 const headlineStyle: CSSProperties = {
@@ -101,4 +101,4 @@ const headlineStyle: CSSProperties = {
 
 const paymentDetailsTextStyle: CSSProperties = { textAlign: "center" };
 
-const boxStyle: CSSProperties = { minWidth: 360 };
+const boxStyle: CSSProperties = { minWidth: 250 };
