@@ -1,7 +1,6 @@
 import { Box, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import { useFormik } from "formik";
 import { CSSProperties, useState } from "react";
-
 import DeliveryInfoTable from "../components/checkoutComponents/DeliveryInfoTable";
 import { DeliveryDataInfo } from "../data/collections/deliveryData";
 import PaymentBox from "../components/checkoutComponents/payment/paymentBox";
@@ -47,8 +46,8 @@ function PaymentPage(props: Props) {
         </div>
 
         <form onSubmit={formik.handleSubmit}>
-          <h2 style={{ textAlign: "center" }}>Payment details</h2>
-          <Box style={{ minWidth: 360 }}>
+          <h2 style={paymentDetailsTextStyle}>Payment details</h2>
+          <Box style={boxStyle}>
             <FormControl fullWidth>
               <InputLabel id="deliveryOption">Payment option</InputLabel>
               <Select
@@ -99,3 +98,7 @@ const checkoutContainer: CSSProperties = {
 const headlineStyle: CSSProperties = {
   fontSize: "2rem",
 };
+
+const paymentDetailsTextStyle: CSSProperties = { textAlign: "center" };
+
+const boxStyle: CSSProperties = { minWidth: 360 };

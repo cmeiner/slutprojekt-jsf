@@ -26,7 +26,7 @@ function CartModal(props: CartProps) {
       >
         <Box style={boxStyle}>
           {cart.length === 0 ? (
-            <h1 style={{ textAlign: "center" }}>Your cart is empty!</h1>
+            <h1 style={emptyCartTextStyle}>Your cart is empty!</h1>
           ) : (
             <div>
               <Typography id="modal-modal-title" variant="h6" component="h1">
@@ -55,9 +55,7 @@ function CartModal(props: CartProps) {
                         }
                         &nbsp;#{item.NFTid}
                       </div>
-                      <div style={{ fontSize: "0.7rem" }}>
-                        {item.description}
-                      </div>
+                      <div style={itemDescStyle}>{item.description}</div>
                     </div>
                     <div style={qtyCol}>
                       <FontAwesomeIcon
@@ -79,11 +77,8 @@ function CartModal(props: CartProps) {
                   </div>
                 ))}
                 <div style={priceStyle}>
-                  Your total:&nbsp; {" "}
-                  <FontAwesomeIcon
-                    style={{ marginRight: ".2rem" }}
-                    icon={faCoins}
-                  />
+                  Your total:&nbsp;{" "}
+                  <FontAwesomeIcon style={coinIcon} icon={faCoins} />
                   {totalPrice}
                 </div>
                 <div style={cartFooter}>
@@ -95,7 +90,11 @@ function CartModal(props: CartProps) {
                     >
                       Empty your cart
                     </Button>
-                    <Link style={{textDecoration: "none"}} onClick={handleClose} to={"/Checkout"}>
+                    <Link
+                      style={linkStyle}
+                      onClick={handleClose}
+                      to={"/Checkout"}
+                    >
                       <Button style={buttonStyle} variant="contained">
                         Proceed to checkout
                       </Button>
@@ -126,6 +125,8 @@ const boxStyle: CSSProperties = {
   color: "white",
 };
 
+const emptyCartTextStyle: CSSProperties = { textAlign: "center" };
+
 const cartHeader: CSSProperties = {
   display: "flex",
   flexDirection: "row",
@@ -133,6 +134,8 @@ const cartHeader: CSSProperties = {
   width: "100%",
   fontSize: "2vmin",
 };
+
+const itemDescStyle: CSSProperties = { fontSize: "0.7rem" };
 
 const cartFooter: CSSProperties = {
   display: "flex",
@@ -179,6 +182,8 @@ const priceCol: CSSProperties = {
   fontSize: "1.7vmin",
 };
 
+const coinIcon: CSSProperties = { marginRight: ".2rem" };
+
 const buttonStyle: CSSProperties = {
   fontWeight: "bold",
   background: "#2081e2",
@@ -193,7 +198,7 @@ const nftContainer: CSSProperties = {
   width: "100%",
   margin: ".5rem 0",
   borderBottom: "1px solid white",
-  paddingBottom: '.5rem'
+  paddingBottom: ".5rem",
 };
 
 const cartButton: CSSProperties = {
@@ -213,6 +218,10 @@ const priceStyle: CSSProperties = {
   marginTop: "1rem",
   fontSize: "1.5rem",
   alignItems: "center",
+};
+
+const linkStyle: CSSProperties = {
+  textDecoration: "none",
 };
 
 export default CartModal;

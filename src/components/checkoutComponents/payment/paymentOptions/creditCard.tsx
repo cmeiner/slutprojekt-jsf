@@ -67,14 +67,7 @@ function CreditCard(props: Props) {
   });
   return (
     <div style={creditCardForm}>
-      <form
-        style={{
-          display: "flex",
-          alignItems: "center",
-          flexDirection: "column",
-        }}
-        onSubmit={formik.handleSubmit}
-      >
+      <form style={formStyle} onSubmit={formik.handleSubmit}>
         <TextField
           style={CardHolderStyle}
           fullWidth
@@ -86,15 +79,9 @@ function CreditCard(props: Props) {
           error={formik.touched.CardHolder && Boolean(formik.errors.CardHolder)}
           helperText={formik.touched.CardHolder && formik.errors.CardHolder}
         />
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            marginBottom: "1rem",
-          }}
-        >
+        <div style={numberAndCvcContainer}>
           <TextField
-            style={{ width: "45%" }}
+            style={textFieldStyleCard}
             id="CardNumber"
             name="CardNumber"
             label="Card Number"
@@ -106,7 +93,7 @@ function CreditCard(props: Props) {
             helperText={formik.touched.CardNumber && formik.errors.CardNumber}
           />
           <TextField
-            style={{ width: "30%" }}
+            style={textFieldStyleCvc}
             id="Cvc"
             name="Cvc"
             label="CVC"
@@ -116,7 +103,7 @@ function CreditCard(props: Props) {
             helperText={formik.touched.Cvc && formik.errors.Cvc}
           />
         </div>
-        <div style={{ display: "flex", justifyContent: "center" }}>
+        <div style={expDateContainer}>
           <TextField
             style={ExpStyle}
             id="ExpMonth"
@@ -140,7 +127,7 @@ function CreditCard(props: Props) {
         </div>
 
         <Button
-          style={{ marginTop: "1rem", marginBottom: "1rem", width: "60%" }}
+          style={completePurchaseButton}
           color="primary"
           variant="contained"
           type="submit"
@@ -154,6 +141,12 @@ function CreditCard(props: Props) {
 
 export default CreditCard;
 
+const formStyle: CSSProperties = {
+  display: "flex",
+  alignItems: "center",
+  flexDirection: "column",
+};
+
 const creditCardForm: CSSProperties = {
   display: "flex",
   flexDirection: "column",
@@ -161,11 +154,31 @@ const creditCardForm: CSSProperties = {
   width: "50%",
 };
 
+const textFieldStyleCard: CSSProperties = { width: "55%" };
+const textFieldStyleCvc: CSSProperties = { width: "15%" };
+
+const numberAndCvcContainer: CSSProperties = {
+  display: "flex",
+  justifyContent: "center",
+  marginBottom: "1rem",
+};
+
 const CardHolderStyle: CSSProperties = {
   marginBottom: "1rem",
-  width: "70%",
+  width: "65%",
+};
+
+const expDateContainer: CSSProperties = {
+  display: "flex",
+  justifyContent: "center",
 };
 
 const ExpStyle: CSSProperties = {
   width: "34%",
+};
+
+const completePurchaseButton: CSSProperties = {
+  marginTop: "1rem",
+  marginBottom: "1rem",
+  width: "60%",
 };

@@ -83,13 +83,7 @@ function AdminPage() {
           <div style={adminCollectionMain}>
             {collection.NFTS.map((nft, index /* DETTA ÄR NFTERNA */) => (
               <div style={adminAddStyle} key={index}>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-evenly",
-                    width: "100%",
-                  }}
-                >
+                <div style={adminCardHeader}>
                   <div>
                     <FontAwesomeIcon icon={faCoins} />
                     {nft.price}
@@ -163,6 +157,12 @@ const adminAddStyle: CSSProperties = {
   padding: "1rem",
   textAlign: "center",
   position: "relative",
+};
+
+const adminCardHeader: CSSProperties = {
+  display: "flex",
+  justifyContent: "space-evenly",
+  width: "100%",
 };
 
 const adminImageStyle: CSSProperties = {

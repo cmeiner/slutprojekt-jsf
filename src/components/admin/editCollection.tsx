@@ -92,11 +92,7 @@ function EditCollection() {
                 />
               </div>
               <Button
-                style={{
-                  marginTop: "1rem",
-                  width: "40%",
-                  marginBottom: "1rem",
-                }}
+                style={saveCloseEditButton}
                 color="primary"
                 variant="contained"
                 fullWidth
@@ -105,11 +101,7 @@ function EditCollection() {
                 Save Edit
               </Button>
               <Button
-                style={{
-                  marginTop: "1rem",
-                  width: "40%",
-                  marginBottom: "1rem",
-                }}
+                style={saveCloseEditButton}
                 color="primary"
                 variant="contained"
                 fullWidth
@@ -160,4 +152,10 @@ const textFieldsContainer: CSSProperties = {
   flexDirection: "column",
   width: "30rem",
   margin: "1rem",
+};
+
+const saveCloseEditButton: CSSProperties = {
+  marginTop: "1rem",
+  width: "40%",
+  marginBottom: "1rem",
 };

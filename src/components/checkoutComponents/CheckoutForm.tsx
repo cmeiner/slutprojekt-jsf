@@ -194,7 +194,7 @@ function CheckoutForm(props: Props) {
             </Box>
 
             <Button
-              style={{ marginTop: "1rem", width: "40vmin", background: '#2081e2', fontWeight:'bold' }}
+              style={nextButtonStyle}
               color="primary"
               variant="contained"
               fullWidth
@@ -255,4 +255,11 @@ const textFieldsContainer: CSSProperties = {
   display: "flex",
   justifyContent: "center",
   flexWrap: "wrap",
+};
+
+const nextButtonStyle: CSSProperties = {
+  marginTop: "1rem",
+  width: "40vmin",
+  background: "#2081e2",
+  fontWeight: "bold",
 };

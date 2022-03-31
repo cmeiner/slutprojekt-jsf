@@ -1,17 +1,9 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Button } from "@mui/material";
 import { CSSProperties } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "@mui/material";
 import { useCart } from "./context/CartContext";
-import { text } from "@fortawesome/fontawesome-svg-core";
-
-interface headerProps {
-  searchBarFocused?: any;
-  searchBarFocusOut?: any;
-  modalState: boolean;
-  setModalState: any;
-}
 
 function Header(headerProps: any) {
   const { cart } = useCart();
@@ -27,20 +19,22 @@ function Header(headerProps: any) {
           </Link>
         </div>
         <div style={headerDiv2}>
-          <Link style={{ textDecoration: "none" }} to="/CollectionPage">
+          <Link style={linkStyle} to="/CollectionPage">
             <Button style={StyledButton} variant="contained" href="">
               EXPLORE
             </Button>
           </Link>
         </div>
         <div style={headerDiv3}>
-          <Button style={headerCartLink} onClick={openModal}> 
-          {cart.reduce((sum, nft) => sum + nft.count, 0) !== 0 && (
-          <div style={itemCountBadge}>
-            <p style={{textAlign: 'center', width: '100%', letterSpacing: 0, fontWeight: 'bold'}}>{cart.reduce((sum, nft) => sum + nft.count, 0)}</p>
-          </div>
-              )}
-            <FontAwesomeIcon icon={faShoppingCart}/>
+          <Button style={headerCartLink} onClick={openModal}>
+            {cart.reduce((sum, nft) => sum + nft.count, 0) !== 0 && (
+              <div style={itemCountBadge}>
+                <p style={countStyle}>
+                  {cart.reduce((sum, nft) => sum + nft.count, 0)}
+                </p>
+              </div>
+            )}
+            <FontAwesomeIcon icon={faShoppingCart} />
           </Button>
         </div>
       </div>
@@ -48,13 +42,12 @@ function Header(headerProps: any) {
   );
 }
 
-
 const rootStyle: CSSProperties = {
   background: "#04111d",
   color: "#eee",
-  position: 'sticky',
+  position: "sticky",
   top: 0,
-  zIndex: '101'
+  zIndex: "101",
 };
 
 const innerHeader: CSSProperties = {
@@ -75,7 +68,7 @@ const headline: CSSProperties = {
 
 const headerCartLink: CSSProperties = {
   color: "white",
-  position: 'relative',
+  position: "relative",
   fontSize: "5vmin",
 };
 
@@ -88,10 +81,12 @@ const headerDiv2: CSSProperties = {
   justifyContent: "center",
 };
 const headerDiv3: CSSProperties = {
-  width: '33%',
-  display: 'flex',
-  justifyContent: 'flex-end',
-}
+  width: "33%",
+  display: "flex",
+  justifyContent: "flex-end",
+};
+
+const linkStyle: CSSProperties = { textDecoration: "none" };
 
 const StyledButton: CSSProperties = {
   background: "#2081e2",
@@ -101,18 +96,25 @@ const StyledButton: CSSProperties = {
 };
 
 const itemCountBadge: CSSProperties = {
-  position:'absolute',
-  top: '-.5rem',
-  right: '-.5rem',
-  width: '3vmin',
-  height: '3vmin',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  borderRadius: '100%',
-  fontSize: '1.5vmin',
-  color: 'white',
-  background: '#2081e2'
+  position: "absolute",
+  top: "-.5rem",
+  right: "-.5rem",
+  width: "3vmin",
+  height: "3vmin",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  borderRadius: "100%",
+  fontSize: "1.5vmin",
+  color: "white",
+  background: "#2081e2",
+};
+
+const countStyle: CSSProperties = {
+  textAlign: "center",
+  width: "100%",
+  letterSpacing: 0,
+  fontWeight: "bold",
 };
 
 export default Header;

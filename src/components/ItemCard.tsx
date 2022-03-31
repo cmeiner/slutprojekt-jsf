@@ -51,15 +51,14 @@ function ItemCard(props: cardInfo) {
             <h1 style={priceStyle}>
               FROM:&nbsp;{" "}
               <div>
-              <FontAwesomeIcon
-                icon={faCoins}
-                style={{ paddingRight: ".3rem" }}
-              />
-              {collectionInfo.floorPrice}
-
+                <FontAwesomeIcon icon={faCoins} style={coinIconStyle} />
+                {collectionInfo.floorPrice}
               </div>
             </h1>
-            <Link style={{textDecoration: "none"}} to={`/Collections/${collectionInfo.id}`}>
+            <Link
+              style={{ textDecoration: "none" }}
+              to={`/Collections/${collectionInfo.id}`}
+            >
               <Button style={buttonStyle} variant="contained" href="">
                 VIEW COLLECTION
               </Button>
@@ -82,12 +81,8 @@ function ItemCard(props: cardInfo) {
               <div style={priceStyle}>
                 Price:
                 <div>
-                <FontAwesomeIcon
-                  icon={faCoins}
-                  style={{ paddingRight: ".3rem" }}
-                />
-                {nftInfo.buyPrice}
-
+                  <FontAwesomeIcon icon={faCoins} style={coinIconStyle} />
+                  {nftInfo.buyPrice}
                 </div>
               </div>
             </div>
@@ -150,6 +145,8 @@ const priceStyle: CSSProperties = {
   display: "flex",
   justifyContent: "space-between",
 };
+
+const coinIconStyle: CSSProperties = { paddingRight: ".3rem" };
 
 const buttonStyle: CSSProperties = {
   fontWeight: "bold",
