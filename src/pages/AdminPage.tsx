@@ -91,7 +91,9 @@ function AdminPage() {
                   <div>ID #{nft.NFTid}</div>
                 </div>
                 <img style={adminImageStyle} alt="" srcSet={nft.image} />
+                <div style={descStyle}>
                 {nft.description}
+                </div>
                 <FontAwesomeIcon
                   icon={faRemove}
                   onClick={() => removeNft(collection.id, nft.NFTid)}
@@ -123,6 +125,7 @@ const adminPageLayout: CSSProperties = {
   flexDirection: "column",
   alignItems: "center",
   gap: "2rem",
+  overflowX: 'hidden'
 };
 
 const adminCollections: CSSProperties = {
@@ -130,7 +133,7 @@ const adminCollections: CSSProperties = {
   flexDirection: "column",
   boxShadow: "1px 1px 6px black",
   borderRadius: ".5rem",
-  width: "100%",
+  width: "90%",
   padding: "0 1rem 1rem 1rem",
   gap: "1rem",
 };
@@ -153,7 +156,7 @@ const adminAddStyle: CSSProperties = {
   boxShadow: "1px 1px 6px black",
   borderRadius: ".5rem",
   background: "#303339",
-  width: "10rem",
+  width: "clamp(12vmin, 33vmin, 8.5rem",
   padding: "1rem",
   textAlign: "center",
   position: "relative",
@@ -181,6 +184,13 @@ const headerLeft: CSSProperties = {
   display: "flex",
   gap: "1rem",
   alignItems: "center",
+};
+
+const descStyle: CSSProperties = {
+  display: "flex",
+  alignItems: "center",
+  height: '100%',
+  fontSize: "clamp(1.5vmin, 2vmin, 1rem)",
 };
 
 const headerRight: CSSProperties = {

@@ -129,7 +129,7 @@ const newCollectionContainer: CSSProperties = {
   border: "2px solid #000",
   zIndex: "9001",
   textAlign: "center",
-  width: "40%",
+  width: "clamp(10rem, 90vmin, 40rem",
 };
 
 const editNftDescription: CSSProperties = { width: "80%" };
@@ -157,6 +157,6 @@ const textFieldsContainer: CSSProperties = {
   display: "flex",
   justifyContent: "center",
   flexDirection: "column",
-  width: "30rem",
+  width: "90%",
   margin: "1rem",
 };

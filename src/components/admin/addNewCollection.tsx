@@ -123,7 +123,7 @@ const newCollectionContainer: CSSProperties = {
   zIndex: "9001",
   //   boxShadow: 24,
   textAlign: "center",
-  width: "40%",
+  width: "clamp(10rem, 90vmin, 40rem",
 };
 
 const addNewCollectionButton: CSSProperties = {
@@ -155,6 +155,6 @@ const textFieldsContainer: CSSProperties = {
   display: "flex",
   justifyContent: "center",
   flexDirection: "column",
-  width: "30rem",
+  width: "90%",
   margin: "1rem",
 };
