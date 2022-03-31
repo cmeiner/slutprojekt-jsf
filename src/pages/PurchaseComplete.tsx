@@ -1,12 +1,12 @@
-import { CSSProperties } from "react";
-import { useCart } from "../components/context/CartContext";
-import { NftItem } from "../data/collections/collection";
-import { DeliveryDataInfo } from "../data/collections/deliveryData";
-import { useProducts } from "../components/context/ProductContext";
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import GenerateOrderNumber from "../components/checkoutComponents/OrderNumber";
+import { CSSProperties } from "react";
 import DeliveryInfoTableWithPay from "../components/checkoutComponents/DeliveryInfoTableWithPay";
+import GenerateOrderNumber from "../components/checkoutComponents/OrderNumber";
+import { useCart } from "../components/context/CartContext";
+import { useProducts } from "../components/context/ProductContext";
+import { NftItem } from "../data/collections/collection";
+import { DeliveryDataInfo } from "../data/collections/deliveryData";
 
 interface Props {
   deliveryInfo: DeliveryDataInfo;
@@ -31,19 +31,17 @@ function PurchaseComplete(props: Props) {
     <div>
       <div style={rootStyle}>
         <div style={purchaseCompleteContainer}>
-          <h2 style={{ fontSize: "2rem" }}>Purchase complete!</h2>
+          <h2 style={purchaseCompleteTextStyle}>Purchase complete!</h2>
           <div>
             <GenerateOrderNumber />
-            <h2 style={{ textAlign: "center", marginTop: "0" }}>
-              Delivery details
-            </h2>
+            <h2 style={deliveryDetailsTextStyle}>Delivery details</h2>
             <DeliveryInfoTableWithPay deliveryInfo={props.deliveryInfo} />
           </div>
-          <div style={{ display: "flex" }}>
-            <h2 style={{ marginRight: ".1rem" }}>
+          <div style={totalPriceContainer}>
+            <h2 style={totalPriceTextStyle}>
               Total price: {totalSumWithShipping}
             </h2>
-            <FontAwesomeIcon icon={faCoins} style={{ marginTop: "1.8rem" }} />
+            <FontAwesomeIcon icon={faCoins} style={coinIcon} />
           </div>
           <h2>Your purchase:</h2>
           <div style={cardContainer}>
@@ -51,19 +49,10 @@ function PurchaseComplete(props: Props) {
               {purchaseList.map((item: NftItem, index: number) => (
                 <div style={purchasedItemTestCard} key={index}>
                   <div style={itemCountBadge}>
-                    <p
-                      style={{
-                        textAlign: "center",
-                        width: "100%",
-                        letterSpacing: 0,
-                        fontWeight: "bold",
-                      }}
-                    >
-                      {item.count}
-                    </p>
+                    <p style={itemCountTextStyle}>{item.count}</p>
                   </div>
                   <div style={cardHeader}>
-                    <h3 style={{ margin: 0 }}>
+                    <h3 style={cardHeaderTextStyle}>
                       {
                         collections.find((col) => col.id === item.collectionID)
                           ?.name
@@ -72,17 +61,18 @@ function PurchaseComplete(props: Props) {
                     </h3>
                   </div>
                   <div style={cardBody}>
-                    <div style={{ width: "100%" }}>
-                      <img srcSet={item.image} style={{ width: "100%" }} />
+                    <div style={cardImageContainer}>
+                      <img
+                        srcSet={item.image}
+                        style={cardImageStyle}
+                        alt="item"
+                      />
                     </div>
                   </div>
                   <div style={cardFooter}>
                     <div>
                       Price per unit: {item.price} &nbsp;
-                      <FontAwesomeIcon
-                        icon={faCoins}
-                        style={{ marginTop: "0.1rem" }}
-                      />
+                      <FontAwesomeIcon icon={faCoins} style={coinIcon2} />
                     </div>
                   </div>
                 </div>
@@ -114,6 +104,21 @@ const purchaseCompleteContainer: CSSProperties = {
   marginBottom: "2rem",
 };
 
+const purchaseCompleteTextStyle: CSSProperties = { fontSize: "2rem" };
+
+const deliveryDetailsTextStyle: CSSProperties = {
+  textAlign: "center",
+  marginTop: "0",
+};
+
+const totalPriceContainer: CSSProperties = { display: "flex" };
+
+const totalPriceTextStyle: CSSProperties = { marginRight: ".1rem" };
+
+const coinIcon: CSSProperties = { marginTop: "1.8rem" };
+
+const coinIcon2: CSSProperties = { marginTop: "0.1rem" };
+
 const purchasedItems: CSSProperties = {
   display: "flex",
   justifyContent: "center",
@@ -133,7 +138,7 @@ const purchasedItemTestCard: CSSProperties = {
   gap: "1rem",
   padding: "1rem",
   width: "20vmin",
-  position: 'relative'
+  position: "relative",
 };
 
 const cardContainer: CSSProperties = {
@@ -168,6 +173,12 @@ const cardHeader: CSSProperties = {
   fontSize: "2vmin",
 };
 
+const cardHeaderTextStyle: CSSProperties = { margin: 0 };
+
+const cardImageContainer: CSSProperties = { width: "100%" };
+
+const cardImageStyle: CSSProperties = { width: "100%" };
+
 const itemCountBadge: CSSProperties = {
   position: "absolute",
   top: "-.5rem",
@@ -181,4 +192,11 @@ const itemCountBadge: CSSProperties = {
   fontSize: "1.5vmin",
   color: "white",
   background: "#2081e2",
+};
+
+const itemCountTextStyle: CSSProperties = {
+  textAlign: "center",
+  width: "100%",
+  letterSpacing: 0,
+  fontWeight: "bold",
 };

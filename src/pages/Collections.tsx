@@ -23,10 +23,10 @@ function Collections() {
 
   return (
     <div style={collectionsPage}>
-      <div style={{ display: "flex", justifyContent: "center", gap: "1rem" }}>
+      <div style={collectionsContainer}>
         <div style={CollectionDescriptionContainer}>
-          <div style={{ textAlign: "center" }}>
-            <h1 style={{ fontSize: "3rem" }}>{collection?.name}</h1>
+          <div style={collectionNameContainer}>
+            <h1 style={collectionNameStyle}>{collection?.name}</h1>
           </div>
           <div style={descriptionStyle}>
             <img
@@ -34,8 +34,9 @@ function Collections() {
               srcSet={collection?.productImage}
               alt="test"
             />
-            <h2 style={{maxWidth: "35rem"}} >{collection?.description}</h2>
-
+            <h2 style={collectionDescriptionStyle}>
+              {collection?.description}
+            </h2>
           </div>
         </div>
       </div>
@@ -60,6 +61,18 @@ const collectionsPage: CSSProperties = {
   flexDirection: "column",
 };
 
+const collectionsContainer: CSSProperties = {
+  display: "flex",
+  justifyContent: "center",
+  gap: "1rem",
+};
+
+const collectionNameContainer: CSSProperties = { textAlign: "center" };
+
+const collectionNameStyle: CSSProperties = { fontSize: "3rem" };
+
+const collectionDescriptionStyle: CSSProperties = { maxWidth: "35rem" };
+
 const flexProducts: CSSProperties = {
   display: "flex",
   flexWrap: "wrap",
@@ -82,8 +95,8 @@ const descriptionStyle: CSSProperties = {
   justifyContent: "center",
   width: "80%",
   gap: "2rem",
-  flexWrap: 'wrap',
-  textAlign: 'center'
+  flexWrap: "wrap",
+  textAlign: "center",
 };
 
 const productImage: CSSProperties = {

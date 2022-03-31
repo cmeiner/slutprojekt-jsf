@@ -1,5 +1,6 @@
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { CSSProperties } from "react";
 import { DeliveryDataInfo } from "../../../data/collections/deliveryData";
 import { useCart } from "../../context/CartContext";
 
@@ -20,20 +21,14 @@ function TotalSumWithShipping(props: deliveryItem) {
   } else if (props.deliveryInfo.deliveryMethod === "Postnord home delivery") {
     totalSumWithShipping = totalPrice + 4;
   } else if (props.deliveryInfo.deliveryMethod === "Postnord agent") {
-    totalSumWithShipping = totalPrice + 0
+    totalSumWithShipping = totalPrice + 0;
   }
   props.setFinalTotalSum(totalSumWithShipping);
 
   return (
     <div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <p style={{ marginRight: ".1rem", fontSize: "1.2rem" }}>
+      <div style={totalPriceContainer}>
+        <p style={totalPriceText}>
           Total price with shipping: {totalSumWithShipping}
         </p>
         <FontAwesomeIcon icon={faCoins} />
@@ -43,3 +38,14 @@ function TotalSumWithShipping(props: deliveryItem) {
 }
 
 export default TotalSumWithShipping;
+
+const totalPriceContainer: CSSProperties = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+};
+
+const totalPriceText: CSSProperties = {
+  marginRight: ".1rem",
+  fontSize: "1.2rem",
+};

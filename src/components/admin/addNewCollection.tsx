@@ -85,11 +85,7 @@ function AddNewCollection() {
                 />
               </div>
               <Button
-                style={{
-                  marginTop: "1rem",
-                  width: "40%",
-                  marginBottom: "1rem",
-                }}
+                style={addNewCollectionButton}
                 color="primary"
                 variant="contained"
                 fullWidth
@@ -98,11 +94,7 @@ function AddNewCollection() {
                 Add new collection
               </Button>
               <Button
-                style={{
-                  marginTop: "1rem",
-                  width: "40%",
-                  marginBottom: "1rem",
-                }}
+                style={closeWindowButton}
                 color="primary"
                 variant="contained"
                 fullWidth
@@ -132,6 +124,18 @@ const newCollectionContainer: CSSProperties = {
   //   boxShadow: 24,
   textAlign: "center",
   width: "40%",
+};
+
+const addNewCollectionButton: CSSProperties = {
+  marginTop: "1rem",
+  width: "40%",
+  marginBottom: "1rem",
+};
+
+const closeWindowButton: CSSProperties = {
+  marginTop: "1rem",
+  width: "40%",
+  marginBottom: "1rem",
 };
 
 const textFieldStyle: CSSProperties = {

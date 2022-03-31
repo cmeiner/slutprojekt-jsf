@@ -97,11 +97,7 @@ function AddNewNFT() {
                 />
               </div>
               <Button
-                style={{
-                  marginTop: "1rem",
-                  width: "40%",
-                  marginBottom: "1rem",
-                }}
+                style={addNewNFTButton}
                 color="primary"
                 variant="contained"
                 fullWidth
@@ -110,11 +106,7 @@ function AddNewNFT() {
                 Add new NFT
               </Button>
               <Button
-                style={{
-                  marginTop: "1rem",
-                  width: "40%",
-                  marginBottom: "1rem",
-                }}
+                style={closeWindowButton}
                 color="primary"
                 variant="contained"
                 fullWidth
@@ -149,6 +141,18 @@ const newCollectionContainer: CSSProperties = {
 const textFieldStyle: CSSProperties = {
   marginBottom: "1rem",
   width: "100%",
+};
+
+const addNewNFTButton: CSSProperties = {
+  marginTop: "1rem",
+  width: "40%",
+  marginBottom: "1rem",
+};
+
+const closeWindowButton: CSSProperties = {
+  marginTop: "1rem",
+  width: "40%",
+  marginBottom: "1rem",
 };
 
 const formStyle: CSSProperties = {

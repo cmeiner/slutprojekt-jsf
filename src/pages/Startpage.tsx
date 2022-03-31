@@ -1,12 +1,9 @@
-import { Button } from "@mui/material";
-import { CSSProperties, useState } from "react";
-import { Link } from "react-router-dom";
-import ItemCard from "../components/ItemCard";
+import { CSSProperties } from "react";
 import { useProducts } from "../components/context/ProductContext";
+import ItemCard from "../components/ItemCard";
 
 function StartPage(startPageProps: any) {
   const { randomCollections } = useProducts();
-  const [paymentModalOpen, setPaymentModalOpen] = useState(false);
 
   // let randomList =  collections.sort(() => Math.random() - Math.random()).slice(0, 3)
 
@@ -106,7 +103,6 @@ const contentContainer: CSSProperties = {
   flexDirection: "column",
   alignItems: "center",
 };
-
 
 const hottestStyle: CSSProperties = {
   display: "flex",

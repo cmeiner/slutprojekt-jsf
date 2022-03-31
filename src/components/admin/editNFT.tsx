@@ -42,7 +42,7 @@ function EditNFT() {
             <form style={formStyle} onSubmit={formik.handleSubmit}>
               <h3>Edit NFT</h3>
               <h3>Editing: # {selectedNFT?.NFTid}</h3>
-              <p style={{ width: "80%" }}>
+              <p style={editNftDescription}>
                 Description: {selectedNFT?.description}
               </p>
 
@@ -92,11 +92,7 @@ function EditNFT() {
                 />
               </div>
               <Button
-                style={{
-                  marginTop: "1rem",
-                  width: "40%",
-                  marginBottom: "1rem",
-                }}
+                style={saveCloseEditButton}
                 color="primary"
                 variant="contained"
                 fullWidth
@@ -105,11 +101,7 @@ function EditNFT() {
                 Save Edit
               </Button>
               <Button
-                style={{
-                  marginTop: "1rem",
-                  width: "40%",
-                  marginBottom: "1rem",
-                }}
+                style={saveCloseEditButton}
                 color="primary"
                 variant="contained"
                 fullWidth
@@ -140,9 +132,17 @@ const newCollectionContainer: CSSProperties = {
   width: "40%",
 };
 
+const editNftDescription: CSSProperties = { width: "80%" };
+
 const textFieldStyle: CSSProperties = {
   marginBottom: "1rem",
   width: "100%",
+};
+
+const saveCloseEditButton: CSSProperties = {
+  marginTop: "1rem",
+  width: "40%",
+  marginBottom: "1rem",
 };
 
 const formStyle: CSSProperties = {

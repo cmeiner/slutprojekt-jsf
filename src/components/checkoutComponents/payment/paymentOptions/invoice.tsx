@@ -11,14 +11,15 @@ interface Props {
 
 function Invoice(props: Props) {
   const navigate = useNavigate();
-  const { addPurchaseList, cart, clearCart, totalPrice, newPurchaseTotal } = useCart()
+  const { addPurchaseList, cart, clearCart, totalPrice, newPurchaseTotal } =
+    useCart();
   const completePayment = (props: Props) => {
     let newObject = props.deliveryInfo;
     newObject.paymentMethod = "Card";
     props.setDeliveryInfo(newObject);
-    addPurchaseList(cart)
-    newPurchaseTotal(totalPrice)
-    clearCart()
+    addPurchaseList(cart);
+    newPurchaseTotal(totalPrice);
+    clearCart();
     navigate("/PurchaseComplete");
   };
   return (
@@ -28,7 +29,7 @@ function Invoice(props: Props) {
         together with your order to your chosen delivery address.
       </p>
       <Button
-        style={{ marginTop: "1rem", marginBottom: "1rem", width: "70%" }}
+        style={completePurchaseButton}
         color="primary"
         variant="contained"
         fullWidth
@@ -48,4 +49,10 @@ const invoiceInfoBox: CSSProperties = {
   alignItems: "center",
   textAlign: "center",
   width: "40%",
+};
+
+const completePurchaseButton: CSSProperties = {
+  marginTop: "1rem",
+  marginBottom: "1rem",
+  width: "70%",
 };

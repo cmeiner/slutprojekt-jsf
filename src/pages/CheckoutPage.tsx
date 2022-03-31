@@ -5,7 +5,7 @@ import { CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../components/context/CartContext";
 import { useProducts } from "../components/context/ProductContext";
-import { collectionDataItem, NftItem } from "../data/collections/collection";
+import { NftItem } from "../data/collections/collection";
 
 function CheckoutPage() {
   const { cart, totalPrice } = useCart();
@@ -21,20 +21,11 @@ function CheckoutPage() {
             <div style={purchasedItems}>
               {cart.map((item: NftItem, index: number) => (
                 <div style={purchasedItemTestCard} key={index}>
-                    <div style={itemCountBadge}>
-                      <p
-                        style={{
-                          textAlign: "center",
-                          width: "100%",
-                          letterSpacing: 0,
-                          fontWeight: "bold",
-                        }}
-                      >
-                        {item.count}
-                      </p>
-                    </div>
+                  <div style={itemCountBadge}>
+                    <p style={itemCountStyle}>{item.count}</p>
+                  </div>
                   <div style={cardHeader}>
-                    <h3 style={{ margin: 0 }}>
+                    <h3 style={nftIDStyle}>
                       {
                         collections.find((col) => col.id === item.collectionID)
                           ?.name
@@ -43,26 +34,27 @@ function CheckoutPage() {
                     </h3>
                   </div>
                   <div style={cardBody}>
-                    <div style={{ width: "100%" }}>
-                      <img srcSet={item.image} style={{ width: "100%" }} />
+                    <div style={itemImageContainer}>
+                      <img
+                        srcSet={item.image}
+                        style={itemImageStyle}
+                        alt="Item"
+                      />
                     </div>
                   </div>
                   <div style={cardFooter}>
                     <div>
                       Price per unit: {item.price} &nbsp;
-                      <FontAwesomeIcon
-                        icon={faCoins}
-                        style={{ marginTop: "0.1rem" }}
-                      />
+                      <FontAwesomeIcon icon={faCoins} style={coinIcon} />
                     </div>
                   </div>
                 </div>
               ))}
             </div>
           </div>
-          <div style={{ display: "flex" }}>
-            <h2 style={{ marginRight: ".1rem" }}>Total price: {totalPrice}</h2>
-            <FontAwesomeIcon icon={faCoins} style={{ marginTop: "1.8rem" }} />
+          <div style={totalPriceContainer}>
+            <h2 style={totalPriceStyle}>Total price: {totalPrice}</h2>
+            <FontAwesomeIcon icon={faCoins} style={coinIcon2} />
           </div>
           <Link style={nextButton} to="/CheckoutDetails">
             <Button style={buttonStyle} variant="contained" href="">
@@ -113,7 +105,7 @@ const purchasedItemTestCard: CSSProperties = {
   gap: "1rem",
   padding: "1rem",
   width: "20vmin",
-  position: 'relative'
+  position: "relative",
 };
 
 const cardBody: CSSProperties = {
@@ -122,6 +114,16 @@ const cardBody: CSSProperties = {
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
+};
+
+const nftIDStyle: CSSProperties = {
+  margin: "0",
+};
+
+const itemImageContainer: CSSProperties = { width: "100%" };
+
+const itemImageStyle: CSSProperties = {
+  width: "100%",
 };
 
 const cardFooter: CSSProperties = {
@@ -173,3 +175,18 @@ const itemCountBadge: CSSProperties = {
   color: "white",
   background: "#2081e2",
 };
+
+const itemCountStyle: CSSProperties = {
+  textAlign: "center",
+  width: "100%",
+  letterSpacing: 0,
+  fontWeight: "bold",
+};
+
+const coinIcon: CSSProperties = { marginTop: "0.1rem" };
+
+const coinIcon2: CSSProperties = { marginTop: "1.8rem" };
+
+const totalPriceContainer: CSSProperties = { display: "flex" };
+
+const totalPriceStyle: CSSProperties = { marginRight: ".1rem" };

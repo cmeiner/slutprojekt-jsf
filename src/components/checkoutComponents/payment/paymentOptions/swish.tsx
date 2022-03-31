@@ -25,7 +25,8 @@ const validationSchema = yup.object({
 
 function Swish(props: Props) {
   const navigate = useNavigate();
-  const { addPurchaseList, cart, clearCart, newPurchaseTotal, totalPrice} = useCart()
+  const { addPurchaseList, cart, clearCart, newPurchaseTotal, totalPrice } =
+    useCart();
   const closeModal = () =>
     setTimeout(() => {
       props.setPaymentModal(false);
@@ -43,11 +44,9 @@ function Swish(props: Props) {
       props.setPaymentModal(true);
       console.log(props.paymentModalOpen);
       closeModal();
-      addPurchaseList(cart)
-      newPurchaseTotal(totalPrice)
-      clearCart()
-
-      
+      addPurchaseList(cart);
+      newPurchaseTotal(totalPrice);
+      clearCart();
     },
   });
   return (
@@ -65,7 +64,7 @@ function Swish(props: Props) {
           helperText={formik.touched.number && formik.errors.number}
         />
         <Button
-          style={{ marginTop: "1rem", marginBottom: "1rem", background: '#2081e2' }}
+          style={completePurchaseButton}
           color="primary"
           variant="contained"
           fullWidth
@@ -86,4 +85,10 @@ const swishForm: CSSProperties = {
 
 const textFieldStyle: CSSProperties = {
   marginBottom: "1rem",
+};
+
+const completePurchaseButton: CSSProperties = {
+  marginTop: "1rem",
+  marginBottom: "1rem",
+  background: "#2081e2",
 };
