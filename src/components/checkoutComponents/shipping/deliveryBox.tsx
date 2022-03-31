@@ -12,7 +12,7 @@ function DeliveryBox(props: deliveryItem) {
     <div>
       {props.deliveryOption && (
         <div style={deliveryOptionDescription}>
-          <div style={{ display: "flex" }}>
+          <div style={deliveryOptionContainer}>
             <img
               style={deliveryOptionThumbnail}
               srcSet={getDelivery(props.deliveryOption).image}
@@ -22,9 +22,9 @@ function DeliveryBox(props: deliveryItem) {
               {getDelivery(props.deliveryOption).description}
             </p>
           </div>
-          <div style={{ display: "flex", alignItems: "center" }}>
+          <div style={shippingPriceContainer}>
             <p> Shipping price: {getDelivery(props.deliveryOption).price} </p>
-            <FontAwesomeIcon icon={faCoins} style={{ marginLeft: "0.3rem" }} />
+            <FontAwesomeIcon icon={faCoins} style={coinIcon} />
           </div>
         </div>
       )}
@@ -45,11 +45,20 @@ const deliveryOptionDescription: CSSProperties = {
   paddingBottom: "1rem",
 };
 
+const deliveryOptionContainer: CSSProperties = { display: "flex" };
+
 const deliveryDescription: CSSProperties = {
   fontSize: ".8rem",
   display: "flex",
   alignItems: "center",
 };
+
+const shippingPriceContainer: CSSProperties = {
+  display: "flex",
+  alignItems: "center",
+};
+
+const coinIcon: CSSProperties = { marginLeft: "0.3rem" };
 
 const deliveryOptionThumbnail: CSSProperties = {
   padding: "0.5rem",
