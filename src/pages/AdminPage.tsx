@@ -125,7 +125,8 @@ const adminPageLayout: CSSProperties = {
   flexDirection: "column",
   alignItems: "center",
   gap: "2rem",
-  overflowX: 'hidden'
+  overflowX: 'hidden',
+  paddingBottom: '2rem'
 };
 
 const adminCollections: CSSProperties = {

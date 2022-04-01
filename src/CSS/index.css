@@ -1,6 +1,3 @@
-:root {
-  --toastify-color-success: white !important;
-}
 .Toastify__toast.Toastify__toast-theme--light.Toastify__toast--success {
   background: #303339;
   color: white;
@@ -34,6 +31,7 @@ code {
 .MuiOutlinedInput-root.Mui-disabled {
   color: white !important;
 }
+
 .css-ghsjzk-MuiInputBase-root-MuiInput-root:before {
   color: white !important;
   border-color: white !important;
@@ -94,4 +92,18 @@ code {
 .popupClosed {
   display: none
 }
+* {
+  color: white m !important;
+}
 
+:root {
+  --toastify-color-success: white !important;
+  color: white !important;
+}
+.MuiInputLabel-root {
+  color: white;
+  border-color: white;
+}
+.MuiOutlinedInput-notchedOutline {
+  border-color: white;
+}

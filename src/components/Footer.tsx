@@ -7,7 +7,7 @@ function Footer() {
     <div>
       <div style={footerStyle}>
         © Created by FrontFelix, AdaHep and MiMeiner, 2022.
-        <Link to="/Admin">
+        <Link to="/Admin" style={{textDecoration: 'none'}}>
           <Button style={StyledButton} variant="contained" href="">
             ADMIN
           </Button>
