@@ -2,11 +2,12 @@
 
 Welcome to our webshop! Here you can find the latest and greatest NFTs for sale in cyberspace.
 
+You can find the website here: [Netlify](nftheaven.netlify.app).
 
 Created by:
 [Felix Bakkum](https://github.com/FrontFelix),
 [Christian Meiner](https://github.com/miMeiner) &
-[Adam Hepsever](https://github.com/AdaHep)
+[Adam Hepsever](https://github.com/AdaHep).
 
 ## How to run the project
 
