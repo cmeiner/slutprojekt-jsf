@@ -1,8 +1,15 @@
 import { Button, TextField } from "@mui/material";
 import { useFormik } from "formik";
+import * as yup from "yup";
 import { CSSProperties } from "react";
 import { NftItem } from "../../data/collections/collection";
 import { useProducts } from "../context/ProductContext";
+
+const validationSchema = yup.object({
+  nftImage: yup.string().required("Please enter new image URL").min(10),
+  description: yup.string().required("Please enter new description").min(2),
+  price: yup.number().required("Please enter new price").min(1),
+});
 
 function EditNFT() {
   const {
@@ -15,11 +22,11 @@ function EditNFT() {
 
   const formik = useFormik({
     initialValues: {
-      collection: 0,
-      nftImage: "",
-      description: "",
-      price: 0,
+      nftImage: selectedNFT?.image,
+      description: selectedNFT?.description,
+      price: selectedNFT?.price,
     },
+    validationSchema: validationSchema,
     onSubmit: (values) => {
       let newNft: NftItem = {
         NFTid: selectedNFT.NFTid,
