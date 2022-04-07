@@ -118,6 +118,7 @@ const cardBody: CSSProperties = {
 
 const nftIDStyle: CSSProperties = {
   margin: "0",
+  fontSize: "clamp(2vmax, 2vmax, 5rem)",
 };
 
 const itemImageContainer: CSSProperties = { width: "100%" };
