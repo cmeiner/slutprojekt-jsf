@@ -63,7 +63,7 @@ const innerHeader: CSSProperties = {
 const headline: CSSProperties = {
   textDecoration: "none",
   color: "white",
-  fontSize: "5vmin",
+  fontSize: 'clamp(3vmin, 4vmin, 4rem)'
 };
 
 const headerCartLink: CSSProperties = {
