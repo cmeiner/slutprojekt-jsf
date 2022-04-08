@@ -29,9 +29,14 @@ function TotalSumWithShipping(props: deliveryItem) {
     <div>
       <div style={totalPriceContainer}>
         <p style={totalPriceText}>
-          Total price with shipping: {totalSumWithShipping}
+          <div>
+          Total price with shipping:  
+          </div>
+          <div>
+          <FontAwesomeIcon icon={faCoins} />
+          &nbsp;{totalSumWithShipping}
+          </div>
         </p>
-        <FontAwesomeIcon icon={faCoins} />
       </div>
     </div>
   );
@@ -48,4 +53,9 @@ const totalPriceContainer: CSSProperties = {
 const totalPriceText: CSSProperties = {
   marginRight: ".1rem",
   fontSize: "1.2rem",
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexWrap: 'wrap',
+  gap: '1rem'
 };

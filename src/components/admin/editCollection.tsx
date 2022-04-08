@@ -20,10 +20,11 @@ function EditCollection() {
   } = useProducts();
 
   const formik = useFormik({
+    enableReinitialize: true,
     initialValues: {
-      name: selectedCollection?.name,
-      description: selectedCollection?.description,
-      productImage: selectedCollection?.productImage,
+      name: selectedCollection.name ,
+      description: selectedCollection.description,
+      productImage: selectedCollection.productImage,
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {

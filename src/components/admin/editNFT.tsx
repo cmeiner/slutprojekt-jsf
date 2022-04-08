@@ -1,7 +1,7 @@
 import { Button, TextField } from "@mui/material";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import { CSSProperties } from "react";
+import { CSSProperties, useState } from "react";
 import { NftItem } from "../../data/collections/collection";
 import { useProducts } from "../context/ProductContext";
 
@@ -20,11 +20,15 @@ function EditNFT() {
     selectedCollection,
   } = useProducts();
 
+
+  // if(!editNftModal) return
+  // openEditNftModal(selectedNFT, selectedCollection.id, selectedCollection)
   const formik = useFormik({
+    enableReinitialize: true,
     initialValues: {
-      nftImage: selectedNFT?.image,
-      description: selectedNFT?.description,
-      price: selectedNFT?.price,
+      nftImage: selectedNFT.image,
+      description: selectedNFT.description,
+      price: selectedNFT.price,
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
@@ -115,7 +119,7 @@ function EditNFT() {
                 onClick={closeEditNftModal}
               >
                 Close window
-              </Button>
+              </Button>            
             </form>
           </div>
         </div>

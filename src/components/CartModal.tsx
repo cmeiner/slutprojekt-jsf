@@ -125,6 +125,7 @@ const boxStyle: CSSProperties = {
   boxShadow: "24",
   padding: "2%",
   color: "white",
+  scrollbarWidth: "none",
 };
 
 const emptyCartTextStyle: CSSProperties = { textAlign: "center" };
