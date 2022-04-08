@@ -34,6 +34,7 @@ interface ProductContext {
   openEditCollectionModal: (collection: collectionDataItem) => void;
   closeEditCollectionModal: () => void;
   addCollectionModal: boolean;
+  
 }
 
 const ProductsContext = createContext<ProductContext>({
@@ -81,6 +82,7 @@ const ProductsContext = createContext<ProductContext>({
   editCollectionModal: false,
   openEditCollectionModal: (collection: collectionDataItem) => {},
   closeEditCollectionModal: () => {},
+  
 });
 
 export const ProductProvider: FC = (props) => {

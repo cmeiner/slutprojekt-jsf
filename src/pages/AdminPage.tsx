@@ -66,7 +66,7 @@ function AdminPage() {
                 style={buttonStyle}
                 variant="contained"
                 href=""
-                onClick={() => openEditCollectionModal(collection)}
+                onClick={() => openEditCollectionModal(collection)  }
               >
                 Edit
               </Button>

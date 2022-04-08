@@ -1,8 +1,15 @@
 import { Button, TextField } from "@mui/material";
 import { useFormik } from "formik";
+import * as yup from "yup";
 import { CSSProperties } from "react";
 import { collectionDataItem } from "../../data/collections/collection";
 import { useProducts } from "../context/ProductContext";
+
+const validationSchema = yup.object({
+  name: yup.string().required("Please enter new name").min(1),
+  description: yup.string().required("Please enter new description").min(2),
+  productImage: yup.string().required("Please enter new image URL").min(10),
+});
 
 function EditCollection() {
   const {
@@ -13,11 +20,13 @@ function EditCollection() {
   } = useProducts();
 
   const formik = useFormik({
+    enableReinitialize: true,
     initialValues: {
-      name: "",
-      description: "",
-      productImage: "",
+      name: selectedCollection.name ,
+      description: selectedCollection.description,
+      productImage: selectedCollection.productImage,
     },
+    validationSchema: validationSchema,
     onSubmit: (values) => {
       let newCollection: collectionDataItem = {
         id: selectedCollection.id,

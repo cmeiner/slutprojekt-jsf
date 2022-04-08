@@ -63,13 +63,13 @@ const innerHeader: CSSProperties = {
 const headline: CSSProperties = {
   textDecoration: "none",
   color: "white",
-  fontSize: "5vmin",
+  fontSize: 'clamp(3vmin, 4vmin, 4rem)'
 };
 
 const headerCartLink: CSSProperties = {
   color: "white",
   position: "relative",
-  fontSize: 'clamp(5vmin, 10vmin, 3rem)'
+  fontSize: 'clamp(5vmin, 7vmin, 2.7rem)'
 };
 
 const headerDiv1: CSSProperties = {
@@ -105,7 +105,7 @@ const itemCountBadge: CSSProperties = {
   justifyContent: "center",
   alignItems: "center",
   borderRadius: "100%",
-  fontSize: "1rem",
+  fontSize: ".8rem",
   color: "white",
   background: "#2081e2",
 };
