@@ -1,8 +1,8 @@
 import { createContext, FC, useContext, useState } from "react";
 import {
-  NftItem,
-  collectionDataItem,
   collectionData,
+  collectionDataItem,
+  NftItem
 } from "../../data/collections/collection";
 
 interface ProductContext {
@@ -34,7 +34,6 @@ interface ProductContext {
   openEditCollectionModal: (collection: collectionDataItem) => void;
   closeEditCollectionModal: () => void;
   addCollectionModal: boolean;
-  
 }
 
 const ProductsContext = createContext<ProductContext>({
@@ -82,7 +81,6 @@ const ProductsContext = createContext<ProductContext>({
   editCollectionModal: false,
   openEditCollectionModal: (collection: collectionDataItem) => {},
   closeEditCollectionModal: () => {},
-  
 });
 
 export const ProductProvider: FC = (props) => {

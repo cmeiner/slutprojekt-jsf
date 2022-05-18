@@ -1,13 +1,13 @@
-import { useProducts } from "../components/context/ProductContext";
+import { faCoins, faRemove } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRemove, faCoins } from "@fortawesome/free-solid-svg-icons";
-
-import AddNewNFT from "../components/admin/addNewNFT";
-import EditNFT from "../components/admin/editNFT";
-import { CSSProperties } from "react";
 import { Button } from "@mui/material";
-import EditCollection from "../components/admin/editCollection";
+import { CSSProperties } from "react";
 import AddNewCollection from "../components/admin/addNewCollection";
+import AddNewNFT from "../components/admin/addNewNFT";
+import EditCollection from "../components/admin/editCollection";
+import EditNFT from "../components/admin/editNFT";
+import { useProducts } from "../components/context/ProductContext";
+
 
 function AdminPage() {
   const {
@@ -126,7 +126,8 @@ const adminPageLayout: CSSProperties = {
   alignItems: "center",
   gap: "2rem",
   overflowX: 'hidden',
-  paddingBottom: '2rem'
+  paddingBottom: '2rem',
+  width: '100%',
 };
 
 const adminCollections: CSSProperties = {

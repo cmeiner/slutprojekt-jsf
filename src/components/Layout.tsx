@@ -1,20 +1,20 @@
 import { CSSProperties, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import { DeliveryDataInfoObject } from "../data/collections/deliveryData";
+import AdminPage from "../pages/AdminPage";
 import CheckoutPage from "../pages/CheckoutPage";
 import CheckoutPageDetails from "../pages/CheckoutPageDetails";
 import CollectionPage from "../pages/CollectionPage";
 import Collections from "../pages/Collections";
+import PaymentPage from "../pages/PaymentPage";
+import PurchaseComplete from "../pages/PurchaseComplete";
 import StartPage from "../pages/Startpage";
 import CartModal from "./CartModal";
-import Header from "./Header";
-import { DeliveryDataInfoObject } from "../data/collections/deliveryData";
 import { CartProvider } from "./context/CartContext";
 import { ProductProvider } from "./context/ProductContext";
-import AdminPage from "../pages/AdminPage";
-import PurchaseComplete from "../pages/PurchaseComplete";
-import PaymentPage from "../pages/PaymentPage";
-import { ToastContainer } from "react-toastify";
 import Footer from "./Footer";
+import Header from "./Header";
 
 function Layout() {
   const [modalState, setModalState] = useState(false);
@@ -67,14 +67,7 @@ function Layout() {
                   }
                 />
 
-                <Route
-                  path="/PurchaseComplete"
-                  element={
-                    <PurchaseComplete
-                      deliveryInfo={deliveryInfo}
-                      finalTotalSum={finalTotalSum}
-                    />
-                  }
+                <Route path="/PurchaseComplete" element={<PurchaseComplete deliveryInfo={deliveryInfo} finalTotalSum={finalTotalSum}/>}
                 />
               </Routes>
               <Footer/>
@@ -88,7 +81,7 @@ function Layout() {
 }
 
 const rootStyle: CSSProperties = {
-  maxWidth: "1250px",
+  maxWidth: "85vw",
   display: "block",
   margin: "0 auto",
   marginTop: "2rem",

@@ -1,4 +1,4 @@
-import { CSSProperties, useState, useEffect } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useProducts } from "../components/context/ProductContext";
 import ItemCard from "../components/ItemCard";
@@ -40,17 +40,15 @@ function Collections() {
           </div>
         </div>
       </div>
-      <div>
-        <div style={flexProducts}>
-          {nft?.map((nftItem, index) => (
-            <ItemCard
-              key={index}
-              nftCard={nftItem}
-              nftHeader={collection?.header}
-              collectionName={collection?.name}
-            />
-          ))}
-        </div>
+      <div style={flexProducts}>
+        {nft?.map((nftItem, index) => (
+          <ItemCard
+            key={index}
+            nftCard={nftItem}
+            nftHeader={collection?.header}
+            collectionName={collection?.name}
+          />
+        ))}
       </div>
     </div>
   );
@@ -63,7 +61,9 @@ const collectionsPage: CSSProperties = {
 
 const collectionsContainer: CSSProperties = {
   display: "flex",
-  justifyContent: "center",
+  alignItems: "center",
+  justifyContent: 'center',
+  flexDirection: 'column',
   gap: "1rem",
 };
 
@@ -79,6 +79,8 @@ const flexProducts: CSSProperties = {
   gap: "2rem",
   justifyContent: "center",
   margin: "5rem 0",
+  width: "70%",
+  maxWidth: "1250px",
 };
 
 const CollectionDescriptionContainer: CSSProperties = {
